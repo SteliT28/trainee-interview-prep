@@ -1,0 +1,1886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NLDC Trainee Dental Nurses Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --teal-deep: #2D6E6E;
+    --teal-mid: #3F8C8A;
+    --blue-soft: #6FA8B5;
+    --bg-tint: #F3F8F7;
+    --card-bg: #FFFFFF;
+    --coral: #F2A265;
+    --coral-deep: #E08A47;
+    --ink: #1F3B3A;
+    --ink-soft: #4A625F;
+    --border: #DCEAE8;
+    --success: #7FB89A;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-tint);
+    color: var(--ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .display {
+    font-family: 'Fraunces', serif;
+    font-optical-sizing: auto;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* NAV */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--teal-deep);
+  }
+  .logo-mark {
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+  .nav-links a:hover { color: var(--teal-deep); }
+
+  /* HERO */
+  .hero {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px 32px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  h1.hero-title {
+    font-size: 42px;
+    font-weight: 600;
+    line-height: 1.15;
+    max-width: 620px;
+    color: var(--teal-deep);
+    margin-bottom: 14px;
+  }
+  h1.hero-title em {
+    font-style: italic;
+    color: var(--coral-deep);
+  }
+  .hero-sub {
+    font-size: 16.5px;
+    color: var(--ink-soft);
+    max-width: 480px;
+    margin-bottom: 30px;
+  }
+
+  /* ENCOURAGEMENT STRIP — signature element */
+  .encourage-strip {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--coral);
+    border-radius: 14px;
+    padding: 16px 20px;
+    max-width: 560px;
+    box-shadow: 0 2px 10px rgba(45,110,110,0.05);
+  }
+  .encourage-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .encourage-text {
+    font-size: 14.5px;
+    color: var(--ink);
+  }
+  .encourage-text strong { color: var(--teal-deep); }
+  .encourage-sub {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+
+  /* PATHWAYS */
+  .pathways-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 32px 60px;
+  }
+  .section-label {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+  }
+  .pathways-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .pathway-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    cursor: pointer;
+  }
+  .pathway-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(45,110,110,0.1);
+    border-color: var(--teal-mid);
+  }
+  .pathway-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+  }
+  .icon-jobs { background: #E8F3F2; }
+  .icon-toolkit { background: #FFF3E7; }
+  .icon-quiz { background: #EAF2E9; }
+  .icon-interview { background: #EEF4F8; }
+  .icon-communication { background: #F4EEF8; }
+  .communication-card {
+    grid-column: 1 / -1;
+    min-height: 150px;
+    padding: 28px 30px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    column-gap: 20px;
+  }
+  .communication-card .pathway-icon { width: 50px; height: 50px; font-size: 23px; }
+  .communication-card .pathway-copy { min-width: 0; }
+  .communication-card .pathway-title { margin-bottom: 4px; }
+  @media (max-width: 800px) {
+    .communication-card { grid-template-columns: auto 1fr; }
+    .communication-card .pathway-cta { grid-column: 2; }
+  }
+  @media (max-width: 520px) {
+    .communication-card { grid-template-columns: 1fr; row-gap: 12px; }
+    .communication-card .pathway-cta { grid-column: 1; }
+  }
+
+  .pathway-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--ink);
+  }
+  .pathway-desc {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    flex-grow: 1;
+  }
+  .pathway-cta {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--teal-deep);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .pathway-card:hover .pathway-cta { gap: 8px; }
+  .pathway-cta span { transition: gap 0.15s ease; }
+
+  /* PROGRESS TEASER */
+  .progress-strip {
+    max-width: 1100px;
+    margin: 0 auto 60px;
+    padding: 0 32px;
+  }
+  .progress-card {
+    background: linear-gradient(120deg, var(--teal-deep), var(--teal-mid));
+    border-radius: 18px;
+    padding: 28px 32px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .progress-text h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+  .progress-text p {
+    font-size: 14px;
+    opacity: 0.85;
+    max-width: 380px;
+  }
+  .progress-btn {
+    background: white;
+    color: var(--teal-deep);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 11px 22px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px 32px 50px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 800px) {
+    .pathways-grid { grid-template-columns: 1fr 1fr; }
+    h1.hero-title { font-size: 32px; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 520px) {
+    .pathways-grid { grid-template-columns: 1fr; }
+    .progress-card { flex-direction: column; align-items: flex-start; }
+  }
+
+
+
+  :root {
+    --teal-deep: #2D6E6E;
+    --teal-mid: #3F8C8A;
+    --blue-soft: #6FA8B5;
+    --bg-tint: #F3F8F7;
+    --card-bg: #FFFFFF;
+    --coral: #F2A265;
+    --coral-deep: #E08A47;
+    --ink: #1F3B3A;
+    --ink-soft: #4A625F;
+    --border: #DCEAE8;
+    --success: #7FB89A;
+    --good: #E8F3E9;
+    --good-text: #3F7D4F;
+    --outstanding: #FFF3E7;
+    --outstanding-text: #B8722F;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-tint);
+    color: var(--ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .display { font-family: 'Fraunces', serif; font-optical-sizing: auto; }
+  a { color: inherit; text-decoration: none; }
+
+  /* NAV */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--teal-deep);
+  }
+  .logo-mark {
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--teal-deep);
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+  .nav-links a.active { color: var(--teal-deep); }
+  .nav-links a:hover { color: var(--teal-deep); }
+
+  /* PAGE HEADER */
+  .page-header {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 36px 32px 8px;
+  }
+  h1.page-title {
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--teal-deep);
+    margin-bottom: 8px;
+  }
+  .page-sub {
+    font-size: 15px;
+    color: var(--ink-soft);
+    max-width: 520px;
+  }
+
+  /* SEARCH BAR */
+  .search-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 32px 8px;
+  }
+  .search-bar {
+    display: flex;
+    gap: 10px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 8px;
+    max-width: 520px;
+    box-shadow: 0 2px 10px rgba(45,110,110,0.05);
+  }
+  .search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    padding: 10px 12px;
+    color: var(--ink);
+    background: transparent;
+  }
+  .search-bar input::placeholder { color: #9DB5B2; }
+  .search-btn {
+    background: var(--teal-deep);
+    color: white;
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 9px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .search-hint {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+
+  /* RESULTS */
+  .results-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 28px 32px 60px;
+  }
+  .results-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .results-label strong { color: var(--teal-deep); }
+
+  .practice-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .practice-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 22px;
+  }
+  .practice-info { flex: 1; }
+  .practice-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .practice-address {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .practice-meta {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .rating-badge {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+  .rating-good { background: var(--good); color: var(--good-text); }
+  .rating-outstanding { background: var(--outstanding); color: var(--outstanding-text); }
+  .distance-tag {
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .toggle-btn {
+    flex-shrink: 0;
+    background: #EEF6F5;
+    color: var(--teal-deep);
+    border: none;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 10px 16px;
+    border-radius: 9px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .toggle-btn:hover { background: #E2F0EE; }
+  .toggle-btn .chev { transition: transform 0.15s ease; font-size: 10px; }
+  .practice-card.open .toggle-btn .chev { transform: rotate(180deg); }
+
+  .practice-scripts {
+    display: none;
+    border-top: 1px solid var(--border);
+    background: #FAFCFB;
+    padding: 20px 22px 22px;
+  }
+  .practice-card.open .practice-scripts { display: block; }
+
+  .script-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .script-tab {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 100px;
+    background: white;
+    border: 1px solid var(--border);
+    color: var(--ink-soft);
+    cursor: pointer;
+  }
+  .script-tab.active {
+    background: var(--coral);
+    border-color: var(--coral);
+    color: white;
+  }
+  .script-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    font-size: 13.5px;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  .script-box .script-label {
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--coral-deep);
+    margin-bottom: 8px;
+    display: block;
+  }
+  .copy-btn {
+    margin-top: 12px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--teal-deep);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  /* CQC ATTRIBUTION */
+  .attribution {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px 40px;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  footer {
+    text-align: center;
+    padding: 24px 32px 50px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 700px) {
+    .nav-links { display: none; }
+    .practice-main { flex-direction: column; }
+    .toggle-btn { align-self: flex-start; }
+  }
+
+
+/* --- Shared multi-page app additions --- */
+html { scroll-behavior: smooth; }
+button { font-family: inherit; }
+[hidden] { display: none !important; }
+.page-view { min-height: 1px; }
+.nav-links a.active { font-weight: 600; }
+.progress-btn {
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+.logo-mark {
+  background: var(--teal-deep);
+  color: #fff;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.logo-mark svg { width: 20px; height: 20px; display:block; }
+.back-button {
+  display:inline-flex; align-items:center; gap:7px;
+  border:1px solid var(--border); background:#fff; color:var(--teal-deep);
+  font-family:inherit; font-size:13px; font-weight:600;
+  padding:9px 13px; border-radius:9px; cursor:pointer;
+  margin-bottom:16px; transition:.15s ease;
+}
+.back-button:hover { background:#EEF6F5; border-color:#C9DEDB; }
+.back-button .back-arrow { font-size:16px; line-height:1; }
+
+.logo {
+  cursor: pointer;
+}
+.empty-state {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 22px;
+  color: var(--ink-soft);
+  text-align: center;
+}
+.search-status {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  margin-top: 10px;
+}
+.copy-btn.copied { color: var(--success); }
+@media (max-width: 950px) {
+  .nav-links { gap: 16px; }
+}
+
+/* --- Dental Practice Knowledge learning experience --- */
+.toolkit-page{max-width:1100px;margin:0 auto;padding-bottom:70px}
+.toolkit-intro{padding:36px 32px 24px}
+.toolkit-intro h1{font-size:30px;font-weight:600;color:var(--teal-deep);margin-bottom:8px}
+.toolkit-intro p{font-size:15px;color:var(--ink-soft);max-width:650px}
+.toolkit-topics{padding:8px 32px 32px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.toolkit-topic{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:22px;cursor:pointer;transition:.15s;display:flex;gap:16px;align-items:flex-start}
+.toolkit-topic:hover,.toolkit-topic.selected{border-color:var(--teal-mid);box-shadow:0 8px 22px rgba(45,110,110,.09);transform:translateY(-2px)}
+.toolkit-topic-icon{width:44px;height:44px;border-radius:12px;background:#FFF3E7;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.toolkit-topic h2{font-family:'Fraunces',serif;font-size:18px;margin-bottom:5px;color:var(--ink)}
+.toolkit-topic p{font-size:13.5px;color:var(--ink-soft);margin-bottom:9px}
+.toolkit-topic .topic-meta{font-size:12px;font-weight:600;color:var(--teal-deep)}
+.toolkit-learning{margin:0 32px;background:white;border:1px solid var(--border);border-radius:18px;overflow:hidden;display:none}
+.toolkit-learning.visible{display:block}
+.learning-head{padding:22px 26px;border-bottom:1px solid var(--border);background:#FAFCFB;display:flex;justify-content:space-between;gap:20px;align-items:center}
+.learning-head h2{font-family:'Fraunces',serif;font-size:22px;color:var(--teal-deep);margin-bottom:3px}
+.learning-head p{font-size:12.5px;color:var(--ink-soft)}
+.progress-count{font-size:12px;font-weight:700;color:var(--teal-deep);white-space:nowrap}
+.learning-body{padding:26px}
+.sequence{display:none}.sequence.active{display:block}
+.sequence-number{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--coral-deep);margin-bottom:8px}
+.sequence h3{font-family:'Fraunces',serif;font-size:24px;color:var(--ink);margin-bottom:12px}
+.sequence-info{font-size:14.5px;line-height:1.7;color:var(--ink);max-width:800px;margin-bottom:25px}
+.sequence-info strong{color:var(--teal-deep)}
+.check-card{background:#F6FAF9;border:1px solid var(--border);border-radius:14px;padding:20px;max-width:800px}
+.check-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:7px}
+.question{font-family:'Fraunces',serif;font-size:18px;color:var(--ink);margin-bottom:15px}
+.answers{display:grid;gap:9px}
+.answer-btn{border:1px solid var(--border);background:white;color:var(--ink);padding:12px 14px;border-radius:10px;text-align:left;font-size:13.5px;cursor:pointer;transition:.12s}
+.answer-btn:hover:not(:disabled){border-color:var(--teal-mid);background:#F8FCFB}
+.answer-btn:disabled{cursor:default}
+.answer-btn.correct{border-color:#7FB89A;background:#E8F3E9;color:#3F7D4F}
+.answer-btn.incorrect{border-color:#E5A18A;background:#FFF3EE;color:#A9573D}
+.feedback{display:none;margin-top:13px;padding:12px 14px;border-radius:10px;font-size:13px;line-height:1.5}
+.feedback.show{display:block}.feedback.good{background:#E8F3E9;color:#3F7D4F}.feedback.try{background:#FFF3EE;color:#A9573D}
+.learning-actions{margin-top:18px;display:flex;align-items:center;gap:12px}
+.continue-btn{border:0;background:var(--teal-deep);color:white;font-weight:600;font-size:13px;padding:11px 18px;border-radius:9px;cursor:pointer;display:none}
+.continue-btn.show{display:inline-block}.continue-btn:hover{background:var(--teal-mid)}
+.topic-complete{display:none;text-align:center;padding:25px 10px 5px}.topic-complete.show{display:block}
+.topic-complete .complete-icon{font-size:34px;margin-bottom:8px}.topic-complete h3{font-family:'Fraunces',serif;font-size:24px;color:var(--teal-deep);margin-bottom:6px}.topic-complete p{font-size:13.5px;color:var(--ink-soft);max-width:550px;margin:0 auto 16px}
+.back-topics{border:1px solid var(--border);background:white;color:var(--teal-deep);font-weight:600;font-size:13px;padding:10px 16px;border-radius:9px;cursor:pointer}
+.toolkit-note{margin:0 32px 10px;padding:14px 16px;border-left:3px solid var(--coral);background:white;border-radius:10px;font-size:12.5px;color:var(--ink-soft)}
+@media(max-width:700px){.toolkit-topics{grid-template-columns:1fr}.toolkit-intro,.toolkit-topics{padding-left:20px;padding-right:20px}.toolkit-learning{margin:0 20px}.learning-head{align-items:flex-start;flex-direction:column}.learning-body{padding:20px}}
+
+
+/* MOCK INTERVIEW */
+.interview-page{max-width:1100px;margin:0 auto;padding:0 32px 70px}
+.interview-header{padding:28px 0 22px}
+.interview-header h1{font-size:30px;font-weight:600;color:var(--teal-deep);margin:12px 0 8px}
+.interview-header p{font-size:15px;color:var(--ink-soft);max-width:680px}
+.interview-card{background:white;border:1px solid var(--border);border-radius:18px;overflow:hidden;max-width:820px;margin:10px auto 0;box-shadow:0 4px 18px rgba(45,110,110,.05)}
+.interview-card-head{padding:18px 22px;border-bottom:1px solid var(--border);background:#FAFCFB;display:flex;justify-content:space-between;align-items:center;gap:15px}
+.interview-label{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;font-weight:700;color:var(--coral-deep)}
+.interview-count{font-size:12px;font-weight:700;color:var(--teal-deep)}
+.interview-body{padding:42px 32px 34px;text-align:center}
+.interview-question{font-family:'Fraunces',serif;font-size:29px;line-height:1.35;color:var(--ink);max-width:680px;margin:0 auto 34px}
+.interview-prompt{font-size:13px;color:var(--ink-soft);margin-bottom:20px}
+.answer-guide-btn{border:1px solid var(--border);background:#EEF6F5;color:var(--teal-deep);font-weight:600;font-size:13px;padding:10px 16px;border-radius:9px;cursor:pointer;margin:0 auto 20px;display:inline-flex;align-items:center;gap:6px}.answer-guide-btn:hover{background:#E2F0EE}.answer-guide{max-width:680px;margin:0 auto 24px;padding:15px 17px;background:#FFF9F4;border:1px solid #F3D7BD;border-radius:12px;text-align:left;font-size:13.5px;line-height:1.6;color:var(--ink)}.answer-guide::before{content:'Think about:';display:block;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--coral-deep);margin-bottom:5px}
+.interview-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.interview-btn{border:0;background:var(--teal-deep);color:white;font-weight:600;font-size:13px;padding:12px 20px;border-radius:9px;cursor:pointer}
+.interview-btn:hover{background:var(--teal-mid)}
+.interview-btn.secondary{background:#EEF6F5;color:var(--teal-deep)}
+.interview-btn.secondary:hover{background:#E2F0EE}
+.interview-status{margin-top:22px;font-size:12.5px;color:var(--ink-soft);min-height:19px}
+
+.interview-modes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:900px;margin:18px auto 0}
+.interview-mode-card{border:1px solid var(--border);background:white;border-radius:18px;padding:24px;text-align:left;cursor:pointer;box-shadow:0 3px 14px rgba(45,110,110,.04);transition:.15s ease}
+.interview-mode-card:hover,.interview-mode-card.selected{border-color:var(--teal-mid);transform:translateY(-2px);box-shadow:0 6px 20px rgba(45,110,110,.08)}
+.interview-mode-icon{font-size:27px;margin-bottom:12px}.interview-mode-card h2{font-family:'Fraunces',serif;color:var(--teal-deep);font-size:22px;margin-bottom:7px}.interview-mode-card p{font-size:13.5px;color:var(--ink-soft);line-height:1.6}.interview-mode-card .mode-link{display:inline-block;margin-top:15px;color:var(--coral-deep);font-weight:700;font-size:13px}
+.interview-mode-panel{display:none;max-width:820px;margin:18px auto 0}.interview-mode-panel.active{display:block}
+.interview-answer{width:100%;min-height:125px;border:1px solid var(--border);border-radius:12px;padding:14px 16px;font:inherit;font-size:14px;color:var(--ink);resize:vertical;outline:none;margin:8px 0 14px}.interview-answer:focus{border-color:var(--teal-mid);box-shadow:0 0 0 3px rgba(63,140,138,.08)}
+.conversation{display:flex;flex-direction:column;gap:12px;margin-bottom:18px}.chat-bubble{padding:16px 18px;border-radius:15px;max-width:90%;font-size:14px;line-height:1.6}.chat-interviewer{background:#FAFCFB;border:1px solid var(--border);align-self:flex-start}.chat-user{background:#EEF6F5;border:1px solid #D7ECE9;align-self:flex-end}.chat-label{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:5px;color:var(--coral-deep)}
+.mock-note{background:#FFF8F1;border:1px solid #F5DDC7;border-radius:12px;padding:13px 15px;font-size:12.5px;color:var(--ink-soft);margin-bottom:16px}.mock-progress{font-size:12px;color:var(--ink-soft);margin-bottom:14px}.mock-end{display:none;text-align:center;padding:25px 10px}.mock-end.show{display:block}.mock-end h3{font-family:'Fraunces',serif;color:var(--teal-deep);font-size:25px;margin:7px 0}.mock-end p{font-size:13.5px;color:var(--ink-soft);max-width:580px;margin:0 auto 18px}
+@media(max-width:700px){.interview-modes{grid-template-columns:1fr}.chat-bubble{max-width:96%}}
+.interview-complete{display:none;text-align:center;padding:48px 25px}
+.interview-complete.show{display:block}
+.interview-complete h2{font-family:'Fraunces',serif;color:var(--teal-deep);font-size:26px;margin:8px 0}
+.interview-complete p{font-size:13.5px;color:var(--ink-soft);max-width:560px;margin:0 auto 20px}
+@media(max-width:700px){.interview-page{padding-left:20px;padding-right:20px}.interview-body{padding:34px 20px 28px}.interview-question{font-size:24px}}
+
+
+  .answer-box-wrap{margin-top:18px;border-top:1px solid var(--border);padding-top:18px}.answer-box-label{font-size:12px;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}.interview-answer{width:100%;min-height:130px;resize:vertical;border:1px solid var(--border);border-radius:12px;padding:13px 15px;font-family:Inter,sans-serif;font-size:14px;line-height:1.55;color:var(--ink);background:#fff;outline:none}.interview-answer:focus{border-color:var(--teal-mid);box-shadow:0 0 0 3px rgba(63,140,138,.08)}.answer-analysis{display:none;margin-top:14px;background:#F7FBFA;border:1px solid var(--border);border-radius:12px;padding:16px}.answer-analysis.show{display:block}.analysis-title{font-family:Fraunces,serif;font-size:18px;color:var(--teal-deep);margin-bottom:8px}.analysis-intro{font-size:13px;color:var(--ink-soft);margin-bottom:12px}.analysis-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.analysis-box{background:#fff;border:1px solid var(--border);border-radius:10px;padding:11px 12px}.analysis-box h4{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--coral-deep);margin-bottom:5px}.analysis-box p,.analysis-box li{font-size:12.5px;color:var(--ink);line-height:1.55}.analysis-box ul{padding-left:17px;margin:0}.analysis-note{font-size:11.5px;color:var(--ink-soft);margin-top:12px}.analysis-good{color:var(--good-text);font-weight:600}.analysis-missing{color:var(--coral-deep);font-weight:600}@media(max-width:700px){.analysis-grid{grid-template-columns:1fr}}
+
+.mock-timer{font-weight:800;font-size:1.05rem;padding:.55rem .8rem;border:1px solid #d8e5e3;border-radius:10px;min-width:64px;text-align:center}.mock-timer.warning{border-color:#d89b4a}.mock-timer.urgent{border-color:#c94b4b}.mock-score{margin:1rem 0;padding:1rem;background:#f4f8f7;border:1px solid #d8e5e3;border-radius:12px;text-align:left}.score-number{font-size:2rem;font-weight:800}.score-note{font-size:.88rem;color:#667;margin-top:.35rem}.score-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.8rem}.score-item{display:flex;justify-content:space-between;padding:.5rem .65rem;background:#fff;border-radius:8px}.mock-timer-label{font-size:.75rem;color:#667;margin-right:.4rem}@media(max-width:600px){.score-grid{grid-template-columns:1fr}.mock-timer{font-size:.95rem}}
+
+
+/* Communication Help */
+.comm-page{max-width:1050px;margin:0 auto;padding:40px 28px 70px}.comm-header{margin-bottom:24px}.comm-intro{max-width:720px;color:var(--ink-soft);font-size:14px;line-height:1.65}.comm-tabs{display:flex;gap:10px;margin:24px 0 18px;flex-wrap:wrap}.comm-tab{border:1px solid var(--border);background:#fff;color:var(--teal-deep);border-radius:999px;padding:10px 16px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}.comm-tab.active{background:var(--teal-deep);color:#fff;border-color:var(--teal-deep)}.comm-panel{display:none}.comm-panel.active{display:block}.comm-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.comm-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:22px;box-shadow:0 5px 22px rgba(45,110,110,.05)}.comm-card h3{font-family:'Fraunces',serif;color:var(--teal-deep);font-size:21px;margin:0 0 8px}.comm-card .comm-purpose{font-size:12px;color:var(--ink-soft);margin-bottom:15px;line-height:1.5}.script-box{background:#F7FBFA;border:1px solid #D7ECE9;border-radius:12px;padding:15px;font-size:13px;line-height:1.65;white-space:pre-wrap;min-height:150px}.script-actions{display:flex;justify-content:flex-end;margin-top:11px}.copy-script{border:0;border-radius:10px;padding:10px 14px;background:#EEF6F5;color:var(--teal-deep);border:1px solid #D7ECE9;font:inherit;font-size:12px;font-weight:700;cursor:pointer}.copy-script:hover{background:#E2F0EE}.copy-script.copied{background:#E7F3E7;color:#47794a;border-color:#B9D6BB}.comm-note{font-size:11px;color:var(--ink-soft);margin-top:18px;line-height:1.5}.comm-label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:var(--teal-mid);margin-bottom:8px}@media(max-width:700px){.comm-page{padding:28px 18px 55px}.comm-grid{grid-template-columns:1fr}}
+
+/* Knowledge Quiz */
+.quiz-page{max-width:900px;margin:0 auto;padding:40px 28px 70px}.quiz-header{margin-bottom:24px}.quiz-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:32px;box-shadow:0 5px 22px rgba(45,110,110,.05);margin:0 auto 20px}.quiz-intro-icon{width:52px;height:52px;border-radius:15px;background:#EAF2E9;display:flex;align-items:center;justify-content:center;font-size:25px;margin-bottom:15px}.quiz-card h2{color:var(--teal-deep);font-size:28px;margin:7px 0 10px}.quiz-card>p{font-size:14px;line-height:1.65;color:var(--ink-soft);max-width:680px}.quiz-rules{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}.quiz-rules div{background:#F7FBFA;border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center}.quiz-rules strong{display:block;font-size:23px;color:var(--teal-deep)}.quiz-rules span{font-size:11px;color:var(--ink-soft)}.quiz-primary-btn,.quiz-secondary-btn{border:0;border-radius:11px;padding:12px 17px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:.15s ease}.quiz-primary-btn{background:var(--teal-deep);color:#fff}.quiz-primary-btn:hover{transform:translateY(-1px);background:#245d5d}.quiz-primary-btn:disabled{opacity:.45;cursor:not-allowed;transform:none}.quiz-secondary-btn{background:#EEF6F5;color:var(--teal-deep);border:1px solid #D7ECE9}.quiz-secondary-btn:hover{background:#E2F0EE}.quiz-topline{display:flex;justify-content:space-between;align-items:center;gap:14px}.quiz-topic-badge{font-size:11px;font-weight:700;color:var(--teal-deep);background:#EEF6F5;border:1px solid #D7ECE9;border-radius:999px;padding:7px 10px}.quiz-progress-bar{height:6px;background:#edf3f1;border-radius:999px;overflow:hidden;margin:17px 0 25px}.quiz-progress-bar span{display:block;height:100%;width:10%;background:var(--teal-mid);transition:width .2s ease}.quiz-question{font-family:'Fraunces',serif;color:var(--teal-deep);font-size:25px;line-height:1.3;margin-bottom:20px}.quiz-options{display:grid;gap:10px}.quiz-option{width:100%;text-align:left;background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 15px;font:inherit;font-size:13.5px;color:var(--ink);cursor:pointer;transition:.15s ease}.quiz-option:hover{border-color:var(--teal-mid);background:#F7FBFA}.quiz-option.selected{border-color:var(--teal-mid);background:#EEF6F5;box-shadow:0 0 0 2px rgba(63,140,138,.08)}.quiz-option.correct{border-color:#75A978;background:#F1F8F1}.quiz-option.incorrect{border-color:#D99A8E;background:#FFF4F1}.quiz-option:disabled{cursor:default}.quiz-feedback{min-height:22px;margin-top:13px;font-size:12.5px;line-height:1.5;color:var(--ink-soft)}.quiz-feedback.good{color:#47794a}.quiz-feedback.try{color:#a34d3f}.quiz-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:20px;flex-wrap:wrap}.quiz-note{font-size:11px;color:var(--ink-soft);margin-top:12px}.quiz-transition-card,.quiz-score-card{text-align:center}.quiz-transition-card p,.quiz-score-card p{margin-left:auto;margin-right:auto}.quiz-end-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px}.quiz-score-number{font-size:58px;line-height:1;font-weight:800;color:var(--teal-deep);margin:15px 0 8px}.quiz-score-title{margin-bottom:9px!important}.quiz-score-tip{font-size:14px!important}.quiz-score-breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px auto;max-width:700px}.quiz-score-breakdown div{background:#F7FBFA;border:1px solid var(--border);border-radius:11px;padding:12px}.quiz-score-breakdown strong{display:block;color:var(--teal-deep);font-size:17px}.quiz-score-breakdown span{font-size:10.5px;color:var(--ink-soft)}.quiz-review-list{display:grid;gap:10px;margin-top:20px}.quiz-review-item{border:1px solid var(--border);border-radius:12px;padding:14px;background:#FAFCFB}.quiz-review-item h4{font-size:13px;color:var(--teal-deep);margin-bottom:7px}.quiz-review-item p{font-size:12px;margin:0 0 10px;color:var(--ink-soft)}.quiz-review-item button{font-size:11.5px}.quiz-review-actions{display:flex;justify-content:flex-end;margin-top:20px}.quiz-edit-box{margin-top:10px;padding-top:10px;border-top:1px solid var(--border);display:grid;gap:7px}.quiz-edit-option{border:1px solid var(--border);background:#fff;border-radius:9px;padding:9px;text-align:left;font:inherit;font-size:12px;cursor:pointer}.quiz-edit-option.selected{background:#EEF6F5;border-color:var(--teal-mid)}
+@media(max-width:650px){.quiz-page{padding:28px 18px 55px}.quiz-card{padding:23px 18px}.quiz-rules{grid-template-columns:1fr}.quiz-score-breakdown{grid-template-columns:1fr}.quiz-question{font-size:22px}.quiz-topline{align-items:flex-start;flex-direction:column}.quiz-actions{justify-content:stretch}.quiz-actions button{flex:1}}
+
+/* Interview Etiquette */
+.etiquette-page{max-width:1050px;margin:0 auto;padding:40px 28px 70px}.etiquette-header{margin-bottom:28px}.etiquette-question{display:inline-block;margin:8px 0 22px;padding:10px 16px;border-radius:12px;background:#FFF1E5;color:#B85E2D;font-weight:800;font-size:15px}.etiquette-choice{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:24px}.etiquette-choice button{background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px;text-align:left;font:inherit;cursor:pointer;color:var(--teal-deep);box-shadow:0 5px 18px rgba(45,110,110,.04);transition:.15s}.etiquette-choice button:hover,.etiquette-choice button.active{border-color:var(--teal-mid);background:#F7FBFA;transform:translateY(-1px)}.etiquette-choice strong{display:block;font-family:'Fraunces',serif;font-size:20px;margin-bottom:5px}.etiquette-choice span{font-size:12px;color:var(--ink-soft)}.etiquette-panel{display:none}.etiquette-panel.active{display:block}.etiquette-guide{background:#fff;border:1px solid var(--border);border-radius:20px;padding:25px;box-shadow:0 5px 22px rgba(45,110,110,.05)}.etiquette-guide h2{font-family:'Fraunces',serif;color:var(--teal-deep);font-size:27px;margin:0 0 10px}.etiquette-guide>p{color:var(--ink-soft);font-size:14px;line-height:1.65;margin-bottom:18px}.etiquette-points{display:grid;gap:9px;margin:0 0 18px;padding-left:20px}.etiquette-points li{font-size:13px;line-height:1.55;color:var(--ink)}.etiquette-encourage{margin:18px 0 24px;padding:13px 15px;background:#FFF7EF;border-left:4px solid #D98A4A;border-radius:10px;color:#7A4A28;font-size:13px;line-height:1.55}.checklist-title{font-size:13px;font-weight:800;color:var(--teal-deep);margin-bottom:10px}.etiquette-checklist{display:grid;gap:9px}.etiquette-check{display:flex;gap:10px;align-items:flex-start;padding:11px 12px;background:#F7FBFA;border:1px solid var(--border);border-radius:10px;font-size:13px;line-height:1.45;cursor:pointer}.etiquette-check input{margin-top:3px;accent-color:#3F8C8A}.etiquette-check input:checked + span{text-decoration:line-through;color:var(--ink-soft)}@media(max-width:750px){.etiquette-page{padding:28px 18px 55px}.etiquette-choice{grid-template-columns:1fr}.etiquette-guide{padding:20px}}
+
+.answer-mode-choice{margin:18px 0;padding:18px;border:1px solid #d9e6e4;border-radius:14px;background:#f7fbfa}.answer-mode-title{font-weight:700;color:#244e4e;margin-bottom:10px}.answer-mode-buttons{display:flex;gap:10px;flex-wrap:wrap}.answer-mode-btn{border:1px solid #b9d1cf;background:#fff;border-radius:10px;padding:11px 15px;cursor:pointer;font:inherit;color:#244e4e}.answer-mode-btn.selected{background:#e4f2f0;border-color:#2d6e6e;box-shadow:0 0 0 2px rgba(45,110,110,.08)}.voice-note{font-size:.82rem;color:#6c7d7c;margin-top:10px}.voice-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:10px 0}.voice-status{font-size:.85rem;color:#6c7d7c}.mock-feedback{margin:16px 0;padding:18px;border-left:4px solid #d59a4c;border-radius:10px;background:#fff8ee}.mock-feedback h4{margin:0 0 8px;color:#80551f}.mock-feedback ul{margin:8px 0 0 18px}.clarification-label{font-size:.86rem;font-weight:700;color:#2d6e6e;margin-top:12px}.recording{background:#fff0f0!important;border-color:#b84a4a!important}.interview-btn:disabled{opacity:.5;cursor:not-allowed}@media(max-width:650px){.answer-mode-buttons,.voice-controls{flex-direction:column;align-items:stretch}.answer-mode-btn,.voice-controls .interview-btn{width:100%}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="#home" aria-label="NLDC Trainee Dental Nurses Hub home">
+    <div class="logo-mark" aria-label="NLDC tooth logo">
+  <svg viewBox="0 0 64 64" role="img" aria-hidden="true">
+    <path d="M18 9C11 11 8 18 10 26c1 5 4 8 5 12 2 7 1 15 6 17 5 2 7-7 9-14 1-4 2-7 3-7s2 3 3 7c2 7 4 16 9 14 5-2 4-10 6-17 1-4 4-7 5-12 2-8-1-15-8-17-6-2-10 1-15 1S24 7 18 9z"/>
+  </svg>
+</div>
+    <span>NLDC Trainee Dental Nurses Hub</span>
+  </a>
+  <div class="nav-links" aria-label="Main navigation">
+    <a href="#home" data-nav="home">Home</a>
+    <a href="#jobs" data-nav="jobs">Job Search</a>
+    <a href="#toolkit" data-nav="toolkit">Dental Practice Knowledge</a>
+    <a href="#quizzes" data-nav="quizzes">Knowledge Quizzes</a>
+    <a href="#interview" data-nav="interview">Mock Interview</a>
+    <a href="#communication" data-nav="communication">Communication Help</a>
+    <a href="#etiquette" data-nav="etiquette">Interview Etiquette</a>
+  </div>
+</nav>
+<main id="home-page" class="page-view">
+<section class="hero">
+
+  <h1 class="hero-title display">Your one place to prepare for a <em>dental nursing placement.</em></h1>
+  <p class="hero-sub">Search for vacancies, prepare what to say, test your knowledge, and practise for interviews — all in one place.</p>
+
+  <div class="encourage-strip">
+    <div class="encourage-icon">🌱</div>
+    <div>
+      <div class="encourage-text"><strong>You don't need to feel ready to start.</strong> You just need to start.</div>
+      <div class="encourage-sub">A new bit of encouragement, every time you visit.</div>
+    </div>
+  </div>
+</section>
+
+<section class="pathways-section">
+  <div class="section-label">What are you working on today?</div>
+  <div class="pathways-grid">
+
+    <div class="pathway-card" data-route="jobs" role="link" tabindex="0">
+      <div class="pathway-icon icon-jobs">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 21C12 21 19 14.5 19 9.5C19 5.36 15.64 2 11.5 2C7.36 2 4 5.36 4 9.5C4 14.5 12 21 12 21Z" stroke="#2D6E6E" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M11.5 6.2C10.4 6.2 9.7 6.9 9 6.9C8.3 6.9 7.6 6.3 7.6 8C7.6 9 7.9 9.4 8.1 10.4C8.3 11.4 8.4 13.2 9.1 13.2C9.8 13.2 9.7 11.4 10.1 10.7C10.3 10.3 10.6 10.1 11.5 10.1C12.4 10.1 12.7 10.3 12.9 10.7C13.3 11.4 13.2 13.2 13.9 13.2C14.6 13.2 14.7 11.4 14.9 10.4C15.1 9.4 15.4 9 15.4 8C15.4 6.3 14.7 6.9 14 6.9C13.3 6.9 12.6 6.2 11.5 6.2Z" fill="#2D6E6E"/>
+        </svg>
+      </div>
+      <div class="pathway-title display">Job Search</div>
+      <div class="pathway-desc">Find Trainee Dental Nurse vacancies near you.</div>
+      <div class="pathway-cta">Find vacancies <span>→</span></div>
+    </div>
+
+    <div class="pathway-card" data-route="toolkit" role="link" tabindex="0">
+      <div class="pathway-icon icon-toolkit">✉️</div>
+      <div class="pathway-title display">Dental Practice Knowledge</div>
+      <div class="pathway-desc">Phone scripts and email templates for reaching out to practices.</div>
+      <div class="pathway-cta">Open toolkit <span>→</span></div>
+    </div>
+
+    <div class="pathway-card" data-route="quizzes" role="link" tabindex="0">
+      <div class="pathway-icon icon-quiz">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11.5 3C9.4 3 8.1 4.2 6.9 4.2C5.5 4.2 4 5.4 4 7.7C4 9.7 4.6 10.5 4.9 12.5C5.2 14.5 5.5 18.5 6.9 18.5C8.2 18.5 8 14.7 8.7 13.2C9.1 12.4 9.7 12 11.5 12C11.7 12 11.9 12 12.1 12" stroke="#3F8C8A" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M15 15L17 17L21 12" stroke="#3F8C8A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="pathway-title display">Knowledge Quizzes</div>
+      <div class="pathway-desc">Test yourself on infection control, consent, and more.</div>
+      <div class="pathway-cta">Take a quiz <span>→</span></div>
+    </div>
+
+    <div class="pathway-card" data-route="interview" role="link" tabindex="0">
+      <div class="pathway-icon icon-interview">🎙️</div>
+      <div class="pathway-title display">Mock Interview</div>
+      <div class="pathway-desc">Practice real interview questions and get instant feedback.</div>
+      <div class="pathway-cta">Start practicing <span>→</span></div>
+    </div>
+
+    <div class="pathway-card communication-card" data-route="communication" role="link" tabindex="0">
+      <div class="pathway-icon icon-communication">💬</div>
+      <div class="pathway-copy">
+        <div class="pathway-title display">Communication Help</div>
+        <div class="pathway-desc">Practical phone and email scripts to help you contact dental practices confidently and professionally.</div>
+      </div>
+      <div class="pathway-cta">Open communication help <span>→</span></div>
+    </div>
+
+    <div class="pathway-card etiquette-card" data-route="etiquette" role="link" tabindex="0">
+      <div class="pathway-icon icon-etiquette">✓</div>
+      <div class="pathway-copy">
+        <div class="pathway-title display">Interview Etiquette</div>
+        <div class="pathway-desc">Know how to prepare and behave confidently in video, phone and face-to-face interviews.</div>
+      </div>
+      <div class="pathway-cta">Prepare for your interview <span>→</span></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="progress-strip">
+  <div class="progress-card">
+    <div class="progress-text">
+      <h3 class="display">Haven't looked for a placement yet?</h3>
+      <p>Most students find their first call to a practice is the hardest part. We'll walk you through exactly what to say.</p>
+    </div>
+    <button class="progress-btn" data-route="jobs">Start with the phone script</button>
+  </div>
+</section>
+</main>
+<main id="job-page" class="page-view" hidden>
+<div class="page-header">
+  <button class="back-button" type="button" data-back><span class="back-arrow">←</span> Back</button>
+  <h1 class="page-title display">Find a placement near you</h1>
+  <p class="page-sub">Search registered dental practices in your area. Each result comes with a phone script and email template, ready to use.</p>
+</div>
+
+<div class="search-section">
+  <div class="search-bar">
+    <input type="text" placeholder="Enter a town or postcode, e.g. Enfield or N9 0AB" value="Enfield">
+    <button class="search-btn">Search</button>
+  </div>
+  <div class="search-hint">Practice information is retrieved from the official Care Quality Commission (CQC) register. Search by town or postcode to find registered dental services in England. CQC data is updated regularly, and results may not represent current trainee vacancies.</div>
+</div>
+
+<div class="results-section">
+  <div class="results-label" id="job-results-label"><strong>Search for dental practices</strong></div>
+  <div id="job-results" aria-live="polite"></div>
+</div>
+
+<div class="attribution">
+  Practice information is sourced from the <a href="https://www.cqc.org.uk/care-services" target="_blank" rel="noopener">Care Quality Commission (CQC)</a> register and reused under the Open Government Licence. CQC ratings and registration information are regulatory data, not job-vacancy data.
+</div>
+</main>
+
+<main id="toolkit-page" class="page-view" hidden>
+  <div class="toolkit-page">
+    <section class="toolkit-intro">
+      <button class="back-button" type="button" data-back><span class="back-arrow">←</span> Back</button>
+      <h1 class="display">Dental Practice Knowledge</h1>
+      <p>Build the knowledge you need before approaching a dental practice. Choose a topic, read each short sequence, and answer the knowledge check to unlock the next one.</p>
+    </section>
+
+    <div class="toolkit-note">Each topic is completed in sequence. You can move forward only after selecting the correct answer.</div>
+
+    <section class="toolkit-topics" aria-label="Dental Practice Knowledge topics">
+      <button class="toolkit-topic" data-topic="infection">
+        <div class="toolkit-topic-icon">🧼</div><div><h2>Infection Control</h2><p>Understand the basic practices that keep patients and the dental team safe.</p><span class="topic-meta">4 learning steps · Knowledge check</span></div>
+      </button>
+      <button class="toolkit-topic" data-topic="safeguarding">
+        <div class="toolkit-topic-icon">🛡️</div><div><h2>Safeguarding</h2><p>Recognise concerns and understand your responsibility when something does not seem right.</p><span class="topic-meta">4 learning steps · Knowledge check</span></div>
+      </button>
+      <button class="toolkit-topic" data-topic="consent">
+        <div class="toolkit-topic-icon">🤝</div><div><h2>Informed Consent</h2><p>Learn what consent means and how a trainee dental nurse supports it.</p><span class="topic-meta">4 learning steps · Knowledge check</span></div>
+      </button>
+      <button class="toolkit-topic" data-topic="confidentiality">
+        <div class="toolkit-topic-icon">🔒</div><div><h2>Patient Confidentiality</h2><p>Practise protecting patient information in the surgery, reception and online.</p><span class="topic-meta">4 learning steps · Knowledge check</span></div>
+      </button>
+      <button class="toolkit-topic" data-topic="emergencies">
+        <div class="toolkit-topic-icon">🚨</div><div><h2>Medical Emergencies</h2><p>Learn how to recognise an emergency, stay calm and work as part of the team.</p><span class="topic-meta">4 learning steps · Knowledge check</span></div>
+      </button>
+    </section>
+
+    <section id="toolkit-learning" class="toolkit-learning">
+      <div class="learning-head"><div><h2 id="learning-title" class="display"></h2><p>Complete each knowledge check correctly to unlock the next step.</p></div><div id="progress-count" class="progress-count"></div></div>
+      <div class="learning-body">
+        <div id="sequences"></div>
+        <div id="topic-complete" class="topic-complete"><div class="complete-icon">✓</div><h3>Topic complete</h3><p>You've completed this knowledge practice. You can return to the toolkit and choose another topic whenever you're ready.</p><button class="back-topics">Choose another topic</button></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+
+
+
+<main id="etiquette-page" class="page-view" hidden>
+  <div class="etiquette-page">
+    <div class="page-header etiquette-header">
+      <button class="back-button" type="button" data-back><span class="back-arrow">←</span> Back</button>
+      <h1 class="page-title display">Interview Etiquette</h1>
+      <p class="comm-intro">Small details can make a big difference. Choose the type of interview you have and use the guide and checklist to prepare.</p>
+    </div>
+
+    <div class="etiquette-question">What type of interview do you have?</div>
+    <div class="etiquette-choice" role="tablist" aria-label="Interview type">
+      <button class="active" data-etiquette-tab="video" type="button"><strong>🎥 Video interview</strong><span>Prepare your space, technology and appearance.</span></button>
+      <button data-etiquette-tab="phone" type="button"><strong>📞 Phone interview</strong><span>Prepare your voice, surroundings and notes.</span></button>
+      <button data-etiquette-tab="face" type="button"><strong>🤝 Face-to-face interview</strong><span>Prepare your journey, appearance and behaviour.</span></button>
+    </div>
+
+    <section id="etiquette-video" class="etiquette-panel active" role="tabpanel">
+      <div class="etiquette-guide"><h2>Video interview</h2><p>Make it easy for the interviewer to focus on you. Test your technology early and create a quiet, tidy and professional setting.</p>
+        <ul class="etiquette-points"><li>Join a few minutes early so you are not rushing when the interview starts.</li><li>Check your camera, microphone, internet connection and the interview link beforehand.</li><li>Choose a quiet, well-lit space with a simple, tidy background.</li><li>Position the camera at a comfortable eye level and look towards it when speaking.</li><li>Dress as you would for a professional interview and keep your phone on silent.</li><li>Have your CV and a few useful notes nearby, but avoid reading answers word-for-word.</li></ul>
+        <div class="etiquette-encourage">You do not need perfect technology or perfect confidence — being prepared and calm is what matters.</div>
+        <div class="checklist-title">Before you join, check:</div><div class="etiquette-checklist">
+          <label class="etiquette-check"><input type="checkbox"><span>I checked my camera.</span></label><label class="etiquette-check"><input type="checkbox"><span>I checked my microphone and sound.</span></label><label class="etiquette-check"><input type="checkbox"><span>I charged my laptop or connected it to power.</span></label><label class="etiquette-check"><input type="checkbox"><span>I tested the interview link.</span></label><label class="etiquette-check"><input type="checkbox"><span>I chose a quiet and tidy space.</span></label><label class="etiquette-check"><input type="checkbox"><span>I checked the lighting and camera position.</span></label><label class="etiquette-check"><input type="checkbox"><span>I put my phone on silent.</span></label><label class="etiquette-check"><input type="checkbox"><span>I have my CV and useful notes ready.</span></label><label class="etiquette-check"><input type="checkbox"><span>I cleaned and checked my nails.</span></label><label class="etiquette-check"><input type="checkbox"><span>I joined a few minutes early.</span></label>
+        </div></div>
+    </section>
+
+    <section id="etiquette-phone" class="etiquette-panel" role="tabpanel">
+      <div class="etiquette-guide"><h2>Phone interview</h2><p>Without facial expressions and body language, your voice does more of the work. Aim to sound clear, interested and calm.</p>
+        <ul class="etiquette-points"><li>Find a quiet place where you will not be interrupted.</li><li>Keep your phone charged and check that you have a reliable signal.</li><li>Have your CV, the job details and a few short notes in front of you.</li><li>Speak clearly and avoid rushing. A short pause before answering is completely fine.</li><li>Smile while you speak — it can help your voice sound warmer and more engaged.</li><li>Do not multitask, eat or let background noise distract you during the call.</li></ul>
+        <div class="etiquette-encourage">You cannot be seen, so focus on letting your voice show your enthusiasm, professionalism and willingness to learn.</div>
+        <div class="checklist-title">Before the call, check:</div><div class="etiquette-checklist">
+          <label class="etiquette-check"><input type="checkbox"><span>I charged my phone.</span></label><label class="etiquette-check"><input type="checkbox"><span>I checked that I have a good signal.</span></label><label class="etiquette-check"><input type="checkbox"><span>I found a quiet place for the call.</span></label><label class="etiquette-check"><input type="checkbox"><span>I have my CV nearby.</span></label><label class="etiquette-check"><input type="checkbox"><span>I have the vacancy or practice details nearby.</span></label><label class="etiquette-check"><input type="checkbox"><span>I have a few short notes ready.</span></label><label class="etiquette-check"><input type="checkbox"><span>I put other notifications on silent.</span></label><label class="etiquette-check"><input type="checkbox"><span>I am ready to introduce myself clearly.</span></label><label class="etiquette-check"><input type="checkbox"><span>I cleaned and checked my nails.</span></label><label class="etiquette-check"><input type="checkbox"><span>I am ready a few minutes before the call.</span></label>
+        </div></div>
+    </section>
+
+    <section id="etiquette-face" class="etiquette-panel" role="tabpanel">
+      <div class="etiquette-guide"><h2>Face-to-face interview</h2><p>First impressions start before the interview begins. Plan your journey, arrive prepared and treat everyone you meet professionally.</p>
+        <ul class="etiquette-points"><li>Plan your route and allow extra time for delays or finding the practice.</li><li>Aim to arrive around 5–10 minutes early rather than exactly on time.</li><li>Wear clean, tidy and professional clothing suitable for a dental practice.</li><li>Greet reception staff politely and remember that your interview starts from the moment you arrive.</li><li>Make appropriate eye contact, listen carefully and avoid interrupting.</li><li>Keep your phone away during the interview and thank the interviewer before leaving.</li></ul>
+        <div class="etiquette-encourage">You do not have to look like an experienced dental nurse — show that you are prepared, respectful and ready to learn.</div>
+        <div class="checklist-title">Before you leave home, check:</div><div class="etiquette-checklist">
+          <label class="etiquette-check"><input type="checkbox"><span>I checked the route to the practice.</span></label><label class="etiquette-check"><input type="checkbox"><span>I allowed extra time for travel.</span></label><label class="etiquette-check"><input type="checkbox"><span>I prepared clean, tidy and professional clothes.</span></label><label class="etiquette-check"><input type="checkbox"><span>I cleaned and checked my nails.</span></label><label class="etiquette-check"><input type="checkbox"><span>I prepared my CV and documents.</span></label><label class="etiquette-check"><input type="checkbox"><span>I put my phone on silent.</span></label><label class="etiquette-check"><input type="checkbox"><span>I know the name of the practice and interviewer if available.</span></label><label class="etiquette-check"><input type="checkbox"><span>I prepared a few questions I could ask.</span></label><label class="etiquette-check"><input type="checkbox"><span>I know when I need to leave home.</span></label><label class="etiquette-check"><input type="checkbox"><span>I am ready to arrive 5–10 minutes early.</span></label>
+        </div></div>
+    </section>
+  </div>
+</main>
+
+<main id="communication-page" class="page-view" hidden>
+  <div class="comm-page">
+    <div class="page-header comm-header">
+      <button class="back-button" type="button" data-back><span class="back-arrow">←</span> Back</button>
+      <h1 class="page-title display">Communication Help</h1>
+      <p class="comm-intro">Use these ready-to-adapt scripts when contacting dental practices. Keep your tone natural and professional, and personalise the details before sending or calling.</p>
+    </div>
+    <div class="comm-tabs" role="tablist" aria-label="Communication scripts">
+      <button class="comm-tab active" data-comm-tab="phone" type="button">📞 Phone scripts</button>
+      <button class="comm-tab" data-comm-tab="email" type="button">✉️ Email scripts</button>
+    </div>
+
+    <section id="comm-phone" class="comm-panel active" role="tabpanel">
+      <div class="comm-grid">
+        <article class="comm-card"><div class="comm-label">Phone</div><h3>Asking if they have a vacancy</h3><p class="comm-purpose">Use when you are contacting a practice without seeing a specific advertised vacancy.</p><div class="script-box" data-script="phone1">“Good morning. My name is [Name]. I’m currently looking for a trainee dental nurse position and I wanted to ask whether your practice has any trainee vacancies at the moment, or whether you might be taking on a trainee in the near future. I’d be very happy to send over my CV and any other information you need. May I ask who would be the best person to send it to?”</div><div class="script-actions"><button class="copy-script" data-copy="phone1">Copy script</button></div></article>
+        <article class="comm-card"><div class="comm-label">Phone</div><h3>Asking about a current vacancy</h3><p class="comm-purpose">Use when you have seen a specific vacancy and want to make a professional enquiry.</p><div class="script-box" data-script="phone2">“Good morning. My name is [Name]. I’m calling about the trainee dental nurse vacancy I saw advertised. I’m very interested in the position and wanted to ask whether the vacancy is still open. I’m currently looking to begin my dental nursing career and I’d be happy to provide my CV and any other information you require. Could you please let me know the best way to apply?”</div><div class="script-actions"><button class="copy-script" data-copy="phone2">Copy script</button></div></article>
+        <article class="comm-card"><div class="comm-label">Phone</div><h3>Checking for feedback after an interview</h3><p class="comm-purpose">Use a few days after an interview when you have not yet heard back.</p><div class="script-box" data-script="phone3">“Good morning. My name is [Name]. I interviewed for the trainee dental nurse position on [date], and I’m calling to politely ask whether there has been any update regarding the outcome. I’m still very interested in the position and I would also be grateful for any feedback you’re able to provide. I completely understand if a decision has not yet been made.”</div><div class="script-actions"><button class="copy-script" data-copy="phone3">Copy script</button></div></article>
+        <article class="comm-card"><div class="comm-label">Phone</div><h3>Following up after sending an application</h3><p class="comm-purpose">Useful when you have sent your CV or application and want to check it reached the right person.</p><div class="script-box" data-script="phone4">“Good morning. My name is [Name]. I recently sent my CV regarding trainee dental nurse opportunities and I’m just calling to check that it reached the appropriate person. I’m very interested in the opportunity to train with your practice. If you need any further information from me, I’d be happy to provide it.”</div><div class="script-actions"><button class="copy-script" data-copy="phone4">Copy script</button></div></article>
+      </div>
+    </section>
+
+    <section id="comm-email" class="comm-panel" role="tabpanel">
+      <div class="comm-grid">
+        <article class="comm-card"><div class="comm-label">Email</div><h3>Asking if they have a vacancy</h3><p class="comm-purpose">A short speculative enquiry when there is no advertised vacancy.</p><div class="script-box" data-script="email1">Subject: Trainee Dental Nurse Enquiry – [Your Name]\n\nDear [Practice Manager / Name],\n\nI am writing to ask whether your practice currently has, or may have in the near future, an opportunity for a trainee dental nurse. I am very interested in starting my dental nursing career and would be keen to learn and develop within a dental practice.\n\nI would be happy to send my CV and any further information you may require. Please find my contact details below.\n\nKind regards,\n[Full Name]\n[Phone number]\n[Email address]</div><div class="script-actions"><button class="copy-script" data-copy="email1">Copy script</button></div></article>
+        <article class="comm-card"><div class="comm-label">Email</div><h3>Presenting yourself and leaving contact details</h3><p class="comm-purpose">Use when you want to introduce yourself professionally and make it easy for a practice to contact you.</p><div class="script-box" data-script="email2">Subject: Trainee Dental Nurse – [Your Name]\n\nDear [Practice Manager / Name],\n\nMy name is [Full Name], and I am currently looking for an opportunity to begin my training as a dental nurse. I am particularly interested in gaining practical experience in a professional dental environment and developing the skills needed for the role.\n\nI would be very grateful if you could keep my details in mind should a suitable trainee opportunity become available.\n\nYou can contact me on:\nPhone: [Phone number]\nEmail: [Email address]\n\nThank you for your time and consideration.\n\nKind regards,\n[Full Name]</div><div class="script-actions"><button class="copy-script" data-copy="email2">Copy script</button></div></article>
+        <article class="comm-card"><div class="comm-label">Email</div><h3>Sending your CV</h3><p class="comm-purpose">Use when a practice has asked for your CV or when you are making a professional application.</p><div class="script-box" data-script="email3">Subject: CV – Trainee Dental Nurse – [Your Name]\n\nDear [Practice Manager / Name],\n\nThank you for your time. As discussed, please find attached my CV for your consideration for a trainee dental nurse opportunity.\n\nI am very interested in the opportunity to train within your practice and would be happy to provide any additional information or attend an interview if required.\n\nThank you for considering my application.\n\nKind regards,\n[Full Name]\n[Phone number]\n[Email address]</div><div class="script-actions"><button class="copy-script" data-copy="email3">Copy script</button></div></article>
+        <article class="comm-card"><div class="comm-label">Email</div><h3>Sending your letter of enrolment</h3><p class="comm-purpose">Use when a practice needs confirmation of your dental nursing course or enrolment.</p><div class="script-box" data-script="email4">Subject: Letter of Enrolment – [Your Name]\n\nDear [Practice Manager / Name],\n\nAs requested, please find attached my letter of enrolment confirming my place on the [course name] dental nursing programme.\n\nPlease let me know if you require any further information or documentation from me.\n\nThank you for your time.\n\nKind regards,\n[Full Name]\n[Phone number]\n[Email address]</div><div class="script-actions"><button class="copy-script" data-copy="email4">Copy script</button></div></article>
+      </div>
+      <p class="comm-note">Tip: Replace the bracketed details before sending. Keep the message personalised, concise and professional, and check that your CV or requested document is actually attached before you send the email.</p>
+    </section>
+  </div>
+</main>
+
+<main id="quiz-page" class="page-view" hidden>
+  <div class="quiz-page">
+    <div class="page-header quiz-header">
+      <button class="back-button" type="button" data-back><span class="back-arrow">←</span> Back</button>
+      <h1 class="page-title display">Knowledge Quizzes</h1>
+      <p class="page-sub">Test your awareness of the key topics covered in the Dental Practice Knowledge. Each session contains 10 questions, with no repeated question among the questions you answer.</p>
+    </div>
+
+    <section class="quiz-card" id="quiz-start-card">
+      <div class="quiz-intro-icon">🧠</div>
+      <div class="interview-label">Knowledge practice</div>
+      <h2 class="display">Ready to test yourself?</h2>
+      <p>Questions are based on the five Dental Practice Knowledge topics: infection control, safeguarding, informed consent, patient confidentiality and medical emergencies.</p>
+      <div class="quiz-rules">
+        <div><strong>10</strong><span>questions per session</span></div>
+        <div><strong>4</strong><span>answer options</span></div>
+        <div><strong>∞</strong><span>extra questions available</span></div>
+      </div>
+      <button id="start-quiz" class="quiz-primary-btn" type="button">Start quiz →</button>
+    </section>
+
+    <section class="quiz-card quiz-active-card" id="quiz-active-card" hidden aria-live="polite">
+      <div class="quiz-topline">
+        <div><div class="interview-label">Knowledge quiz</div><div id="quiz-progress" class="interview-count">Question 1 of 10</div></div>
+        <div id="quiz-topic-badge" class="quiz-topic-badge">Infection Control</div>
+      </div>
+      <div class="quiz-progress-bar"><span id="quiz-progress-fill"></span></div>
+      <div id="quiz-question" class="quiz-question">Question</div>
+      <div id="quiz-options" class="quiz-options"></div>
+      <div id="quiz-feedback" class="quiz-feedback" aria-live="polite"></div>
+      <div class="quiz-actions">
+        <button id="quiz-next" class="quiz-primary-btn" type="button" disabled>Next question →</button>
+        <button id="quiz-another" class="quiz-secondary-btn" type="button">Another question ↻</button>
+      </div>
+      <div class="quiz-note">“Another question” replaces this question without counting it. You can use it as many times as you like.</div>
+    </section>
+
+    <section class="quiz-card quiz-transition-card" id="quiz-transition-card" hidden>
+      <div class="quiz-intro-icon">✓</div>
+      <div class="interview-label">10 questions answered</div>
+      <h2 class="display">You've reached the end of this quiz session.</h2>
+      <p>Before you see your score, you can either review and modify your answers or go straight to your result.</p>
+      <div class="quiz-end-actions">
+        <button id="quiz-modify" class="quiz-secondary-btn" type="button">← Modify my answers</button>
+        <button id="quiz-see-score" class="quiz-primary-btn" type="button">See my score →</button>
+      </div>
+    </section>
+
+    <section class="quiz-card quiz-review-card" id="quiz-review-card" hidden>
+      <div class="interview-label">Review your answers</div>
+      <h2 class="display">Modify my answers</h2>
+      <p>Choose a question to change your answer. Your score will update automatically.</p>
+      <div id="quiz-review-list" class="quiz-review-list"></div>
+      <div class="quiz-review-actions"><button id="quiz-review-score" class="quiz-primary-btn" type="button">See my score →</button></div>
+    </section>
+
+    <section class="quiz-card quiz-score-card" id="quiz-score-card" hidden>
+      <div class="quiz-intro-icon">🌱</div>
+      <div class="interview-label">Your quiz result</div>
+      <div id="quiz-score-number" class="quiz-score-number">0%</div>
+      <h2 id="quiz-score-title" class="display">Keep building your foundation</h2>
+      <p id="quiz-score-tip" class="quiz-score-tip"></p>
+      <div id="quiz-score-breakdown" class="quiz-score-breakdown"></div>
+      <div class="quiz-score-actions"><button id="quiz-new-session" class="quiz-primary-btn" type="button">Start another quiz →</button></div>
+    </section>
+  </div>
+</main>
+
+<main id="interview-page" class="page-view" hidden>
+  <div class="interview-page">
+    <div class="interview-header">
+      <button class="back-button" type="button" data-back><span class="back-arrow">←</span> Back</button>
+      <h1 class="page-title display">Mock Interview</h1>
+      <p>Choose how you want to practise. Use the question randomiser for focused practice, or try a more natural interview simulation.</p>
+    </div>
+
+    <div class="interview-modes">
+      <button class="interview-mode-card selected" data-interview-mode="random" type="button">
+        <div class="interview-mode-icon">🎲</div><h2>Question Randomiser</h2>
+        <p>Get one interview question at a time from the full question bank. Use the answer guide to help you think about what to include without giving you a model answer.</p>
+        <span class="mode-link">Practise questions →</span>
+      </button>
+      <button class="interview-mode-card" data-interview-mode="mock" type="button">
+        <div class="interview-mode-icon">🎤</div><h2>Mock Interview</h2>
+        <p>Have a more natural simulated interview. Type what you would actually say, then continue as the interviewer moves through different areas of a real interview.</p>
+        <span class="mode-link">Start mock interview →</span>
+      </button>
+    </div>
+
+    <section id="random-panel" class="interview-mode-panel active" aria-live="polite">
+      <section class="interview-card">
+        <div class="interview-card-head"><div><div class="interview-label">Random interview practice</div><div id="interview-count" class="interview-count">Question 1 of 50</div></div><button id="restart-interview" class="interview-btn secondary" type="button">Reshuffle questions</button></div>
+        <div id="interview-practice" class="interview-body">
+          <div class="interview-prompt">Imagine the interviewer has just asked:</div>
+          <div id="interview-question" class="interview-question">Tell me about yourself.</div>
+          <button id="answer-guide-btn" class="answer-guide-btn" type="button">Answer guide</button>
+          <div id="answer-guide" class="answer-guide" hidden></div>
+          <div class="answer-box-wrap">
+            <div class="answer-box-label">Practise your answer</div>
+            <textarea id="random-answer" class="interview-answer" placeholder="Type what you would say in the interview..."></textarea>
+            <div class="interview-actions"><button id="analyse-random-answer" class="interview-btn">Analyse my answer →</button></div>
+            <div id="random-analysis" class="answer-analysis" aria-live="polite"></div>
+          </div>
+          <div class="interview-actions"><button id="next-interview-question" class="interview-btn">Next Question →</button></div>
+          <div id="interview-status" class="interview-status">50 questions available. Questions will not repeat until the full set has been used.</div>
+        </div>
+        <div id="interview-complete" class="interview-complete"><div class="complete-icon">✓</div><h2>You've completed the question set.</h2><p>You've practised all 50 interview questions. Restart to reshuffle the full set and begin another practice round.</p><button id="restart-interview-complete" class="interview-btn">Restart &amp; Reshuffle</button></div>
+      </section>
+    </section>
+
+    <section id="mock-panel" class="interview-mode-panel" aria-live="polite">
+      <section class="interview-card">
+        <div class="interview-card-head"><div><div class="interview-label">Simulated interview</div><div id="mock-progress" class="interview-count">Interview practice</div></div><div id="mock-timer" class="mock-timer" aria-live="polite">10:00</div></div>
+        <div class="interview-body">
+          <div class="mock-note">Choose how you would like to answer. You can type your answer or speak it aloud. After each answer, you will receive guidance and the interviewer may ask a short clarification question before moving on.</div>
+          <div id="mock-answer-mode" class="answer-mode-choice">
+            <div class="answer-mode-title">How would you like to answer?</div>
+            <div class="answer-mode-buttons">
+              <button type="button" class="answer-mode-btn selected" data-answer-mode="type">⌨️ Type my answer</button>
+              <button type="button" class="answer-mode-btn" data-answer-mode="voice">🎙️ Speak my answer</button>
+            </div>
+            <div class="voice-note">You can change this choice before each interview. Voice input uses your browser's speech recognition when available.</div>
+          </div>
+          <div id="mock-conversation" class="conversation"></div>
+          <div id="mock-feedback" class="mock-feedback" hidden aria-live="polite"></div>
+          <div id="mock-end" class="mock-end"><div class="complete-icon">✓</div><h3>Interview complete</h3><p id="mock-end-reason">Take a moment to think about how you answered. You can restart and have another version of the conversation.</p><div id="mock-score" class="mock-score" hidden></div><button id="restart-mock" class="interview-btn">Start another interview</button></div>
+          <div id="mock-input-area">
+            <label for="mock-answer" class="interview-prompt" style="display:block;text-align:left">Your answer</label>
+            <textarea id="mock-answer" class="interview-answer" placeholder="Type what you would say in the interview..."></textarea>
+            <div class="voice-controls" id="voice-controls" hidden><button type="button" id="start-voice" class="interview-btn">🎙️ Start speaking</button><button type="button" id="stop-voice" class="interview-btn secondary" disabled>Stop speaking</button><span id="voice-status" class="voice-status">Ready when you are.</span></div>
+            <div class="interview-actions"><button id="submit-mock-answer" class="interview-btn">Submit answer →</button><button id="restart-mock-top" class="interview-btn secondary">Restart interview</button></div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </div>
+</main>
+
+<footer>
+  NLDC Trainee Dental Nurses Hub · made for Level 3 Diploma in Dental Nursing students
+</footer>
+
+<script>
+(function () {
+  const routes = {
+    home: document.getElementById('home-page'),
+    jobs: document.getElementById('job-page'),
+    toolkit: document.getElementById('toolkit-page'),
+    interview: document.getElementById('interview-page'),
+    quizzes: document.getElementById('quiz-page'),
+    communication: document.getElementById('communication-page'),
+    etiquette: document.getElementById('etiquette-page')
+  };
+  let routeHistory = [];
+  let currentRoute = null;
+  let isGoingBack = false;
+
+  function setRoute(route, options = {}) {
+    const target = routes[route] ? route : 'home';
+    const { push = false, fromPopState = false } = options;
+
+    if (currentRoute && currentRoute !== target && !isGoingBack && !fromPopState) {
+      routeHistory.push(currentRoute);
+    }
+
+    currentRoute = target;
+
+    Object.entries(routes).forEach(([name, el]) => {
+      el.hidden = name !== target;
+    });
+
+    document.querySelectorAll('[data-nav]').forEach(link => {
+      link.classList.toggle('active', link.dataset.nav === target);
+    });
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    if (push && window.location.hash !== '#' + target) {
+      history.pushState({ route: target }, '', '#' + target);
+    } else if (!push && !fromPopState && window.location.hash !== '#' + target) {
+      history.replaceState({ route: target }, '', '#' + target);
+    }
+  }
+
+  function navigate(route) {
+    setRoute(route, { push: true });
+  }
+
+  function goBack() {
+    if (routeHistory.length) {
+      const previous = routeHistory.pop();
+      isGoingBack = true;
+      setRoute(previous, { fromPopState: true });
+      isGoingBack = false;
+      return;
+    }
+    navigate('home');
+  }
+
+  document.querySelectorAll('[data-back]').forEach(button => {
+    button.addEventListener('click', goBack);
+  });
+
+  window.addEventListener('popstate', () => {
+    const hash = window.location.hash.replace('#', '');
+    setRoute(routes[hash] ? hash : 'home', { fromPopState: true });
+  });
+
+  document.addEventListener('click', function (event) {
+    const routeTrigger = event.target.closest('[data-route]');
+    if (routeTrigger) {
+      event.preventDefault();
+      navigate(routeTrigger.dataset.route);
+    }
+
+    const hashLink = event.target.closest('a[href^="#"]');
+    if (hashLink && hashLink.getAttribute('href') !== '#') {
+      const route = hashLink.getAttribute('href').slice(1);
+      if (routes[route]) {
+        event.preventDefault();
+        navigate(route);
+      }
+    }
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if ((event.key === 'Enter' || event.key === ' ') && event.target.matches('[data-route][role="link"]')) {
+      event.preventDefault();
+      navigate(event.target.dataset.route);
+    }
+  });
+
+
+  // Interview etiquette tabs
+  document.querySelectorAll('[data-etiquette-tab]').forEach(button => {
+    button.addEventListener('click', () => {
+      const target = button.dataset.etiquetteTab;
+      document.querySelectorAll('[data-etiquette-tab]').forEach(b => b.classList.toggle('active', b === button));
+      document.querySelectorAll('.etiquette-panel').forEach(panel => panel.classList.toggle('active', panel.id === 'etiquette-' + target));
+    });
+  });
+
+  // Practice cards: expand/collapse and switch between phone/email scripts.
+  function initPracticeCards() {
+    document.querySelectorAll('#job-page .practice-card').forEach(card => {
+      const toggle = card.querySelector('.toggle-btn');
+      if (toggle && !toggle.dataset.bound) {
+        toggle.dataset.bound = 'true';
+        toggle.addEventListener('click', () => card.classList.toggle('open'));
+      }
+
+      card.querySelectorAll('.script-tab').forEach(tab => {
+        if (tab.dataset.bound) return;
+        tab.dataset.bound = 'true';
+        tab.addEventListener('click', () => {
+          card.querySelectorAll('.script-tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          const targetId = tab.getAttribute('data-target');
+          card.querySelectorAll('.script-box').forEach(box => {
+            box.style.display = box.id === targetId ? 'block' : 'none';
+          });
+        });
+      });
+    });
+  }
+
+  // Copy buttons work for both phone scripts and email templates.
+  document.addEventListener('click', async function (event) {
+    const button = event.target.closest('.copy-btn');
+    if (!button) return;
+
+    const box = button.closest('.script-box');
+    if (!box) return;
+
+    const clone = box.cloneNode(true);
+    clone.querySelectorAll('.copy-btn').forEach(b => b.remove());
+    const text = clone.innerText.trim();
+
+    try {
+      await navigator.clipboard.writeText(text);
+      const original = button.innerHTML;
+      button.innerHTML = '✓ Copied';
+      button.classList.add('copied');
+      setTimeout(() => {
+        button.innerHTML = original;
+        button.classList.remove('copied');
+      }, 1600);
+    } catch (err) {
+      // Fallback for browsers that block navigator.clipboard on local files.
+      const area = document.createElement('textarea');
+      area.value = text;
+      area.style.position = 'fixed';
+      area.style.opacity = '0';
+      document.body.appendChild(area);
+      area.select();
+      try { document.execCommand('copy'); } catch (_) {}
+      area.remove();
+
+      const original = button.innerHTML;
+      button.innerHTML = '✓ Copied';
+      setTimeout(() => { button.innerHTML = original; }, 1600);
+    }
+  });
+
+  // Live CQC dental-practice search. The browser calls /api/cqc, which is a
+  // Cloudflare Pages Function that keeps the CQC subscription key server-side.
+  const input = document.querySelector('#job-page .search-bar input');
+  const searchButton = document.querySelector('#job-page .search-btn');
+  const resultsLabel = document.querySelector('#job-page #job-results-label');
+  const resultsContainer = document.querySelector('#job-page #job-results');
+
+  function escapeHtml(value) {
+    return String(value ?? '').replace(/[&<>"']/g, char => ({
+      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
+    }[char]));
+  }
+
+  function ratingClass(rating) {
+    if (rating === 'Outstanding') return 'rating-outstanding';
+    if (rating === 'Good') return 'rating-good';
+    return '';
+  }
+
+  function normaliseLocation(item) {
+    return {
+      id: item.locationId || item.id || '',
+      name: item.name || item.locationName || 'Dental practice',
+      address: [item.postalAddressLine1, item.postalAddressLine2, item.postalAddressTownCity, item.postalCode]
+        .filter(Boolean).join(', '),
+      town: item.postalAddressTownCity || '',
+      postcode: item.postalCode || '',
+      rating: item.currentRatings?.overall?.rating || item.rating || 'No published rating',
+      phone: item.mainPhoneNumber || '',
+      website: item.website || '',
+      cqcUrl: item.locationId ? `https://www.cqc.org.uk/location/${encodeURIComponent(item.locationId)}` : 'https://www.cqc.org.uk/care-services'
+    };
+  }
+
+  function practiceCard(location, index) {
+    const safeName = escapeHtml(location.name);
+    const safeAddress = escapeHtml(location.address || location.postcode || 'Address not available');
+    const safeRating = escapeHtml(location.rating);
+    const rating = location.rating && location.rating !== 'No published rating'
+      ? `<span class="rating-badge ${ratingClass(location.rating)}">CQC: ${safeRating}</span>`
+      : '<span class="distance-tag">CQC rating not published</span>';
+    const phoneLine = location.phone ? `<br><br>Practice telephone: ${escapeHtml(location.phone)}` : '';
+    const websiteLine = location.website ? `<br>Website: ${escapeHtml(location.website)}` : '';
+    const phoneScript = `Hello, my name is [your name] and I am currently enrolled in the Level 3 Diploma in Dental Nursing at NLDC. I am calling to ask whether ${location.name} might have any trainee placement opportunities at the moment, or whether I could send over my CV in case something comes up. Is there a good time to call back, or someone I should ask for?`;
+    const emailScript = `Dear ${location.name} team,\n\nMy name is [your name], and I am currently enrolled in the Level 3 Diploma in Dental Nursing at NLDC. I am reaching out to ask whether you have any trainee placement opportunities available at the moment, or whether you would be willing to keep my CV on file for the future.\n\nI have attached my CV for your reference. I would be very grateful for the chance to gain hands-on experience with your team, and I am happy to answer any questions or come in for a chat at a convenient time.\n\nThank you very much for considering my enquiry.\n\nKind regards,\n[Your name]\n[Your phone number]`;
+    const encodedPhone = escapeHtml(phoneScript);
+    const encodedEmail = escapeHtml(emailScript).replace(/\n/g, '<br>');
+
+    return `<div class="practice-card ${index === 0 ? 'open' : ''}" data-cqc-id="${escapeHtml(location.id)}">
+      <div class="practice-main">
+        <div class="practice-info">
+          <div class="practice-name">${safeName}</div>
+          <div class="practice-address">${safeAddress}</div>
+          <div class="practice-meta">${rating}${location.cqcUrl ? `<a class="distance-tag" href="${location.cqcUrl}" target="_blank" rel="noopener">View CQC record ↗</a>` : ''}</div>
+        </div>
+        <button class="toggle-btn" type="button">Phone &amp; email script <span class="chev">▾</span></button>
+      </div>
+      <div class="practice-scripts">
+        <div class="script-tabs">
+          <button class="script-tab active" type="button" data-target="phone-live-${index}">Phone script</button>
+          <button class="script-tab" type="button" data-target="email-live-${index}">Email template</button>
+        </div>
+        <div class="script-box" id="phone-live-${index}" data-type="phone">
+          <span class="script-label">What to say when you call</span>
+          ${encodedPhone}${phoneLine ? `<span>${phoneLine}</span>` : ''}${websiteLine ? `<span>${websiteLine}</span>` : ''}
+          <button class="copy-btn" type="button">📋 Copy script</button>
+        </div>
+        <div class="script-box" id="email-live-${index}" data-type="email" style="display:none;">
+          <span class="script-label">Subject: Trainee Dental Nurse — placement enquiry</span>
+          ${encodedEmail}
+          <button class="copy-btn" type="button">📋 Copy template</button>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function showJobState(html) {
+    resultsContainer.innerHTML = html;
+  }
+
+  async function runSearch() {
+    const query = input.value.trim();
+    if (!query) {
+      showJobState('<div class="empty-state"><strong>Enter a town or postcode to search.</strong><br>For example: Enfield or EN2 6AT.</div>');
+      resultsLabel.innerHTML = '<strong>Search for dental practices</strong>';
+      return;
+    }
+
+    resultsLabel.innerHTML = '<strong>Searching the CQC register…</strong>';
+    showJobState('<div class="empty-state">Loading registered dental practices…</div>');
+
+    try {
+      const response = await fetch(`/api/cqc?q=${encodeURIComponent(query)}`);
+      const payload = await response.json();
+      if (!response.ok) throw new Error(payload.error || 'CQC search failed');
+
+      const locations = (payload.locations || []).map(normaliseLocation);
+      if (!locations.length) {
+        resultsLabel.innerHTML = '<strong>0 practices</strong> found';
+        showJobState('<div class="empty-state"><strong>No registered dental practices found.</strong><br>Try a nearby town or a full postcode.</div>');
+        return;
+      }
+
+      resultsLabel.innerHTML = `<strong>${locations.length} practice${locations.length === 1 ? '' : 's'}</strong> found for “${escapeHtml(query)}”`;
+      showJobState(locations.map(practiceCard).join(''));
+      initPracticeCards();
+    } catch (error) {
+      console.error(error);
+      resultsLabel.innerHTML = '<strong>Search unavailable</strong>';
+      showJobState('<div class="empty-state"><strong>The live CQC search is not connected yet.</strong><br>This version expects the Cloudflare Pages Function and CQC API key included with the project. The key must stay on the server and should never be placed in this HTML file.</div>');
+    }
+  }
+
+  searchButton?.addEventListener('click', runSearch);
+  input?.addEventListener('keydown', event => {
+    if (event.key === 'Enter') runSearch();
+  });
+
+  // Dental Practice Knowledge: sequenced learning with locked progression.
+  // Mock Interview randomiser: uses the complete question bank supplied by the user.
+  const interviewQuestions = ["Tell me about yourself.", "Why do you want to become a dental nurse?", "Why have you chosen dental nursing as a career?", "What do you know about the role of a dental nurse?", "What do you think a typical day for a dental nurse involves?", "Why do you want to work at this dental practice?", "What do you know about our practice?", "Why should we choose you for this trainee position?", "What are your strengths?", "What is one area you would like to improve?", "Where do you see yourself in five years?", "What do you hope to learn during your dental nurse training?", "What do you think will be the most challenging part of becoming a dental nurse?", "What do you think makes a good dental nurse?", "What do you think the difference is between a dental nurse and a dental receptionist?", "What are the main responsibilities of a dental nurse?", "Why is it important for a dental nurse to prepare the surgery before a patient arrives?", "What would you do to prepare the surgery for a dental procedure?", "How would you make sure you are organised before a busy day at the practice?", "What does four-handed dentistry mean?", "Why is good communication important between the dentist and dental nurse?", "How would you respond if you were given an instruction you did not understand?", "What would you do if you made a mistake during a procedure?", "Why is accurate record-keeping important in dentistry?", "What would you do if you were unsure about an instruction from the dentist?", "Why is infection control important in a dental practice?", "What is cross-infection?", "What is the difference between cleaning, disinfection and sterilisation?", "Why do dental nurses wear personal protective equipment (PPE)?", "What PPE might you use during dental treatment?", "What should you do after accidentally getting a sharps injury?", "How should used dental instruments be handled?", "Why is hand hygiene important even when gloves are worn?", "When should a dental nurse wash or sanitise their hands?", "What would you do if you noticed that an area of the surgery had not been properly cleaned?", "Tell me about a time when you had to follow a procedure carefully.", "What would you do if you had several tasks to complete at the same time?", "Tell me about a time you worked successfully as part of a team.", "What would you do if you disagreed with a colleague about how something should be done?", "What would you do if a colleague gave you constructive feedback?", "Tell me about a time when you had to deal with a difficult situation.", "How would you make a nervous patient feel more comfortable?", "How would you communicate with a patient who was very anxious about dental treatment?", "What would you do if a patient became upset during treatment?", "How would you deal with a patient who was angry or rude?", "What would you do if a patient asked you a question that you did not know the answer to?", "Why is patient confidentiality important?", "What would you do if a patient told you something concerning about their home life or safety?", "What would you do if you saw a colleague behaving in a way that could put a patient at risk?", "What is your availability, and are you able to work the hours required for the role?"];
+  const interviewGuides = {"Tell me about yourself.": "Use this as a short professional introduction. Think about your current situation, relevant experience or qualities, why dental nursing interests you, and what you are looking for next. Keep it focused on the role rather than your whole life story.", "Why do you want to become a dental nurse?": "Think specifically about what attracts you to dental nursing: patient care, practical work, teamwork, communication, learning and the clinical environment. Choose genuine reasons and briefly explain them.", "Why have you chosen dental nursing as a career?": "Separate 'I need a job' from 'this is a career I want to develop'. Think about the responsibilities and skills that appeal to you and what makes dental nursing a good fit for you.", "What do you know about the role of a dental nurse?": "Put yourself in the shoes of someone starting the role. Think about assisting the dentist, patient support, surgery preparation, infection control, records, teamwork and following procedures. Be honest about being a trainee who is still learning.", "What do you think a typical day for a dental nurse involves?": "Picture a normal practice day from arrival to leaving. Think about preparing the surgery, supporting treatment, communicating with patients, cleaning/decontamination, records and teamwork. Stay at trainee level rather than describing procedures you have not learned.", "Why do you want to work at this dental practice?": "Research this specific practice beforehand. Think about its location, services, team, values or anything distinctive you noticed. Mention one or two genuine observations and link them to why you would like to work there.", "What do you know about our practice?": "Think of basic facts you can find before the interview: practice type, services, team, location or values. Mention only information you have actually checked and avoid reciting the website.", "Why should we choose you for this trainee position?": "Think about what you can offer as a trainee: reliability, willingness to learn, communication, organisation, teamwork and professionalism. Use evidence from your experience where possible and do not claim skills you have not developed yet.", "What are your strengths?": "Choose two or three strengths relevant to practice life. For each, say what the strength looks like in your behaviour and give a brief example if you can.", "What is one area you would like to improve?": "Choose a real development area that is manageable. Explain what you are doing to improve it. Show self-awareness and willingness to learn rather than giving a 'perfect' fake weakness.", "Where do you see yourself in five years?": "Think realistically: first becoming competent and confident as a trainee, then developing further. Show ambition, but make your immediate priority learning the role and building a strong foundation.", "What do you hope to learn during your dental nurse training?": "Think about what you genuinely want to learn: practice routines, patient communication, infection control, assisting, procedures, teamwork and professional standards. Show that you expect to learn through training, supervision and feedback.", "What do you think will be the most challenging part of becoming a dental nurse?": "Pick a realistic trainee challenge such as building confidence, managing a busy routine or remembering new procedures. Explain how preparation, practice, questions and feedback would help you handle it.", "What do you think makes a good dental nurse?": "Think about qualities rather than advanced dental knowledge: reliability, patient-centred communication, organisation, attention to detail, teamwork, calmness, professionalism and willingness to learn. Choose the ones you genuinely value.", "What do you think the difference is between a dental nurse and a dental receptionist?": "Think about the different purposes of the roles. Consider the dental nurse's clinical-team support role and the receptionist's administrative/front-of-house role. Avoid making either role sound unimportant.", "What are the main responsibilities of a dental nurse?": "Use broad responsibilities you have learned about: patient support, surgery preparation, assisting, infection prevention, records, teamwork and following practice procedures. Keep the answer appropriate for someone training.", "Why is it important for a dental nurse to prepare the surgery before a patient arrives?": "Imagine the patient is arriving in five minutes. Think about preparing the environment, checking that what is needed is ready, following practice procedures and making sure the area is safe and organised.", "What would you do to prepare the surgery for a dental procedure?": "Think in stages: check what treatment is planned, prepare the surgery and required items according to your training and practice protocol, check the environment and ask if anything is unclear. Do not invent technical steps.", "How would you make sure you are organised before a busy day at the practice?": "Imagine a busy morning with competing demands. Think about prioritising safety and time-sensitive tasks, staying organised, communicating with colleagues and asking for help when priorities are unclear.", "What does four-handed dentistry mean?": "Explain the idea simply. Think about the dentist and nurse working together efficiently, anticipating what is needed and communicating throughout treatment. You do not need a highly technical explanation.", "Why is good communication important between the dentist and dental nurse?": "Focus on safe teamwork. Think about listening carefully, confirming what is required and asking for clarification rather than guessing. Show that asking is a responsible trainee behaviour.", "How would you respond if you were given an instruction you did not understand?": "Think about what you would do if an instruction was unclear: listen, clarify, repeat it back if useful, and ask an appropriate colleague rather than guessing. Show that you value patient safety and accurate communication.", "What would you do if you made a mistake during a procedure?": "Show accountability. Think about recognising the mistake, taking the appropriate immediate action, telling the right person, following procedure and learning from it. Never build the answer around hiding the mistake.", "Why is accurate record-keeping important in dentistry?": "Think about why accurate records support safe care, communication, continuity and professional accountability. Mention accuracy, confidentiality and following the practice's system.", "What would you do if you were unsure about an instruction from the dentist?": "Show that you would not guess. Think about clarifying the instruction, checking the appropriate procedure or asking a qualified colleague while staying within your competence.", "Why is infection control important in a dental practice?": "Use the core idea of preventing harmful microorganisms spreading between patients, staff, equipment and the environment. Connect it to the dental setting and consistent precautions.", "What is cross-infection?": "Explain cross-infection as microorganisms being transferred from one person, surface or item to another. Think about how dental procedures create contamination risks and how precautions reduce them.", "What is the difference between cleaning, disinfection and sterilisation?": "Keep the three terms distinct and simple. Think about the purpose of removing contamination, reducing microorganisms on suitable surfaces, and processing reusable instruments for safe reuse. Use the terminology taught in your course.", "Why do dental nurses wear personal protective equipment (PPE)?": "Think of PPE as a protective barrier selected for the task and risk. Mention protection from exposure to blood, saliva, respiratory secretions or contamination, and remember that PPE does not replace hand hygiene.", "What PPE might you use during dental treatment?": "Recall the PPE covered in your training, such as gloves, masks and eye protection. Explain what exposure each helps reduce and avoid suggesting every item is required for every procedure.", "What should you do after accidentally getting a sharps injury?": "Treat this as a safety incident, not something to hide. Think about immediate first-aid/incident actions, informing the appropriate person, following the practice sharps-injury procedure and obtaining required assessment. Do not improvise.", "How should used dental instruments be handled?": "Focus on safe handling rather than naming instruments. Think about used instruments as contaminated, avoiding unnecessary handling, separating clean and contaminated areas and following the practice's decontamination process.", "Why is hand hygiene important even when gloves are worn?": "Remember: gloves are an additional barrier, not a replacement for hand hygiene. Think about contamination during patient care and during glove removal and why hands still need cleaning.", "When should a dental nurse wash or sanitise their hands?": "Think about the relevant moments before and after patient contact, after glove removal and after contamination risk, using the exact timings taught by your course and practice rather than inventing a list.", "What would you do if you noticed that an area of the surgery had not been properly cleaned?": "Treat this as a patient-safety and professionalism issue. Think about preventing contamination, informing the appropriate person, following the cleaning procedure and not simply assuming somebody else will deal with it.", "Tell me about a time when you had to follow a procedure carefully.": "Use a real example if possible. Structure it as situation, what the procedure required, what you did, and the result or lesson. Highlight reliability and attention to detail.", "What would you do if you had several tasks to complete at the same time?": "Show prioritisation rather than panic. Think about which task affects patient safety or immediate treatment first, what can wait, how you would communicate with the team and when you would ask for help.", "Tell me about a time you worked successfully as part of a team.": "Choose a real example from work, education, volunteering or another setting. Explain the shared goal, your contribution, how you communicated and what made the teamwork successful.", "What would you do if you disagreed with a colleague about how something should be done?": "Show calm conflict resolution. Think about listening, checking the relevant procedure, discussing the issue respectfully and involving a senior person if needed. Keep the focus on solving the problem, not blaming someone.", "What would you do if a colleague gave you constructive feedback?": "Show that you can receive feedback without becoming defensive. Think about listening, asking for clarification, applying the feedback and reflecting on whether your performance improves.", "Tell me about a time when you had to deal with a difficult situation.": "Choose a situation that was difficult, unexpected or uncomfortable. Explain how you stayed calm, what you did, when you sought help and what you learned. It does not need to be a dental example.", "How would you make a nervous patient feel more comfortable?": "Put yourself in the patient's position. Think about tone, listening, empathy, simple explanations within your role, giving the patient time and involving the dentist/team when appropriate.", "How would you communicate with a patient who was very anxious about dental treatment?": "Focus on calm, respectful communication. Think about acknowledging anxiety, listening to concerns, using simple language, allowing a pause when appropriate and referring treatment questions to the dentist.", "What would you do if a patient became upset during treatment?": "Think first about the patient's immediate emotional and physical safety. Stay calm, listen, avoid dismissing the concern and alert the dentist/team when appropriate. Explain your communication approach rather than trying to solve everything alone.", "How would you deal with a patient who was angry or rude?": "Show professionalism under pressure. Think about staying calm, not responding defensively, listening to the concern, maintaining respectful boundaries and involving a senior colleague if the situation cannot be resolved safely.", "What would you do if a patient asked you a question that you did not know the answer to?": "Know your limits. Think about admitting you do not know, avoiding guesses and finding the appropriate qualified person or reliable practice source. Show that accuracy and patient safety matter more than sounding knowledgeable.", "Why is patient confidentiality important?": "Focus on privacy and trust. Think about records, conversations, reception areas, computer screens and social media. Explain how you would protect information and check with an appropriate person if you were unsure whether it could be shared.", "What would you do if a patient told you something concerning about their home life or safety?": "Treat a safeguarding concern seriously without investigating it yourself. Think about listening calmly, avoiding leading questions, not promising secrecy, recording relevant facts and following the practice safeguarding procedure.", "What would you do if you saw a colleague behaving in a way that could put a patient at risk?": "Focus on patient safety and professional responsibility. Think about recognising the risk, not ignoring it, raising the concern through the appropriate practice procedure and seeking guidance rather than confronting the colleague yourself.", "What is your availability, and are you able to work the hours required for the role?": "Answer honestly and practically. Think about the hours you can genuinely commit to, existing commitments, flexibility and how you would communicate availability. Do not promise availability you cannot maintain."};
+  const interviewQuestionEl = document.getElementById('interview-question');
+  const interviewCountEl = document.getElementById('interview-count');
+  const interviewStatusEl = document.getElementById('interview-status');
+  const interviewPracticeEl = document.getElementById('interview-practice');
+  const interviewCompleteEl = document.getElementById('interview-complete');
+  const nextInterviewBtn = document.getElementById('next-interview-question');
+  const answerGuideBtn = document.getElementById('answer-guide-btn');
+  const answerGuideEl = document.getElementById('answer-guide');
+  const restartInterviewBtn = document.getElementById('restart-interview');
+  const restartInterviewCompleteBtn = document.getElementById('restart-interview-complete');
+  let interviewRemaining = [];
+  let interviewShown = 0;
+
+  function shuffleQuestions() {
+    interviewRemaining = [...interviewQuestions];
+    for (let i = interviewRemaining.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [interviewRemaining[i], interviewRemaining[j]] = [interviewRemaining[j], interviewRemaining[i]];
+    }
+    interviewShown = 0;
+  }
+  function showNextInterviewQuestion() {
+    if (!interviewRemaining.length) { interviewPracticeEl.style.display='none'; interviewCompleteEl.classList.add('show'); return; }
+    const question=interviewRemaining.pop(); interviewShown++;
+    interviewQuestionEl.textContent=question;
+    answerGuideEl.textContent=interviewGuides[question] || 'Think about what the interviewer is assessing, choose relevant knowledge or an example, and explain it clearly from the perspective of a trainee.';
+    answerGuideEl.hidden=true; answerGuideBtn.textContent='Answer guide';
+    randomAnswer.value=''; randomAnalysis.classList.remove('show'); randomAnalysis.innerHTML='';
+    interviewCountEl.textContent=`Question ${interviewShown} of ${interviewQuestions.length}`;
+    interviewStatusEl.textContent=interviewRemaining.length ? `${interviewRemaining.length} questions remaining in this round.` : 'This is the final question in this round.';
+  }
+  const randomAnswer=document.getElementById('random-answer');
+  const analyseRandomAnswer=document.getElementById('analyse-random-answer');
+  const randomAnalysis=document.getElementById('random-analysis');
+
+  const answerSignals={
+    motivation:['dental nursing','dental nurse','patient','healthcare','helping','career','learn','interest','team'],
+    strengths:['reliable','organised','organised','calm','communication','team','patient','attention','responsible','adaptable','punctual','hard-working','willing to learn'],
+    improvement:['improve','develop','learning','feedback','practice','working on','training','confidence'],
+    experience:['worked','work','experience','volunteer','placement','school','college','university','previous','example','when i'],
+    teamwork:['team','colleague','communicat','listen','support','feedback','together','co-operat','cooperat'],
+    safety:['patient safety','safe','procedure','policy','protocol','infection','confidential','safeguard','report','supervisor','dentist','ask','clarif'],
+    patient:['patient','listen','calm','reassure','respect','understand','concern','anxious','nervous','communication'],
+    professionalism:['professional','reliable','responsib','confidential','punctual','respect','learn','feedback','procedure','policy'],
+    scenario:['first','then','after','would','because','if','appropriate','tell','report','ask','follow'],
+    practice:['practice','dentist','dental nurse','surgery','patient','infection control','PPE','records','decontamination','team']
+  };
+  function getAnswerFocus(question){
+    const q=question.toLowerCase();
+    if(/strength|area.*improve|five years|hope to learn|why do you want|why have you chosen|why should we/.test(q)) return ['motivation','strengths','professionalism'];
+    if(/tell me about yourself|previous|experience|time when|worked successfully|difficult situation/.test(q)) return ['experience','strengths','professionalism'];
+    if(/team|colleague|disagree|feedback|communication/.test(q)) return ['teamwork','professionalism','scenario'];
+    if(/patient|nervous|anxious|angry|upset/.test(q)) return ['patient','communication','professionalism'];
+    if(/infection|confidential|safeguard|risk|mistake|instruction|procedure|record/.test(q)) return ['safety','practice','professionalism'];
+    if(/prepare|organised|busy|availability|hours/.test(q)) return ['practice','professionalism','scenario'];
+    return ['practice','professionalism','scenario'];
+  }
+  function analyseAnswer(){
+    const answer=randomAnswer.value.trim();
+    const question=interviewQuestionEl.textContent.trim();
+    if(!answer){ randomAnswer.focus(); return; }
+    const lower=answer.toLowerCase();
+    const words=answer.split(/\s+/).filter(Boolean);
+    const focus=getAnswerFocus(question);
+    const hits={};
+    focus.forEach(cat=>{hits[cat]=answerSignals[cat].filter(term=>lower.includes(term.toLowerCase())).length;});
+    const strengths=[]; const suggestions=[];
+    if(words.length<20) suggestions.push('Your answer is quite short. Add a little more explanation so the interviewer can understand your reasoning.');
+    else if(words.length>=45) strengths.push('You gave enough detail to develop your answer rather than giving only a one-line response.');
+    if(/for example|for instance|when i|in my previous|i once|i have/.test(lower)) strengths.push('You included personal experience or an example, which can make an interview answer more convincing.');
+    else if(/tell me about|time when|experience|example/.test(question.toLowerCase())) suggestions.push('This question invites an example. Think of one specific situation from work, education, volunteering or everyday life and explain what you did.');
+    if(/i think|i would|i have|i am|i can|i learned|i learn|my/.test(lower)) strengths.push('You used personal language, which helps the answer sound like your own rather than a memorised script.');
+    if(hits[focus[0]]>0) strengths.push(`You touched on ideas relevant to ${focus[0]}. Keep those points, but explain how they relate to the role.`);
+    else suggestions.push(`Bring the answer closer to the question by thinking specifically about ${focus[0]} and what that would look like for a trainee dental nurse.`);
+    if((focus.includes('safety')||focus.includes('professionalism')) && !/ask|clarif|supervisor|dentist|procedure|policy|protocol|report|follow/.test(lower)) suggestions.push('Because this is a practice-based question, consider mentioning when you would follow the practice procedure, ask an appropriate colleague, or seek clarification rather than guessing.');
+    if(focus.includes('patient') && !/patient|listen|calm|respect|communicat|reassur/.test(lower)) suggestions.push('Keep the patient at the centre of the answer. Consider how you would communicate, listen and respond respectfully.');
+    if(focus.includes('teamwork') && !/team|colleague|communicat|listen|support/.test(lower)) suggestions.push('Show how you work with other people. Mention communication, listening, cooperation or responding constructively to feedback where relevant.');
+    if(!strengths.length) strengths.push('You have made a start. Use the points below to make the answer more specific and interview-ready.');
+    if(!suggestions.length) suggestions.push('Your answer covers several useful areas. Before moving on, check that every point directly answers the question and sounds natural in your own words.');
+    const structure=/first|then|finally|because|so that|as a result/.test(lower) ? 'Your answer has some clear reasoning or sequence.' : 'Try giving your answer a simple flow: make your main point, explain it, then give an example or practical detail where appropriate.';
+    randomAnalysis.innerHTML=`<div class="analysis-title">Your answer guide</div><div class="analysis-intro">This is a built-in practice check, not a pass/fail score. It looks at the content and structure of what you wrote and gives you areas to strengthen.</div><div class="analysis-grid"><div class="analysis-box"><h4>What you did well</h4><ul>${strengths.map(x=>`<li class="analysis-good">${x}</li>`).join('')}</ul></div><div class="analysis-box"><h4>What to consider</h4><ul>${suggestions.map(x=>`<li class="analysis-missing">${x}</li>`).join('')}</ul></div><div class="analysis-box"><h4>Structure</h4><p>${structure}</p></div><div class="analysis-box"><h4>Trainee mindset</h4><p>Do not try to sound like an experienced dental nurse. Show that you are prepared, responsible, willing to learn, aware of your limits and able to ask for help when needed.</p></div></div><div class="analysis-note">Tip: use the feedback to improve your answer, then say it again in your own words. There is no single perfect answer to an interview question.</div>`;
+    randomAnalysis.classList.add('show'); randomAnalysis.scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+  analyseRandomAnswer.addEventListener('click',analyseAnswer);
+
+  function restartInterview(){ shuffleQuestions(); interviewPracticeEl.style.display='block'; interviewCompleteEl.classList.remove('show'); showNextInterviewQuestion(); }
+  answerGuideBtn.addEventListener('click',()=>{ answerGuideEl.hidden=!answerGuideEl.hidden; answerGuideBtn.textContent=answerGuideEl.hidden?'Answer guide':'Hide guide'; });
+  nextInterviewBtn.addEventListener('click',showNextInterviewQuestion); restartInterviewBtn.addEventListener('click',restartInterview); restartInterviewCompleteBtn.addEventListener('click',restartInterview); shuffleQuestions(); showNextInterviewQuestion();
+
+  // Interview mode switcher.
+  const modeCards=document.querySelectorAll('[data-interview-mode]');
+  const randomPanel=document.getElementById('random-panel');
+  const mockPanel=document.getElementById('mock-panel');
+  modeCards.forEach(card=>card.addEventListener('click',()=>{
+    const mode=card.dataset.interviewMode;
+    modeCards.forEach(c=>c.classList.toggle('selected',c===card));
+    randomPanel.classList.toggle('active',mode==='random');
+    mockPanel.classList.toggle('active',mode==='mock');
+    if(mode==='mock' && !mockStarted) startMockInterview();
+  }));
+
+  // Conversational mock interview: 10-minute session, typed or browser speech-to-text answers, structured feedback and clarification prompts.
+  const mockConversation=document.getElementById('mock-conversation');
+  const mockAnswer=document.getElementById('mock-answer');
+  const submitMock=document.getElementById('submit-mock-answer');
+  const restartMock=document.getElementById('restart-mock');
+  const restartMockTop=document.getElementById('restart-mock-top');
+  const mockInputArea=document.getElementById('mock-input-area');
+  const mockEnd=document.getElementById('mock-end');
+  const mockProgress=document.getElementById('mock-progress');
+  const mockTimer=document.getElementById('mock-timer');
+  const mockScore=document.getElementById('mock-score');
+  const mockEndReason=document.getElementById('mock-end-reason');
+  const mockFeedback=document.getElementById('mock-feedback');
+  const answerModeChoice=document.getElementById('mock-answer-mode');
+  const voiceControls=document.getElementById('voice-controls');
+  const startVoice=document.getElementById('start-voice');
+  const stopVoice=document.getElementById('stop-voice');
+  const voiceStatus=document.getElementById('voice-status');
+  let mockStarted=false, mockStep=0, mockUsed=new Set(), mockCurrentQuestion='', mockTimerId=null, mockSeconds=600, mockAnswers=[];
+  let answerMode='type', recognition=null, isListening=false, awaitingClarification=false;
+  const mockOpening=[
+    'Good morning. It’s lovely to meet you. To start, could you tell me a little about yourself?',
+    'Thanks for coming in today. What made you interested in dental nursing?',
+    'Before we talk about the role, could you tell me a little about your previous experience?'
+  ];
+  const mockPools={
+    motivation:['Why have you chosen dental nursing as a career?','Why do you want to work at this dental practice?','What do you hope to learn during your dental nurse training?','Where do you see yourself in five years?'],
+    teamwork:['Tell me about a time you worked successfully as part of a team.','Why is good communication important between the dentist and dental nurse?','What would you do if you disagreed with a colleague about how something should be done?','What would you do if a colleague gave you constructive feedback?'],
+    experience:['Tell me about a time when you had to follow a procedure carefully.','Tell me about a time when you had to deal with a difficult situation.','What are your strengths?','What is one area you would like to improve?'],
+    role:['What do you know about the role of a dental nurse?','What do you think a typical day for a dental nurse involves?','What are the main responsibilities of a dental nurse?','Why is it important for a dental nurse to prepare the surgery before a patient arrives?'],
+    patient:['How would you make a nervous patient feel more comfortable?','How would you communicate with a patient who was very anxious about dental treatment?','What would you do if a patient became upset during treatment?','How would you deal with a patient who was angry or rude?'],
+    safety:['Why is infection control important in a dental practice?','What would you do if you were unsure about an instruction from the dentist?','What would you do if you made a mistake during a procedure?','What would you do if you saw a colleague behaving in a way that could put a patient at risk?'],
+    confidentiality:['Why is patient confidentiality important?','What would you do if a patient told you something concerning about their home life or safety?','What would you do if a patient asked you a question that you did not know the answer to?'],
+    practical:['What would you do to prepare the surgery for a dental procedure?','How would you make sure you are organised before a busy day at the practice?','What would you do if you had several tasks to complete at the same time?','What is your availability, and are you able to work the hours required for the role?']
+  };
+  const mockFallback=['What do you think makes a good dental nurse?','Why should we choose you for this trainee position?','What do you think will be the most challenging part of becoming a dental nurse?','What would you do if you were given an instruction you did not understand?'];
+  function addBubble(label,text,type){const b=document.createElement('div');b.className=`chat-bubble ${type}`;b.innerHTML=`<span class="chat-label">${label}</span>${text}`;mockConversation.appendChild(b);b.scrollIntoView({behavior:'smooth',block:'nearest'});}
+  function pickPool(answer){
+    const t=answer.toLowerCase();
+    if(/team|colleague|cowork|group|feedback|disagree/.test(t)) return 'teamwork';
+    if(/job|work|worked|experience|school|volunteer|previous|role/.test(t)) return 'experience';
+    if(/nurs|dent|career|health|patient care|clinic/.test(t)) return 'motivation';
+    if(/patient|anxious|nervous|angry|communicat/.test(t)) return 'patient';
+    if(/infection|safe|mistake|procedure|safeguard|risk|confident|unsure/.test(t)) return 'safety';
+    if(/confidential|private|secret|home|safety/.test(t)) return 'confidentiality';
+    if(/organis|busy|prepare|time|availability|hours/.test(t)) return 'practical';
+    return ['role','motivation','teamwork','experience','patient','safety'][mockStep % 6];
+  }
+  function evaluateAnswer(question,answer){
+    const t=answer.toLowerCase(), words=t.split(/\s+/).filter(Boolean).length, first=question.toLowerCase();
+    let detail=words>=45?25:words>=25?20:words>=12?14:words>=6?8:3;
+    let relevance=10, professionalism=10, trainee=10, example=10;
+    const groups={safety:/safe|patient|procedure|policy|protocol|hygiene|infection|risk|ask|supervis|qualified|confidential|safeguard/,teamwork:/team|colleague|communicat|listen|feedback|support|cooperat/,trainee:/learn|training|trainee|develop|improve|feedback|guidance|supervis|ask|experience/,professional:/professional|reliable|responsib|calm|respect|organis|punctual|confident|appropriate/};
+    if(groups.safety.test(t)) relevance+=4; if(groups.teamwork.test(t)) professionalism+=4; if(groups.trainee.test(t)) trainee+=5; if(groups.professional.test(t)) professionalism+=4;
+    if(/for example|when i|i once|in my previous|at school|during work|volunteer|my experience/.test(t)) example+=8;
+    if(first.includes('why') && /because|interested|motivated|enjoy|want/.test(t)) relevance+=4;
+    if(first.includes('what do you know') && /nurse|patient|dent|practice|surgery|team/.test(t)) relevance+=4;
+    if(first.includes('what would you do') && /would|first|then|tell|ask|follow/.test(t)) relevance+=4;
+    const raw=detail+relevance+professionalism+trainee+example; const total=Math.round(raw/94*100);
+    return {total,detail,relevance,professionalism,trainee,example};
+  }
+  function buildFeedback(question,answer,score){
+    const notes=[];
+    if(score.detail<14) notes.push('Give the interviewer a little more substance. Explain your thinking rather than stopping after one short point.');
+    else notes.push('You gave enough detail to give the interviewer something to work with.');
+    if(score.relevance<14) notes.push('Bring the answer closer to the question and connect your point to the trainee dental nurse role.');
+    else notes.push('Your answer shows a clear connection to the question or the role.');
+    if(score.example<15 && /tell me about|experience|strength|improve|time when/.test(question.toLowerCase())) notes.push('Where appropriate, add a brief real example from work, study, volunteering or everyday life.');
+    if(score.trainee<13) notes.push('Remember that you are applying as a trainee: show willingness to learn, accept guidance and recognise when you should ask for help.');
+    if(score.professionalism<13) notes.push('Consider how your answer demonstrates calm, respectful, reliable and professional behaviour.');
+    return notes;
+  }
+  function clarificationFor(question,answer,score){
+    const q=question.toLowerCase(), t=answer.toLowerCase();
+    if(score.example<15 && /tell me about|experience|strength|improve|time when/.test(q)) return 'That is helpful. Could you give me a specific example that shows what you mean?';
+    if(score.trainee<13) return 'How would you apply that as a trainee, particularly when you are still learning the role?';
+    if(score.relevance<14) return 'Can you tell me how that would relate to working as a trainee dental nurse in a practice?';
+    if(/team|colleague|feedback/.test(q+' '+t)) return 'What would your colleagues have noticed about the way you handled that situation?';
+    if(/patient|anxious|angry/.test(q+' '+t)) return 'What would you do to make sure the patient still feels respected and supported?';
+    return 'Could you expand a little on that and tell me what you would do in practice?';
+  }
+  function updateTimer(){const m=Math.floor(mockSeconds/60),s=mockSeconds%60; mockTimer.textContent=`${m}:${String(s).padStart(2,'0')}`; mockTimer.classList.toggle('warning',mockSeconds<=120 && mockSeconds>30); mockTimer.classList.toggle('urgent',mockSeconds<=30);}
+  function startTimer(){clearInterval(mockTimerId); mockSeconds=600; updateTimer(); mockTimerId=setInterval(()=>{mockSeconds--; updateTimer(); if(mockSeconds<=0){clearInterval(mockTimerId); finishMock('time');}},1000);}
+  function nextMockQuestion(answer){
+    const pool=mockPools[pickPool(answer)]||[]; let candidates=pool.filter(q=>!mockUsed.has(q));
+    if(!candidates.length) candidates=Object.values(mockPools).flat().filter(q=>!mockUsed.has(q));
+    if(!candidates.length) candidates=mockFallback.filter(q=>!mockUsed.has(q));
+    if(!candidates.length){finishMock('questions');return;}
+    mockCurrentQuestion=candidates[Math.floor(Math.random()*candidates.length)]; mockUsed.add(mockCurrentQuestion); mockStep++;
+    addBubble('Interviewer',mockCurrentQuestion,'chat-interviewer'); mockProgress.textContent=`Interview practice · ${mockStep} follow-up${mockStep===1?'':'s'}`;
+  }
+  function setAnswerMode(mode){answerMode=mode; document.querySelectorAll('[data-answer-mode]').forEach(b=>b.classList.toggle('selected',b.dataset.answerMode===mode)); voiceControls.hidden=mode!=='voice'; mockAnswer.placeholder=mode==='voice'?'Your spoken answer will appear here as text...':'Type what you would say in the interview...'; if(mode==='voice' && !('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)){voiceStatus.textContent='Voice input is not supported in this browser. You can switch to typing.'; startVoice.disabled=true;} else if(mode==='voice'){startVoice.disabled=false; voiceStatus.textContent='Ready when you are.';}}
+  function initRecognition(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition; if(!SR) return null; const r=new SR(); r.continuous=true; r.interimResults=true; r.lang='en-GB'; r.onstart=()=>{isListening=true; startVoice.disabled=true; stopVoice.disabled=false; startVoice.classList.add('recording'); voiceStatus.textContent='Listening… speak naturally.';}; r.onresult=e=>{let finalText='',interim=''; for(let i=e.resultIndex;i<e.results.length;i++){const txt=e.results[i][0].transcript; if(e.results[i].isFinal) finalText+=txt+' '; else interim+=txt;} if(finalText) mockAnswer.value=(mockAnswer.value+' '+finalText).trim(); voiceStatus.textContent=interim?`Listening… ${interim}`:'Listening…';}; r.onerror=e=>{voiceStatus.textContent=e.error==='not-allowed'?'Microphone permission was not granted. You can type your answer instead.':'Voice input stopped. You can try again or type your answer.'; stopRecognition();}; r.onend=()=>{if(isListening){isListening=false; startVoice.disabled=false; stopVoice.disabled=true; startVoice.classList.remove('recording'); if(!voiceStatus.textContent.startsWith('Microphone')) voiceStatus.textContent='Recording stopped. Review your transcript before submitting.';}}; return r;}
+  function startRecognition(){if(!recognition) recognition=initRecognition(); if(!recognition){voiceStatus.textContent='Voice input is not supported in this browser. You can type your answer instead.';return;} try{recognition.start();}catch(e){}}
+  function stopRecognition(){if(recognition){try{recognition.stop();}catch(e){}} isListening=false; startVoice.disabled=false; stopVoice.disabled=true; startVoice.classList.remove('recording');}
+  function startMockInterview(){
+    stopRecognition(); mockStarted=true; mockStep=0; mockUsed=new Set(); mockConversation.innerHTML=''; mockFeedback.hidden=true; mockEnd.classList.remove('show'); mockScore.hidden=true; mockInputArea.style.display='block'; answerModeChoice.style.display='block'; mockAnswer.value=''; mockAnswers=[]; awaitingClarification=false;
+    mockCurrentQuestion=mockOpening[Math.floor(Math.random()*mockOpening.length)]; mockUsed.add(mockCurrentQuestion); addBubble('Interviewer',mockCurrentQuestion,'chat-interviewer'); mockProgress.textContent='Interview practice · opening question'; startTimer(); mockAnswer.focus(); setAnswerMode(answerMode);
+  }
+  function showFeedback(question,answer,score){
+    const notes=buildFeedback(question,answer,score); mockFeedback.innerHTML=`<h4>Feedback on your answer</h4><ul>${notes.map(n=>`<li>${n}</li>`).join('')}</ul><div class="clarification-label">The interviewer will now ask a short follow-up so you can clarify your answer.</div>`; mockFeedback.hidden=false;
+  }
+  function submitMockAnswer(){
+    const answer=mockAnswer.value.trim(); if(!answer){mockAnswer.focus();return;} stopRecognition(); addBubble('You',answer,'chat-user');
+    if(awaitingClarification){
+      mockAnswers.push(evaluateAnswer(mockCurrentQuestion,answer)); mockAnswer.value=''; awaitingClarification=false; mockFeedback.hidden=true; if(mockStep>=7){finishMock('questions');return;} nextMockQuestion(answer); mockAnswer.focus(); return;
+    }
+    const score=evaluateAnswer(mockCurrentQuestion,answer); mockAnswers.push(score); mockAnswer.value=''; showFeedback(mockCurrentQuestion,answer,score);
+    const clarification=clarificationFor(mockCurrentQuestion,answer,score); addBubble('Interviewer',clarification,'chat-interviewer'); awaitingClarification=true; mockProgress.textContent='Interview practice · clarification'; mockAnswer.focus();
+  }
+  function finishMock(reason='manual'){
+    stopRecognition(); clearInterval(mockTimerId); mockInputArea.style.display='none'; answerModeChoice.style.display='none'; mockFeedback.hidden=true; mockEnd.classList.add('show'); mockProgress.textContent='Interview complete';
+    const avg=mockAnswers.length?Math.round(mockAnswers.reduce((a,x)=>a+x.total,0)/mockAnswers.length):0; const categories=['detail','relevance','professionalism','trainee','example'];
+    const labels={detail:'Answer detail',relevance:'Role relevance',professionalism:'Professional approach',trainee:'Trainee mindset',example:'Use of examples'}; const maxes={detail:25,relevance:18,professionalism:18,trainee:15,example:18}; const avgs={}; categories.forEach(c=>avgs[c]=mockAnswers.length?Math.min(100,Math.round((mockAnswers.reduce((a,x)=>a+x[c],0)/mockAnswers.length)/maxes[c]*100)):0);
+    const level=avg>=80?'Strong practice performance':avg>=65?'Good foundation':avg>=50?'Developing — more practice recommended':'Keep practising — focus on the guidance provided';
+    mockEndReason.textContent=reason==='time'?'The 10-minute interview time has ended. Review your practice result below and try another session when you are ready.':'The interview has ended. Review your practice result below and try another session when you are ready.';
+    mockScore.innerHTML=`<div class="score-number">${avg}%</div><strong>${level}</strong><div class="score-note">Practice indicator only — this is not a prediction of whether a real practice would hire you.</div><div class="score-grid">${categories.map(c=>`<div class="score-item"><span>${labels[c]}</span><strong>${avgs[c]}%</strong></div>`).join('')}</div>`; mockScore.hidden=false;
+  }
+  document.querySelectorAll('[data-answer-mode]').forEach(b=>b.addEventListener('click',()=>setAnswerMode(b.dataset.answerMode)));
+  startVoice.addEventListener('click',startRecognition); stopVoice.addEventListener('click',stopRecognition);
+  submitMock.addEventListener('click',submitMockAnswer); mockAnswer.addEventListener('keydown',e=>{if(e.key==='Enter' && (e.ctrlKey||e.metaKey)){e.preventDefault();submitMockAnswer();}});
+  restartMock.addEventListener('click',startMockInterview); restartMockTop.addEventListener('click',startMockInterview);
+
+  const toolkitData = {
+    infection: {
+      title: 'Infection Control',
+      steps: [
+        {title:'What is infection control?', text:'Infection control refers to the procedures and precautions used in a dental practice to prevent the spread of harmful microorganisms, such as bacteria and viruses, between patients, dental staff, equipment and the wider environment. Dental procedures can involve contact with saliva, blood, respiratory secretions and contaminated instruments, so maintaining a clean and safe environment is an essential part of dental nursing.', q:'Which statement best describes infection control?', a:['It is mainly the dentist’s responsibility.','It is a set of precautions used to prevent microorganisms spreading between people, equipment and the environment.','It only means sterilising instruments.','It is only necessary when a patient appears unwell.'], correct:1, why:'Correct. The information describes infection control as a broad set of procedures and precautions designed to prevent the spread of microorganisms. It is not limited to sterilisation and is not only the dentist’s responsibility.'},
+        {title:'Why is it important?', text:'Good infection control protects patients, dentists, dental nurses and other practice staff from avoidable infections. A dental practice treats many different patients throughout the day, so microorganisms could potentially be transferred from one person or surface to another if precautions are not taken. Good infection control also helps prevent cross-contamination and ensures instruments and equipment are safe to use.', q:'Why does infection control matter particularly in a dental practice?', a:['Because every dental practice treats only one patient per day.','Because it prevents all illnesses from occurring.','Because microorganisms can potentially transfer between patients, staff, surfaces and equipment.','Because it removes the need for PPE.'], correct:2, why:'Correct. Dental practices see many patients and involve contact with saliva, blood, respiratory secretions and instruments, so preventing transfer and cross-contamination is important.'},
+        {title:'How can a trainee contribute?', text:'A trainee dental nurse can contribute by learning and consistently following the practice’s infection-control policies and procedures. This includes correct hand hygiene, appropriate PPE, clean and organised clinical areas, and safe handling of contaminated instruments. Gloves do not replace hand hygiene, and PPE must be changed appropriately between patients or procedures. If unsure about decontamination or sterilisation, a trainee should ask a qualified member of staff and follow the established protocol rather than improvise.', q:'A trainee is unsure how a particular instrument should be processed. What is the best approach?', a:['Guess and use the method they remember from somewhere else.','Skip the process and leave the instrument for later.','Ask a qualified member of staff and follow the practice’s established protocol.','Ask the patient what they think should be done.'], correct:2, why:'Correct. The source specifically says trainees should never improvise when unsure about decontamination or sterilisation. They should ask a qualified member of staff and follow the practice protocol.'},
+        {title:'Examples in practice', text:'Examples include hand hygiene at appropriate times, fresh gloves before treating a patient, appropriate masks and eye protection, disinfecting clinical surfaces between patients, safely transporting used instruments to the decontamination area, correctly processing reusable instruments, disposing of needles and other sharps immediately into an appropriate sharps container, and keeping clean and contaminated items separate.', q:'Which action is an example of good infection control?', a:['Leaving a used needle on the treatment tray until the end of the day.','Keeping clean and contaminated items together to save space.','Disposing of a used sharp immediately into an appropriate sharps container.','Wearing the same gloves from one patient to the next.'], correct:2, why:'Correct. Sharps should be disposed of immediately into an appropriate sharps container. The other options describe unsafe practices.'}
+      ]
+    },
+    safeguarding: {
+      title:'Safeguarding', steps:[
+        {title:'What is safeguarding?', text:'Safeguarding means protecting children, young people and adults who may be at risk of abuse, neglect, exploitation or harm. Dental professionals may see patients regularly and notice changes in behaviour, appearance or wellbeing. Safeguarding is everyone’s responsibility. A trainee is not expected to investigate suspected abuse or decide whether abuse has definitely occurred; their role is to recognise possible warning signs, take concerns seriously and report them through the appropriate procedure.', q:'What is a trainee dental nurse expected to do when they notice a possible safeguarding concern?', a:['Investigate the patient’s home situation themselves.','Decide whether abuse has definitely occurred.','Recognise the concern, take it seriously and report it through the appropriate procedure.','Confront the person they suspect.'], correct:2, why:'Correct. A trainee is not expected to investigate or prove abuse. The important responsibility is recognising possible concerns and reporting them appropriately.'},
+        {title:'Why is safeguarding important?', text:'Healthcare professionals may notice signs of harm that others do not see. Possible signs can include unexplained injuries, poor general hygiene, changes in behaviour, fear of a particular person, or a patient appearing unusually withdrawn or distressed. A concern should not be ignored simply because there is no definite proof. Staff should also never promise that a safeguarding disclosure will remain completely secret because information may need to be shared to protect the patient.', q:'Why should a trainee avoid promising a patient that a safeguarding disclosure will remain completely secret?', a:['Because dental staff are never allowed to listen to patients.','Because information may need to be shared with an appropriate person to protect the patient.','Because every disclosure must be posted online.','Because the trainee must investigate it first.'], correct:1, why:'Correct. The source explains that information may need to be shared with an appropriate person in order to protect the patient.'},
+        {title:'How should a trainee respond?', text:'Trainees should know the practice’s safeguarding policy and who the designated safeguarding lead is. If a patient says something concerning, remain calm, listen without showing shock or disbelief, and avoid leading or investigative questions. Do not investigate or confront an alleged abuser. Report the concern promptly to the appropriate person and record relevant information accurately. If unsure whether something is a safeguarding concern, asking an experienced member of the dental team for guidance is appropriate.', q:'A patient makes a concerning disclosure. What should the trainee do?', a:['Ask detailed investigative questions to find out exactly what happened.','Remain calm, listen appropriately, avoid leading questions, and report the concern according to procedure.','Promise complete secrecy and tell nobody.','Confront the alleged abuser.'], correct:1, why:'Correct. The trainee should listen calmly, avoid investigating, and follow the practice’s safeguarding procedure.'},
+        {title:'Examples in practice', text:'A child may repeatedly attend with unexplained injuries or appear frightened around a particular adult. An adult who depends on a carer may appear neglected, frightened or unable to communicate freely. A patient may directly say that someone is hurting them or that they do not feel safe at home. These situations should be taken seriously: listen appropriately, avoid promising secrecy, make a factual record and follow the practice procedure.', q:'What is the key point for a trainee when they notice a possible safeguarding concern?', a:['They must prove abuse before raising it.','They should deal with it informally if it seems minor.','They do not need to prove abuse before raising a concern.','They should wait until several more appointments have happened.'], correct:2, why:'Correct. The source explicitly states that a trainee does not need to prove abuse before raising a safeguarding concern.'}
+      ]
+    },
+    consent: {
+      title:'Informed Consent', steps:[
+        {title:'What is informed consent?', text:'Informed consent is the process by which a patient agrees to an examination, treatment or procedure after receiving enough appropriate information to make their own decision. Consent must be voluntary and the patient must have capacity to make the decision. It is not simply signing a form; the patient needs an opportunity to understand what is proposed, ask questions and make a free choice. The dentist or other appropriate clinician is responsible for obtaining consent, while the dental nurse supports the process and respects the patient’s decision.', q:'Which statement best describes informed consent?', a:['It means signing a form without needing an explanation.','It means the patient agrees after receiving appropriate information and having the opportunity to make a free decision.','It means the dental nurse persuades the patient to accept treatment.','It means consent cannot be changed once given.'], correct:1, why:'Correct. Consent involves appropriate information, understanding, voluntary choice and the opportunity to ask questions. It is not simply a signature.'},
+        {title:'Why is consent important?', text:'Informed consent respects the patient’s right to make decisions about their own healthcare. Patients should understand what is being recommended and have an opportunity to consider relevant information. A patient must not be pressured into accepting treatment. The patient also has the right to change their mind or withdraw consent. Any concern about whether a patient understands or agrees should be communicated to the dentist rather than ignored.', q:'What should a dental nurse remember if a patient says they no longer want to continue?', a:['The patient must continue because treatment has started.','The nurse should persuade them to continue.','The nurse should communicate the concern to the dentist.','The nurse should decide whether the treatment is necessary.'], correct:2, why:'Correct. The source says the patient has the right to change their mind or withdraw consent, and concerns should be communicated to the dentist.'},
+        {title:'How can a trainee support consent?', text:'A trainee can help create an environment where patients feel comfortable asking questions and expressing concerns. They should know their own role and avoid giving explanations outside their level of training or authority. If a patient says they do not understand treatment, seems uncertain, or no longer wants to continue, the trainee should alert the dentist before treatment proceeds. The trainee should not pressure the patient or persuade them to accept treatment.', q:'A patient says, “I don’t understand what this treatment involves.” What should the trainee do?', a:['Give a detailed explanation even if it is outside their training.','Tell the patient they should agree because the dentist recommended it.','Alert the dentist so the patient’s questions can be properly addressed.','Ignore the comment unless the patient refuses treatment.'], correct:2, why:'Correct. The trainee should recognise the limits of their role and refer treatment questions to the dentist.'},
+        {title:'Examples in practice', text:'Before treatment, the dentist may explain what is recommended, why it is needed, possible risks and benefits, and reasonable alternatives. A patient can then ask questions. If a patient says they are unsure or no longer want treatment, the nurse should not simply encourage them to continue; they should inform the dentist. If a patient asks the nurse a detailed question about risks they are not qualified to explain, the appropriate response is to refer the question to the dentist.', q:'A patient asks a trainee to explain detailed risks of a procedure that are outside the trainee’s training. What is the appropriate response?', a:['Give the best guess so the patient feels reassured.','Tell the patient the dentist can answer the question.','Tell the patient not to worry about risks.','Search social media for an answer during treatment.'], correct:1, why:'Correct. The source says the trainee should tell the patient that the dentist can answer a detailed question they are not qualified to explain.'}
+      ]
+    },
+    confidentiality: {
+      title:'Patient Confidentiality', steps:[
+        {title:'What is confidentiality?', text:'Patient confidentiality means keeping a patient’s personal, medical and dental information private and only accessing, using or sharing it when there is a legitimate reason to do so. Dental practices hold sensitive information including medical histories, treatment records, contact details, radiographs and oral-health information. Confidentiality applies inside and outside the practice, and patient information should not be discussed casually with people who are not authorised to receive it.', q:'What does patient confidentiality require?', a:['Sharing patient information freely with friends and family.','Keeping patient information private and only accessing, using or sharing it for a legitimate reason.','Discussing interesting cases in reception.','Sharing records whenever someone asks.'], correct:1, why:'Correct. Confidentiality means protecting patient information and only accessing, using or sharing it when there is a legitimate reason.'},
+        {title:'Why is it important?', text:'Confidentiality protects privacy and helps patients trust the dental team enough to provide honest information. Accurate medical and dental histories are important for safe care. A breach can cause distress, damage trust and have professional and legal consequences. Confidentiality applies not only to records and computer systems but also to everyday conversations in places where others could overhear.', q:'Why can an everyday conversation about a patient become a confidentiality problem?', a:['Because dental nurses are not allowed to speak at work.','Because private information could be overheard by people who are not authorised to receive it.','Because patients cannot have medical histories.','Because all conversations must be recorded.'], correct:1, why:'Correct. Confidentiality includes everyday conversations, particularly in places such as reception or waiting areas where others may overhear.'},
+        {title:'How can a trainee maintain confidentiality?', text:'Trainees should follow the practice’s confidentiality and information-governance procedures and only access patient information when necessary for their role. Computer screens and patient records should not be left visible to unauthorised people. Printed documents must be handled appropriately. Trainees should be careful when speaking about patients in reception or waiting areas. If someone asks for patient information, do not assume they are entitled to receive it; follow the practice procedure and ask an appropriate member of staff if unsure. Confidentiality also applies to social media.', q:'A person asks a trainee for information about a patient. What should the trainee do if they are unsure whether the person is entitled to it?', a:['Provide the information to be helpful.','Follow the practice procedure and ask an appropriate member of staff for guidance.','Post the information privately on social media.','Ask another patient whether it is okay.'], correct:1, why:'Correct. The source says not to assume someone is entitled to patient information. Follow the practice procedure and ask an appropriate member of staff if unsure.'},
+        {title:'Examples in practice', text:'A friend or relative phoning the practice does not automatically have a right to know what treatment a patient is having. Discussing a dental problem loudly at reception could allow others to hear private information. Leaving an open patient file where members of the public can see it is inappropriate. A dental nurse should never post a patient photograph, treatment or records on a personal social media account without appropriate authorisation.', q:'Which is a clear example of protecting patient confidentiality?', a:['Leaving an open patient file on the reception desk.','Discussing a patient’s treatment loudly in the waiting room.','Refusing to give patient information to someone who has not been appropriately authorised.','Posting a patient photograph on a personal social media account.'], correct:2, why:'Correct. Patient information should not be shared with someone who is not appropriately authorised to receive it.'}
+      ]
+    },
+    emergencies: {
+      title:'Medical Emergencies', steps:[
+        {title:'What is a medical emergency?', text:'A medical emergency is a sudden situation in which a patient becomes seriously unwell and requires immediate assessment and appropriate action. Dental patients can experience emergencies such as fainting, hypoglycaemia, asthma attacks, allergic reactions, seizures, chest pain and cardiac arrest. A dental nurse does not need to diagnose every emergency independently, but must recognise when a patient may be deteriorating and respond according to the practice’s emergency procedures.', q:'What is the most important role for a trainee when a patient suddenly becomes seriously unwell?', a:['Independently diagnose the exact condition.','Recognise that something may be wrong and respond according to the practice’s emergency procedure.','Wait to see whether the patient improves.','Give any medication they think might help.'], correct:1, why:'Correct. The source focuses on recognising deterioration and responding according to the practice procedure rather than independently diagnosing every emergency.'},
+        {title:'Why are emergencies important?', text:'Medical emergencies can develop quickly, and an appropriate response can make a significant difference to patient safety. A dental nurse may notice that something has changed because they are assisting the dentist and observing the patient. Remaining calm, recognising the situation and following the emergency procedure helps the team respond effectively. Emergency management is a team responsibility, and trainees should not perform procedures or administer medication beyond their training and competence.', q:'Why should a trainee avoid doing a procedure or giving medication beyond their training during an emergency?', a:['Because emergencies are not important.','Because the trainee must stay completely passive.','Because they should work within their training and competence and follow appropriate instructions.','Because only patients can respond to emergencies.'], correct:2, why:'Correct. The source emphasises working within training and competence and following the instructions of appropriately trained professionals.'},
+        {title:'How can a trainee prepare?', text:'A trainee should learn the practice’s emergency procedures and know where emergency drugs, oxygen, emergency equipment and first-aid supplies are kept. They should know how to summon help and their role during an emergency. Appropriate training in basic life support and other required emergency procedures is important. During an emergency, remain calm, listen to instructions, help prepare equipment and contact emergency services when instructed or according to the practice protocol. Regular training and drills can build confidence.', q:'Which preparation is specifically described as important for a trainee dental nurse?', a:['Knowing where emergency equipment and supplies are kept.','Memorising every possible medical diagnosis.','Deciding which medication every patient should receive.','Avoiding emergency drills.'], correct:0, why:'Correct. The source specifically says trainees should know where emergency drugs, oxygen, emergency equipment and first-aid supplies are kept.'},
+        {title:'Examples in practice', text:'A patient may become pale and lose consciousness because they have fainted. A patient with diabetes may show symptoms of hypoglycaemia such as sweating, shaking, confusion or weakness. A patient with asthma may have difficulty breathing, while another patient could develop a serious allergic reaction. Chest pain or sudden collapse could also indicate a potentially life-threatening emergency. The trainee should recognise that immediate attention is needed, alert the dentist and follow the emergency protocol.', q:'A patient suddenly becomes confused, sweaty and shaky during treatment. What should the trainee do?', a:['Ignore it because the symptoms may pass.','Recognise that the patient needs immediate attention, alert the dentist and follow the emergency protocol.','Diagnose the patient and administer medication independently.','Ask the patient to finish the treatment first.'], correct:1, why:'Correct. The source gives sweating, shaking and confusion as possible symptoms of hypoglycaemia and says the trainee should alert the dentist and follow the emergency protocol.'}
+      ]
+    }
+  };
+
+  const topicButtons = document.querySelectorAll('.toolkit-topic');
+  const learningPanel = document.getElementById('toolkit-learning');
+  const sequencesEl = document.getElementById('sequences');
+  const learningTitle = document.getElementById('learning-title');
+  const progressCount = document.getElementById('progress-count');
+  const completeEl = document.getElementById('topic-complete');
+  let currentTopic = null;
+  let currentStep = 0;
+
+  function renderTopic(key){
+    const data = toolkitData[key];
+    if(!data) return;
+    currentTopic=key; currentStep=0;
+    topicButtons.forEach(b=>b.classList.toggle('selected', b.dataset.topic===key));
+    learningPanel.classList.add('visible');
+    learningTitle.textContent=data.title;
+    completeEl.classList.remove('show');
+    sequencesEl.innerHTML='';
+    data.steps.forEach((step,i)=>{
+      const wrapper=document.createElement('div');
+      wrapper.className='sequence'+(i===0?' active':'');
+      wrapper.dataset.index=i;
+      wrapper.innerHTML=`<div class="sequence-number">Step ${i+1} of ${data.steps.length}</div><h3 class="display">${step.title}</h3><div class="sequence-info">${step.text}</div><div class="check-card"><div class="check-label">Check your knowledge</div><div class="question">${step.q}</div><div class="answers">${step.a.map((a,j)=>`<button class="answer-btn" data-answer="${j}">${a}</button>`).join('')}</div><div class="feedback"></div><div class="learning-actions"><button class="continue-btn">Continue →</button></div></div>`;
+      sequencesEl.appendChild(wrapper);
+    });
+    progressCount.textContent=`Step 1 of ${data.steps.length}`;
+    learningPanel.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  function updateStep(){
+    const data=toolkitData[currentTopic];
+    sequencesEl.querySelectorAll('.sequence').forEach((el,i)=>el.classList.toggle('active',i===currentStep));
+    progressCount.textContent=`Step ${currentStep+1} of ${data.steps.length}`;
+  }
+
+  topicButtons.forEach(btn=>btn.addEventListener('click',()=>renderTopic(btn.dataset.topic)));
+
+  sequencesEl.addEventListener('click',e=>{
+    const answer=e.target.closest('.answer-btn');
+    if(answer){
+      const sequence=answer.closest('.sequence');
+      const index=Number(sequence.dataset.index);
+      if(index!==currentStep) return;
+      const step=toolkitData[currentTopic].steps[index];
+      const buttons=sequence.querySelectorAll('.answer-btn');
+      buttons.forEach(b=>b.disabled=true);
+      const feedback=sequence.querySelector('.feedback');
+      if(Number(answer.dataset.answer)===step.correct){
+        answer.classList.add('correct');
+        feedback.className='feedback show good';
+        feedback.textContent='✓ Correct. '+step.why;
+        sequence.querySelector('.continue-btn').classList.add('show');
+      }else{
+        answer.classList.add('incorrect');
+        feedback.className='feedback show try';
+        feedback.textContent='Not quite. '+step.why+' Try the question again.';
+        buttons.forEach(b=>b.disabled=false);
+        answer.disabled=true;
+      }
+    }
+    const cont=e.target.closest('.continue-btn');
+    if(cont){
+      const data=toolkitData[currentTopic];
+      if(currentStep < data.steps.length-1){currentStep++;updateStep();sequencesEl.scrollIntoView({behavior:'smooth',block:'start'});}
+      else{sequencesEl.style.display='none';completeEl.classList.add('show');progressCount.textContent='Complete';}
+    }
+  });
+
+  document.querySelector('.back-topics')?.addEventListener('click',()=>{
+    sequencesEl.style.display='block'; completeEl.classList.remove('show');
+    learningPanel.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+
+
+
+  // Communication Help: switch script panels and copy scripts.
+  document.querySelectorAll('[data-comm-tab]').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.commTab;
+      document.querySelectorAll('[data-comm-tab]').forEach(t => t.classList.toggle('active', t === tab));
+      document.querySelectorAll('.comm-panel').forEach(panel => panel.classList.toggle('active', panel.id === 'comm-' + target));
+    });
+  });
+
+  document.querySelectorAll('.copy-script').forEach(button => {
+    button.addEventListener('click', async () => {
+      const box = document.querySelector('[data-script="' + button.dataset.copy + '"]');
+      if (!box) return;
+      const text = box.innerText;
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (err) {
+        const range = document.createRange();
+        range.selectNodeContents(box);
+        const selection = window.getSelection();
+        selection.removeAllRanges(); selection.addRange(range);
+        try { document.execCommand('copy'); } catch (e) {}
+        selection.removeAllRanges();
+      }
+      const original = button.textContent;
+      button.textContent = '✓ Copied';
+      button.classList.add('copied');
+      setTimeout(() => { button.textContent = original; button.classList.remove('copied'); }, 1600);
+    });
+  });
+
+  // Knowledge Quiz: 50 source-based questions, 10 answered per session.
+  const quizQuestions = [
+    {topic:'Infection Control',q:'What is infection control?',o:['Only sterilising instruments','A set of procedures and precautions used to prevent harmful microorganisms spreading','Only wearing gloves','Only cleaning the waiting room'],c:1},
+    {topic:'Infection Control',q:'Why is infection control especially important in a dental practice?',o:['Because practices only see one patient each day','Because dental procedures can involve saliva, blood, respiratory secretions and contaminated instruments','Because PPE removes all infection risks','Because only dentists can spread microorganisms'],c:1},
+    {topic:'Infection Control',q:'Who has an important role in making sure infection-control procedures are followed consistently?',o:['Only the dentist','Only the practice manager','The dental nurse as part of the dental team','Only the patient'],c:2},
+    {topic:'Infection Control',q:'Which statement about gloves is correct?',o:['Gloves replace hand hygiene','Gloves only need changing once per day','Gloves do not replace hand hygiene','Gloves mean PPE is never needed'],c:2},
+    {topic:'Infection Control',q:'What should a trainee do if they are unsure about a decontamination or sterilisation procedure?',o:['Improvise','Ignore it','Ask a qualified member of staff and follow the practice protocol','Ask the patient'],c:2},
+    {topic:'Infection Control',q:'Which is an example of good infection control?',o:['Leaving a used needle on a tray','Keeping clean and contaminated items together','Disposing of sharps immediately in an appropriate sharps container','Keeping the same gloves between patients'],c:2},
+    {topic:'Infection Control',q:'Why should clinical surfaces be disinfected between patients?',o:['To make the surgery look nicer only','To help prevent cross-contamination','To avoid wearing PPE','To replace instrument processing'],c:1},
+    {topic:'Infection Control',q:'How should reusable instruments be treated before being used again?',o:['Put straight back on the tray','Processed correctly through the practice decontamination procedures','Wiped with a dry tissue','Stored with contaminated items'],c:1},
+    {topic:'Infection Control',q:'Which practice helps maintain a safe clinical environment?',o:['Leaving contaminated instruments in the surgery','Keeping clinical areas clean and organised','Using the same PPE between patients','Guessing when unsure'],c:1},
+    {topic:'Infection Control',q:'Why is hand hygiene important even when gloves are worn?',o:['Because gloves are not a replacement for hand hygiene','Because gloves are never useful','Because hands must always be washed for exactly one minute','Because hand hygiene only matters after lunch'],c:0},
+    {topic:'Safeguarding',q:'What does safeguarding mean?',o:['Protecting only children from dental problems','Protecting people at risk from abuse, neglect, exploitation or harm','Investigating every patient’s home life','Deciding whether abuse has definitely happened'],c:1},
+    {topic:'Safeguarding',q:'Who is responsible for safeguarding within a dental practice?',o:['Only the safeguarding lead','Only the dentist','Everyone in the practice has a responsibility','Only reception staff'],c:2},
+    {topic:'Safeguarding',q:'What is a trainee dental nurse expected to do if they suspect abuse?',o:['Investigate it themselves','Decide whether abuse definitely occurred','Recognise the concern and report it through the appropriate procedure','Confront the alleged abuser'],c:2},
+    {topic:'Safeguarding',q:'Why should safeguarding concerns not be ignored simply because there is no proof?',o:['Because trainees must investigate','Because concerns should be taken seriously and reported appropriately','Because every concern is automatically confirmed abuse','Because confidentiality never applies'],c:1},
+    {topic:'Safeguarding',q:'What should a trainee do if a patient makes a concerning disclosure?',o:['Show shock and ask leading questions','Remain calm, listen appropriately and follow the safeguarding procedure','Promise complete secrecy','Confront the person the patient mentions'],c:1},
+    {topic:'Safeguarding',q:'Why should a trainee avoid asking leading or investigative questions?',o:['Because they should investigate secretly instead','Because their role is to recognise and report concerns, not investigate them','Because patients should never speak','Because safeguarding concerns are unimportant'],c:1},
+    {topic:'Safeguarding',q:'What should a trainee know about the practice safeguarding arrangements?',o:['The name of every patient’s carer','The practice safeguarding policy and who the designated safeguarding lead is','How to investigate abuse independently','How to confront an alleged abuser'],c:1},
+    {topic:'Safeguarding',q:'Which situation could be a safeguarding concern?',o:['A patient asks about appointment times','A child repeatedly attends with unexplained injuries','A patient chooses a morning appointment','A patient asks for a toothbrush'],c:1},
+    {topic:'Safeguarding',q:'If a trainee is unsure whether something is a safeguarding concern, what is appropriate?',o:['Ignore it','Ask an experienced member of the dental team for guidance','Post about it online','Investigate the patient’s family'],c:1},
+    {topic:'Safeguarding',q:'What should a trainee avoid promising when a patient makes a safeguarding disclosure?',o:['That they will listen','That they will take the concern seriously','That the information will be kept completely secret','That they will follow the practice procedure'],c:2},
+    {topic:'Informed Consent',q:'What is informed consent?',o:['A patient signing any form without explanation','A voluntary decision made after receiving enough appropriate information','A dentist choosing treatment for the patient','A nurse persuading a patient to agree'],c:1},
+    {topic:'Informed Consent',q:'Which is essential for valid consent?',o:['The patient must be pressured','The decision must be voluntary and the patient must have capacity','The nurse must agree with the treatment','The patient must sign immediately'],c:1},
+    {topic:'Informed Consent',q:'Who is responsible for obtaining consent for treatment?',o:['The receptionist','The dentist or other appropriate clinician','The patient’s friend','The trainee alone'],c:1},
+    {topic:'Informed Consent',q:'Why is informed consent important?',o:['It helps staff pressure patients','It respects the patient’s right to make decisions about their healthcare','It means patients cannot change their mind','It replaces communication'],c:1},
+    {topic:'Informed Consent',q:'What should a dental nurse do if a patient says they no longer want to continue with treatment?',o:['Pressure them to continue','Ignore the comment','Alert the dentist before treatment proceeds','Tell them they have already consented'],c:2},
+    {topic:'Informed Consent',q:'What should a trainee do if a patient says they do not understand the proposed treatment?',o:['Give a detailed clinical explanation beyond their role','Tell the patient to sign anyway','Alert the dentist so the concern can be addressed','Tell them not to ask questions'],c:2},
+    {topic:'Informed Consent',q:'Which behaviour supports informed consent?',o:['Pressuring a patient','Giving treatment explanations outside your authority','Creating an environment where patients can ask questions','Persuading patients to accept treatment'],c:2},
+    {topic:'Informed Consent',q:'What should a trainee do if asked a detailed question about treatment risks they are not qualified to explain?',o:['Guess','Give a confident answer even if unsure','Tell the patient the dentist can answer the question','Avoid the patient'],c:2},
+    {topic:'Informed Consent',q:'Can a patient change their mind about treatment?',o:['No, once they arrive they must continue','Yes, and their concerns should be communicated to the dentist','Only if the nurse agrees','Only after treatment starts'],c:1},
+    {topic:'Informed Consent',q:'Which statement best describes a dental nurse’s role in consent?',o:['To persuade patients to accept treatment','To obtain all treatment consent independently','To support the process, respect the patient’s decision and refer questions appropriately','To decide which treatment is best'],c:2},
+    {topic:'Patient Confidentiality',q:'What does patient confidentiality mean?',o:['Sharing patient information freely','Keeping personal, medical and dental information private unless there is a legitimate reason to access or share it','Never recording information','Discussing patients only with friends'],c:1},
+    {topic:'Patient Confidentiality',q:'Why is confidentiality important?',o:['It helps patients trust the dental team and protects their privacy','It means records are unnecessary','It allows staff to discuss patients casually','It prevents patients giving medical histories'],c:0},
+    {topic:'Patient Confidentiality',q:'When should a trainee access patient information?',o:['Whenever they are curious','Only when it is necessary for their role','To tell friends about interesting cases','Whenever another patient asks'],c:1},
+    {topic:'Patient Confidentiality',q:'What should a trainee do if a computer screen with patient information is visible to unauthorised people?',o:['Leave it open','Take steps according to practice procedures to prevent unauthorised access','Photograph it','Invite people to read it'],c:1},
+    {topic:'Patient Confidentiality',q:'Why should patient information not be discussed loudly at reception?',o:['Reception is always empty','Other people may overhear private information','Patients dislike reception','It takes too long'],c:1},
+    {topic:'Patient Confidentiality',q:'A patient’s friend asks what treatment the patient is having. What should a trainee do?',o:['Tell them because they are a friend','Follow the practice procedure and do not assume they are entitled to the information','Post it privately online','Ask another patient'],c:1},
+    {topic:'Patient Confidentiality',q:'Which is an example of a confidentiality breach?',o:['Following information-governance procedures','Leaving an open patient file where members of the public can see it','Keeping records secure','Asking a senior colleague for guidance'],c:1},
+    {topic:'Patient Confidentiality',q:'Does confidentiality apply to social media?',o:['No','Only to professional accounts','Yes; patient information and photographs must not be shared without appropriate authorisation','Only to private messages'],c:2},
+    {topic:'Patient Confidentiality',q:'What should a trainee do if unsure whether someone is entitled to patient information?',o:['Provide it anyway','Follow the practice procedure and ask an appropriate member of staff','Guess','Ask the patient’s neighbour'],c:1},
+    {topic:'Patient Confidentiality',q:'Which action best protects confidentiality?',o:['Discussing patient details in a staff room where visitors can hear','Keeping patient records and conversations secure and appropriately private','Posting anonymised-looking photos without authorisation','Leaving records on reception'],c:1},
+    {topic:'Medical Emergencies',q:'What is a medical emergency?',o:['A routine appointment','A sudden situation where a patient becomes seriously unwell and needs immediate appropriate action','Any patient complaint','A normal treatment delay'],c:1},
+    {topic:'Medical Emergencies',q:'Which is an example of a medical emergency that can occur in dental practice?',o:['Fainting','Choosing a new appointment time','Forgetting a toothbrush','Arriving early'],c:0},
+    {topic:'Medical Emergencies',q:'What should a trainee focus on during a medical emergency?',o:['Independently diagnosing every condition','Recognising that something is wrong, staying calm and following the emergency procedure','Giving any medication they think may help','Waiting to see if it passes'],c:1},
+    {topic:'Medical Emergencies',q:'Why is emergency management a team responsibility?',o:['Because trainees should never help','Because responding effectively may require coordinated action from the dental team','Because only reception can respond','Because patients manage emergencies themselves'],c:1},
+    {topic:'Medical Emergencies',q:'What should a trainee know about emergency equipment?',o:['Where appropriate emergency drugs, oxygen, emergency equipment and first-aid supplies are kept','How to prescribe every emergency medicine','How to diagnose every emergency','Nothing; someone else will always know'],c:0},
+    {topic:'Medical Emergencies',q:'What can help staff respond more confidently to emergencies?',o:['Avoiding practice drills','Regular emergency training and drills','Ignoring emergency procedures','Learning only from patients'],c:1},
+    {topic:'Medical Emergencies',q:'What should a trainee do when instructed to help during an emergency?',o:['Stay calm, listen to the appropriately trained professional and help prepare necessary equipment','Ignore instructions','Take over diagnosis','Administer anything independently'],c:0},
+    {topic:'Medical Emergencies',q:'A patient becomes pale and loses consciousness. What should the trainee recognise?',o:['That nothing needs to be done','That the patient may need immediate attention and the emergency procedure should be followed','That treatment should continue','That the trainee should leave the surgery'],c:1},
+    {topic:'Medical Emergencies',q:'A patient is sweating, shaking and confused during treatment. What should the trainee do?',o:['Ignore it','Recognise that this may indicate a medical emergency, alert the dentist and follow the emergency protocol','Diagnose the patient and prescribe medication','Ask them to finish treatment first'],c:1},
+    {topic:'Medical Emergencies',q:'What is the most appropriate attitude for a trainee during an emergency?',o:['Calm, responsive and aware of their limits','Independent and willing to improvise','Passive and silent','Confident enough to work beyond their training'],c:0}
+  ];
+
+  const quizStart=document.getElementById('quiz-start-card'), quizActive=document.getElementById('quiz-active-card'), quizTransition=document.getElementById('quiz-transition-card'), quizReview=document.getElementById('quiz-review-card'), quizScore=document.getElementById('quiz-score-card');
+  const quizQuestionEl=document.getElementById('quiz-question'), quizOptionsEl=document.getElementById('quiz-options'), quizFeedbackEl=document.getElementById('quiz-feedback'), quizProgressEl=document.getElementById('quiz-progress'), quizProgressFill=document.getElementById('quiz-progress-fill'), quizTopicEl=document.getElementById('quiz-topic-badge'), quizNext=document.getElementById('quiz-next'), quizAnother=document.getElementById('quiz-another');
+  let quizPool=[], quizCurrent=null, quizSelected=null, quizAnswers=[], quizStarted=false;
+  function shuffle(arr){return [...arr].sort(()=>Math.random()-.5)}
+  function startQuiz(){quizPool=shuffle(quizQuestions); quizAnswers=[]; quizStarted=true; quizStart.hidden=true; quizTransition.hidden=true; quizReview.hidden=true; quizScore.hidden=true; quizActive.hidden=false; showNextQuizQuestion();}
+  function showNextQuizQuestion(){
+    if(quizAnswers.length>=10){showQuizTransition();return;}
+    if(!quizPool.length) quizPool=shuffle(quizQuestions.filter(q=>!quizAnswers.some(a=>a.question===q.q)));
+    quizCurrent=quizPool.shift(); quizSelected=null; quizFeedbackEl.className='quiz-feedback'; quizFeedbackEl.textContent=''; quizNext.disabled=true;
+    quizProgressEl.textContent=`Question ${quizAnswers.length+1} of 10`; quizProgressFill.style.width=`${((quizAnswers.length)/10)*100}%`; quizTopicEl.textContent=quizCurrent.topic; quizQuestionEl.textContent=quizCurrent.q;
+    quizOptionsEl.innerHTML=quizCurrent.o.map((o,i)=>`<button class="quiz-option" type="button" data-index="${i}"><strong>${String.fromCharCode(65+i)}.</strong> ${o}</button>`).join('');
+  }
+  function answerQuiz(index){
+    if(quizSelected!==null)return; quizSelected=index; const correct=index===quizCurrent.c; quizOptionsEl.querySelectorAll('.quiz-option').forEach((b,i)=>{b.disabled=true; if(i===index)b.classList.add(correct?'correct':'incorrect'); if(i===quizCurrent.c)b.classList.add('correct');});
+    quizFeedbackEl.className='quiz-feedback '+(correct?'good':'try'); quizFeedbackEl.textContent=correct?'✓ Correct. Your answer matches the information covered in the Dental Practice Knowledge.':'Not quite. Review the relevant Dental Practice Knowledge topic before your next practice session.'; quizNext.disabled=false;
+    quizAnswers.push({question:quizCurrent.q,topic:quizCurrent.topic,options:quizCurrent.o,correct:quizCurrent.c,selected:index});
+  }
+  function showQuizTransition(){quizActive.hidden=true; quizTransition.hidden=false; quizProgressFill.style.width='100%';}
+  function renderQuizReview(){quizTransition.hidden=true; quizScore.hidden=true; quizReview.hidden=false; const list=document.getElementById('quiz-review-list'); list.innerHTML=quizAnswers.map((a,i)=>`<div class="quiz-review-item"><h4>${i+1}. ${a.question}</h4><p>Your answer: <strong>${String.fromCharCode(65+a.selected)}. ${a.options[a.selected]}</strong></p><button class="quiz-secondary-btn quiz-edit-toggle" type="button" data-review="${i}">Change answer</button><div class="quiz-edit-box" id="quiz-edit-${i}" hidden>${a.options.map((o,j)=>`<button class="quiz-edit-option ${j===a.selected?'selected':''}" type="button" data-review-answer="${i}" data-index="${j}">${String.fromCharCode(65+j)}. ${o}</button>`).join('')}</div></div>`).join('');}
+  function calculateQuizScore(){const correct=quizAnswers.filter(a=>a.selected===a.correct).length; const pct=Math.round(correct/10*100); const byTopic={}; quizAnswers.forEach(a=>{if(!byTopic[a.topic])byTopic[a.topic]={c:0,t:0};byTopic[a.topic].t++;if(a.selected===a.correct)byTopic[a.topic].c++;}); const title=pct>=90?'Excellent foundation!':pct>=70?'Strong start!':pct>=50?'Good progress — keep building!':'Keep going — this is exactly what practice is for!'; const tip=pct>=90?'You have a strong grasp of the core ideas. Keep revisiting the Toolkit so the knowledge stays fresh and easy to explain in an interview.':pct>=70?'You have a good foundation. Revisit the questions you missed and use the Toolkit to strengthen the areas that feel less secure.':pct>=50?'You already have some useful knowledge. Focus on the areas you missed, then try another 10-question session to build confidence.':'Don’t be discouraged. Use the Toolkit as your revision guide, then try another short session. Every attempt helps you identify what to revisit.'; document.getElementById('quiz-score-number').textContent=pct+'%'; document.getElementById('quiz-score-title').textContent=title; document.getElementById('quiz-score-tip').textContent=tip; document.getElementById('quiz-score-breakdown').innerHTML=Object.entries(byTopic).map(([topic,v])=>`<div><strong>${v.c}/${v.t}</strong><span>${topic}</span></div>`).join(''); quizReview.hidden=true; quizTransition.hidden=true; quizActive.hidden=true; quizScore.hidden=false;}
+  document.getElementById('start-quiz')?.addEventListener('click',startQuiz);
+  quizOptionsEl?.addEventListener('click',e=>{const b=e.target.closest('.quiz-option');if(b)answerQuiz(Number(b.dataset.index));});
+  quizNext?.addEventListener('click',()=>showNextQuizQuestion());
+  quizAnother?.addEventListener('click',()=>{ if(quizSelected!==null){ quizAnswers.pop(); } showNextQuizQuestion(); });
+  document.getElementById('quiz-see-score')?.addEventListener('click',calculateQuizScore);
+  document.getElementById('quiz-modify')?.addEventListener('click',renderQuizReview);
+  document.getElementById('quiz-review-score')?.addEventListener('click',calculateQuizScore);
+  document.getElementById('quiz-new-session')?.addEventListener('click',startQuiz);
+  document.getElementById('quiz-review-list')?.addEventListener('click',e=>{const toggle=e.target.closest('.quiz-edit-toggle'); if(toggle){const box=document.getElementById('quiz-edit-'+toggle.dataset.review); box.hidden=!box.hidden; return;} const option=e.target.closest('.quiz-edit-option'); if(option){const i=Number(option.dataset.reviewAnswer), j=Number(option.dataset.index); quizAnswers[i].selected=j; renderQuizReview();}});
+
+  window.addEventListener('hashchange', () => {
+    const route = window.location.hash.replace('#','');
+    if (routes[route]) setRoute(route);
+  });
+
+  initPracticeCards();
+
+  const initial = window.location.hash.replace('#', '');
+  setRoute(routes[initial] ? initial : 'home');
+})();
+</script>
+
+</body>
+</html>
