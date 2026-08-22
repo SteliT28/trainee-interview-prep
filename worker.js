@@ -26,19 +26,18 @@ export default {
 
         // Normalise the user's search
         const search = query.toLowerCase().trim();
-        const postcodeSearch = search.replace(/\s+/g, "");
+        const postcodeQuery = search.replace(/\s+/g, "").toUpperCase();
 
-        // Search ONLY Town/City and Postcode
+        // Search ONLY townCity and postcode (postcodeSearch is the
+        // pre-normalised, space-free, uppercase postcode from practices.json)
         const results = practices.filter(practice => {
-          const town = String(practice["Town/City"] || "").toLowerCase().trim();
-          const postcode = String(practice["Postcode"] || "")
-            .toLowerCase()
-            .replace(/\s+/g, "");
+          const town = String(practice.townCity || "").toLowerCase().trim();
+          const postcode = String(practice.postcodeSearch || "");
 
           return (
             town === search ||
-            postcode === postcodeSearch ||
-            postcode.startsWith(postcodeSearch)
+            postcode === postcodeQuery ||
+            postcode.startsWith(postcodeQuery)
           );
         });
 
