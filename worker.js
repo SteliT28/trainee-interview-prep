@@ -6,14 +6,17 @@ export default {
       const query = (url.searchParams.get("q") || "").trim();
 
       if (!query) {
-        return jsonResponse({ total: 0, locations: [] });
+        return jsonResponse({
+          total: 0,
+          locations: []
+        });
       }
 
       try {
-        // Get practices.json from the deployed static assets
-        const response = await env.ASSETS.fetch(
-          new Request(new URL("/practices.json", request.url))
-        );
+        // Load practices.json from the same deployed website
+        const dataUrl = new URL("/practices.json", request.url);
+
+        const response = await fetch(dataUrl);
 
         if (!response.ok) {
           return jsonResponse(
@@ -28,9 +31,10 @@ export default {
 
         const practices = await response.json();
 
-        // Normalise the user's search
         const search = query.toLowerCase().trim();
-        const postcodeSearch = search.replace(/\s+/g, "").toUpperCase();
+        const postcodeSearch = search
+          .replace(/\s+/g, "")
+          .toUpperCase();
 
         // Search ONLY Town/City and Postcode
         const results = practices.filter((practice) => {
@@ -66,7 +70,8 @@ export default {
       }
     }
 
-    return env.ASSETS.fetch(request);
+    // Serve the website normally
+    return fetch(request);
   }
 };
 
