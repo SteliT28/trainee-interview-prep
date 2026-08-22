@@ -6,38 +6,46 @@ export default {
       const query = (url.searchParams.get("q") || "").trim();
 
       if (!query) {
-        return jsonResponse({ locations: [] });
+        return jsonResponse({ total: 0, locations: [] });
       }
 
       try {
-        // Load the practice database
-        const data = await env.ASSETS.fetch(
-          new URL("/practices.json", request.url)
+        // Get practices.json from the deployed static assets
+        const response = await env.ASSETS.fetch(
+          new Request(new URL("/practices.json", request.url))
         );
 
-        if (!data.ok) {
-          return jsonResponse({
-            locations: [],
-            error: "Could not load practices.json"
-          }, 500);
+        if (!response.ok) {
+          return jsonResponse(
+            {
+              total: 0,
+              locations: [],
+              error: "Could not load practices.json"
+            },
+            500
+          );
         }
 
-        const practices = await data.json();
+        const practices = await response.json();
 
         // Normalise the user's search
         const search = query.toLowerCase().trim();
-        const postcodeQuery = search.replace(/\s+/g, "").toUpperCase();
+        const postcodeSearch = search.replace(/\s+/g, "").toUpperCase();
 
-        // Search ONLY townCity and postcode (postcodeSearch is the
-        // pre-normalised, space-free, uppercase postcode from practices.json)
-        const results = practices.filter(practice => {
-          const town = String(practice.townCity || "").toLowerCase().trim();
-          const postcode = String(practice.postcodeSearch || "");
+        // Search ONLY Town/City and Postcode
+        const results = practices.filter((practice) => {
+          const town = String(practice.townCity || "")
+            .toLowerCase()
+            .trim();
+
+          const postcode = String(practice.postcodeSearch || "")
+            .replace(/\s+/g, "")
+            .toUpperCase();
 
           return (
             town === search ||
-            postcode === postcodeQuery ||
-            postcode.startsWith(postcodeQuery)
+            postcode === postcodeSearch ||
+            postcode.startsWith(postcodeSearch)
           );
         });
 
@@ -46,12 +54,17 @@ export default {
           locations: results
         });
 
-} catch (error) {
-  return jsonResponse({
-    locations: [],
-    error: error.message || String(error)
-  }, 500);
-}
+      } catch (error) {
+        return jsonResponse(
+          {
+            total: 0,
+            locations: [],
+            error: error.message || String(error)
+          },
+          500
+        );
+      }
+    }
 
     return env.ASSETS.fetch(request);
   }
