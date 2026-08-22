@@ -46,13 +46,12 @@ export default {
           locations: results
         });
 
-      } catch (error) {
-        return jsonResponse({
-          locations: [],
-          error: "Search failed"
-        }, 500);
-      }
-    }
+} catch (error) {
+  return jsonResponse({
+    locations: [],
+    error: error.message || String(error)
+  }, 500);
+}
 
     return env.ASSETS.fetch(request);
   }
