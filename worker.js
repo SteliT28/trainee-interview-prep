@@ -3,76 +3,54 @@ export default {
     const url = new URL(request.url);
 
     if (url.pathname === "/api/cqc") {
-      const query = url.searchParams.get("q")?.trim();
+      const query = (url.searchParams.get("q") || "").trim();
 
       if (!query) {
-        return jsonResponse({
-          locations: [],
-          error: "Please enter a town or postcode."
-        }, 400);
+        return jsonResponse({ locations: [] });
       }
 
       try {
-        const cqcUrl = new URL(
-          "https://api.service.cqc.org.uk/public/v1/locations"
+        // Load the practice database
+        const data = await env.ASSETS.fetch(
+          new URL("/practices.json", request.url)
         );
 
-        cqcUrl.searchParams.set("page", "1");
-        cqcUrl.searchParams.set("perPage", "100");
-
-        // Search by postcode where the user entered something
-        // that looks like a UK postcode.
-        const postcodePattern =
-          /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i;
-
-        if (postcodePattern.test(query)) {
-          cqcUrl.searchParams.set("postalCode", query);
-        } else {
-          // CQC's locations endpoint supports organisation/location
-          // filters, but town-name searching needs to be handled
-          // through the returned location data.
-          //
-          // We therefore retrieve a larger set and filter it below.
-        }
-
-        const response = await fetch(cqcUrl.toString(), {
-          headers: {
-            "Ocp-Apim-Subscription-Key": env.CQC_API_KEY,
-            "Accept": "application/json"
-          }
-        });
-
-        if (!response.ok) {
+        if (!data.ok) {
           return jsonResponse({
             locations: [],
-            error: `CQC API returned ${response.status}`
-          }, response.status);
+            error: "Could not load practices.json"
+          }, 500);
         }
 
-        const data = await response.json();
+        const practices = await data.json();
 
-        let locations = data.locations || [];
+        // Normalise the user's search
+        const search = query.toLowerCase().trim();
+        const postcodeSearch = search.replace(/\s+/g, "");
 
-        // Filter results for dental practices.
-        locations = locations.filter(location => {
-          const text = JSON.stringify(location).toLowerCase();
+        // Search ONLY Town/City and Postcode
+        const results = practices.filter(practice => {
+          const town = String(practice["Town/City"] || "").toLowerCase().trim();
+          const postcode = String(practice["Postcode"] || "")
+            .toLowerCase()
+            .replace(/\s+/g, "");
 
           return (
-            text.includes("dental") ||
-            text.includes("dentist") ||
-            text.includes("orthodont")
+            town === search ||
+            postcode === postcodeSearch ||
+            postcode.startsWith(postcodeSearch)
           );
         });
 
         return jsonResponse({
-          total: locations.length,
-          locations
+          total: results.length,
+          locations: results
         });
 
       } catch (error) {
         return jsonResponse({
           locations: [],
-          error: "Unable to connect to the CQC API."
+          error: "Search failed"
         }, 500);
       }
     }
