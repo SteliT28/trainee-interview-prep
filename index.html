@@ -852,8 +852,8 @@ button { font-family: inherit; }
 
 <div class="search-section">
   <div class="search-bar">
-    <input type="text" placeholder="Enter a town or postcode, e.g. Enfield or N9 0AB" value="Enfield">
-    <button class="search-btn">Search</button>
+    <input id="location-search" type="text" placeholder="Enter a town or postcode, e.g. Enfield or N9 0AB">
+    <button class="search-btn" id="search-button">Search</button>
   </div>
   <div class="search-hint">Practice information is retrieved from the official Care Quality Commission (CQC) register. Search by town or postcode to find registered dental services in England. CQC data is updated regularly, and results may not represent current trainee vacancies.</div>
 </div>
@@ -1880,7 +1880,73 @@ button { font-family: inherit; }
   const initial = window.location.hash.replace('#', '');
   setRoute(routes[initial] ? initial : 'home');
 })();
-</script>
+<script>
+const searchButton = document.getElementById("search-button");
+const searchInput = document.getElementById("location-search");
+const resultsContainer = document.getElementById("job-results");
+const resultsLabel = document.getElementById("job-results-label");
 
+async function searchCQC() {
+  const location = searchInput.value.trim();
+
+  if (!location) {
+    resultsLabel.innerHTML = "<strong>Please enter a town or postcode.</strong>";
+    resultsContainer.innerHTML = "";
+    return;
+  }
+
+  resultsLabel.innerHTML = "<strong>Searching CQC...</strong>";
+  resultsContainer.innerHTML = "";
+
+  try {
+    const response = await fetch(
+      "/api/cqc?location=" + encodeURIComponent(location)
+    );
+
+    if (!response.ok) {
+      throw new Error("Search request failed");
+    }
+
+    const data = await response.json();
+
+    if (!data.locations || data.locations.length === 0) {
+      resultsLabel.innerHTML =
+        "<strong>No dental practices found</strong>";
+      return;
+    }
+
+    resultsLabel.innerHTML =
+      "<strong>" + data.locations.length + " dental practices found</strong>";
+
+    resultsContainer.innerHTML = data.locations.map(location => `
+      <div class="practice-result">
+        <h3>${escapeHtml(location.locationName || "Dental practice")}</h3>
+        <p>${escapeHtml(location.postalCode || "")}</p>
+      </div>
+    `).join("");
+
+  } catch (error) {
+    console.error(error);
+    resultsLabel.innerHTML =
+      "<strong>Unable to search CQC</strong>";
+    resultsContainer.innerHTML =
+      "<p>Please try again in a moment.</p>";
+  }
+}
+
+function escapeHtml(value) {
+  const div = document.createElement("div");
+  div.textContent = value;
+  return div.innerHTML;
+}
+
+searchButton.addEventListener("click", searchCQC);
+
+searchInput.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    searchCQC();
+  }
+});
+</script>
 </body>
 </html>
