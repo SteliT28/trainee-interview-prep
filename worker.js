@@ -13,12 +13,12 @@ export default {
       }
 
       try {
-        // Load practices.json from the same deployed website
-        const dataUrl = new URL("/practices.json", request.url);
+        // Load the practice database from Cloudflare Assets
+        const practicesResponse = await env.ASSETS.fetch(
+          new Request(new URL("/practices.json", request.url))
+        );
 
-        const response = await fetch(dataUrl);
-
-        if (!response.ok) {
+        if (!practicesResponse.ok) {
           return jsonResponse(
             {
               total: 0,
@@ -29,14 +29,18 @@ export default {
           );
         }
 
-        const practices = await response.json();
+        const practices = await practicesResponse.json();
 
         const search = query.toLowerCase().trim();
-        const postcodeSearch = search
+
+        // Normalise postcode search:
+        // N9 0AB → N90AB
+        // n9 0ab → N90AB
+        const postcodeQuery = search
           .replace(/\s+/g, "")
           .toUpperCase();
 
-        // Search ONLY Town/City and Postcode
+        // Search ONLY by Town/City and Postcode
         const results = practices.filter((practice) => {
           const town = String(practice.townCity || "")
             .toLowerCase()
@@ -48,8 +52,8 @@ export default {
 
           return (
             town === search ||
-            postcode === postcodeSearch ||
-            postcode.startsWith(postcodeSearch)
+            postcode === postcodeQuery ||
+            postcode.startsWith(postcodeQuery)
           );
         });
 
@@ -70,8 +74,8 @@ export default {
       }
     }
 
-    // Serve the website normally
-    return fetch(request);
+    // Serve the website and other static files
+    return env.ASSETS.fetch(request);
   }
 };
 
