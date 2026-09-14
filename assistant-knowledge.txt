@@ -1,0 +1,21 @@
+NLDC VIRTUAL ASSISTANT KNOWLEDGE FILE
+
+Replace or expand the content of this file with information approved by NLDC.
+The virtual assistant is instructed to answer only from the information written here.
+
+Suggested sections to add:
+- NLDC course information and learner support contacts
+- Trainee dental nurse roles and responsibilities
+- Placement requirements and processes
+- Infection prevention and control
+- Patient confidentiality, consent and safeguarding
+- Professional conduct and communication
+- Assessment and portfolio guidance
+- Frequently asked learner questions
+
+Do not include patient-identifiable information, confidential learner records, passwords,
+API keys, private staff data or information that should not be published on the website.
+
+Current approved information:
+This knowledge file has not yet been populated with NLDC-approved learning content.
+Learners should contact their tutor or supervisor when they need an authoritative answer.
