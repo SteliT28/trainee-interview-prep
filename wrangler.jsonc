@@ -3,6 +3,12 @@
   "main": "worker.js",
   "compatibility_date": "2026-08-22",
 
+  "secrets": {
+    "required": [
+      "ACCESS_CODE"
+    ]
+  },
+
   "ai": {
     "binding": "AI"
   },
@@ -11,7 +17,7 @@
     {
       "binding": "DB",
       "database_name": "nldc_access",
-      "database_id": "3ec444d8-67ce-4f22-a4e7-a34b9ec615a1"
+      "database_id": "YOUR_REAL_DATABASE_ID"
     }
   ],
 
