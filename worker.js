@@ -1,4 +1,4 @@
-const AI_MODEL = "@cf/meta/llama-3.1-8b-instruct";
+const AI_MODEL = "@cf/meta/llama-3.1-8b-instruct-fast";
 
 const KNOWLEDGE_PATH = "/data/assistant-knowledge.txt";
 
