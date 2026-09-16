@@ -953,17 +953,17 @@ nav {
 .assistant-bar { display: flex; align-items: center; gap: 13px; padding: 17px 20px; color: #fff; background: var(--teal-deep); }
 .assistant-bar {
   position: relative;
-  min-height: 112px;
-  padding-left: 190px;
+  min-height: 132px;
+  padding-left: 230px;
   overflow: visible;
 }
 .assistant-avatar {
   position: absolute;
   left: 24px;
   top: 50%;
-  transform: translateY(-50%);
-  width: 150px;
-  height: 150px;
+  transform: translateY(-56%);
+  width: 190px;
+  height: 190px;
   display: grid;
   place-items: center;
   flex-shrink: 0;
@@ -975,26 +975,32 @@ nav {
   z-index: 2;
 }
 .assistant-avatar img {
-  width: 94%;
-  height: 94%;
+  width: 88%;
+  height: 88%;
   object-fit: contain;
-  object-position: center;
+  object-position: center 42%;
   display: block;
 }
 .assistant-chat {
-  padding-top: 58px;
+  padding-top: 76px;
 }
 @media (max-width: 620px) {
   .assistant-bar {
-    min-height: 96px;
-    padding-left: 132px;
+    min-height: 108px;
+    padding-left: 154px;
   }
   .assistant-avatar {
-    left: 18px;
-    width: 104px;
-    height: 104px;
+    left: 16px;
+    width: 128px;
+    height: 128px;
+    transform: translateY(-55%);
   }
-  .assistant-chat { padding-top: 36px; }
+  .assistant-avatar img {
+    width: 88%;
+    height: 88%;
+    object-position: center 42%;
+  }
+  .assistant-chat { padding-top: 46px; }
 }
 .assistant-bar h2 { font-size: 16px; margin-bottom: 2px; }
 .assistant-status { display: flex; align-items: center; gap: 6px; font-size: 11px; opacity: .86; }
