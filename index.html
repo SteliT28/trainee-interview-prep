@@ -880,11 +880,50 @@ nav {
 }
 .icon-resources { background: #EEF4F8; }
 .icon-assistant { background: transparent; }
-.icon-assistant img {
+
+.dentsie-home-chat {
+  position: relative;
   width: 100%;
-  height: 100%;
+  min-height: 92px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.dentsie-home-chat img {
+  width: 88px;
+  height: 88px;
   object-fit: contain;
+  flex-shrink: 0;
   display: block;
+}
+.dentsie-chat-bubble {
+  position: relative;
+  max-width: 205px;
+  padding: 10px 13px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #F7FBFA;
+  color: var(--teal-deep);
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  box-shadow: 0 3px 10px rgba(34,50,84,.05);
+}
+.dentsie-chat-bubble::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 28px;
+  width: 12px;
+  height: 12px;
+  background: #F7FBFA;
+  border-left: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  transform: rotate(45deg);
+}
+@media (max-width: 520px) {
+  .dentsie-home-chat img { width: 78px; height: 78px; }
+  .dentsie-chat-bubble { max-width: 190px; }
 }
 @media (max-width: 520px) {
   .future-pathways-row { grid-template-columns: 1fr; }
@@ -912,13 +951,50 @@ nav {
 /* --- Virtual Assistant --- */
 .assistant-shell { overflow: hidden; max-width: 850px; margin: 0 auto; background: #fff; border: 1px solid var(--border); border-radius: 20px; box-shadow: 0 8px 28px rgba(34, 50, 84, .08); }
 .assistant-bar { display: flex; align-items: center; gap: 13px; padding: 17px 20px; color: #fff; background: var(--teal-deep); }
-.assistant-avatar { width: 52px; height: 52px; display: grid; place-items: center; flex-shrink: 0; background: transparent; }
+.assistant-bar {
+  position: relative;
+  min-height: 112px;
+  padding-left: 190px;
+  overflow: visible;
+}
+.assistant-avatar {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 150px;
+  height: 150px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #fff;
+  border: 4px solid var(--teal-deep);
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(34,50,84,.16);
+  z-index: 2;
+}
 .assistant-avatar img {
-  width: 100%;
-  height: 100%;
+  width: 94%;
+  height: 94%;
   object-fit: contain;
   object-position: center;
   display: block;
+}
+.assistant-chat {
+  padding-top: 58px;
+}
+@media (max-width: 620px) {
+  .assistant-bar {
+    min-height: 96px;
+    padding-left: 132px;
+  }
+  .assistant-avatar {
+    left: 18px;
+    width: 104px;
+    height: 104px;
+  }
+  .assistant-chat { padding-top: 36px; }
 }
 .assistant-bar h2 { font-size: 16px; margin-bottom: 2px; }
 .assistant-status { display: flex; align-items: center; gap: 6px; font-size: 11px; opacity: .86; }
@@ -1135,7 +1211,10 @@ nav {
       </div>
 
       <div class="pathway-card" data-route="assistant" role="link" tabindex="0">
-        <div class="pathway-icon icon-assistant"><img src="images/dentsie_simple.png" alt="Dentsie"></div>
+        <div class="dentsie-home-chat">
+        <img src="images/dentsie_simple.png" alt="Dentsie">
+        <div class="dentsie-chat-bubble">Hi, I’m Dentsie — your virtual career assistant.</div>
+      </div>
         <div class="pathway-title display"> Dentsie Virtual Assistant</div>
         <div class="pathway-desc">A guided assistant for common questions and tasks during your career journey.</div>
         <div class="pathway-cta">Ask Dentsie <span>→</span></div>
