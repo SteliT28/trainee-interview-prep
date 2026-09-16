@@ -907,6 +907,12 @@ nav {
 .assistant-shell { overflow: hidden; max-width: 850px; margin: 0 auto; background: #fff; border: 1px solid var(--border); border-radius: 20px; box-shadow: 0 8px 28px rgba(34, 50, 84, .08); }
 .assistant-bar { display: flex; align-items: center; gap: 13px; padding: 17px 20px; color: #fff; background: var(--teal-deep); }
 .assistant-avatar { width: 40px; height: 40px; display: grid; place-items: center; flex-shrink: 0; border-radius: 12px; color: var(--teal-deep); background: #fff; font-size: 18px; }
+  .assistant-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
 .assistant-bar h2 { font-size: 16px; margin-bottom: 2px; }
 .assistant-status { display: flex; align-items: center; gap: 6px; font-size: 11px; opacity: .86; }
 .assistant-status::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #6FAF8A; }
@@ -1494,8 +1500,10 @@ nav {
     </header>
     <section class="assistant-shell" aria-label="NLDC Virtual Assistant">
       <div class="assistant-bar">
-        <div class="assistant-avatar" aria-hidden="true">✦</div>
-        <div><h2>NLDC Virtual Assistant</h2><div class="assistant-status">Ready to help</div></div>
+       <div class="assistant-avatar" aria-hidden="true">
+         <img src="images/dentsie_simple.png" alt="">
+      </div>
+        <div><h2>Dentsie NLDC</h2><div class="assistant-status">Ready to help</div></div>
       </div>
       <div id="assistant-chat" class="assistant-chat" aria-live="polite">
         <div class="assistant-message">
