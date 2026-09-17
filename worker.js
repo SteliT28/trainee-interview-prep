@@ -1,6 +1,6 @@
 const AI_MODEL = "@cf/meta/llama-3.1-8b-instruct-fast";
 const KNOWLEDGE_PATH = "/data/assistant-knowledge.txt";
-const MAX_KNOWLEDGE_CHARACTERS = 50000;
+const MAX_KNOWLEDGE_CHARACTERS = 100000;
 const MAX_MESSAGE_CHARACTERS = 2000;
 
 let cachedKnowledge = null;
