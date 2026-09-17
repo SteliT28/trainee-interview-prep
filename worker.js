@@ -7,8 +7,7 @@ let cachedKnowledge = null;
 let cachedPractices = null;
 
 const ACCESS_COOKIE = "nldc_access";
-const ACCESS_SESSION_SECONDS = 60 * 60 * 12; // 12 hours
-
+const ACCESS_SESSION_SECONDS = 60 * 60 * 12;
 
 // ============================================================
 // ACCESS / LOGIN
@@ -28,10 +27,8 @@ function getCookie(request, name) {
   return "";
 }
 
-
 function base64UrlEncode(text) {
   const bytes = new TextEncoder().encode(text);
-
   let binary = "";
 
   for (const byte of bytes) {
@@ -43,7 +40,6 @@ function base64UrlEncode(text) {
     .replace(/\//g, "_")
     .replace(/=+$/g, "");
 }
-
 
 function base64UrlDecode(text) {
   const padded =
@@ -60,7 +56,6 @@ function base64UrlDecode(text) {
   return new TextDecoder().decode(bytes);
 }
 
-
 async function hmac(secret, value) {
   const key = await crypto.subtle.importKey(
     "raw",
@@ -73,12 +68,11 @@ async function hmac(secret, value) {
     ["sign"]
   );
 
-  const signature =
-    await crypto.subtle.sign(
-      "HMAC",
-      key,
-      new TextEncoder().encode(value)
-    );
+  const signature = await crypto.subtle.sign(
+    "HMAC",
+    key,
+    new TextEncoder().encode(value)
+  );
 
   let binary = "";
 
@@ -92,7 +86,6 @@ async function hmac(secret, value) {
     .replace(/=+$/g, "");
 }
 
-
 async function createAccessToken(secret, name) {
   const payload = base64UrlEncode(
     JSON.stringify({
@@ -103,17 +96,12 @@ async function createAccessToken(secret, name) {
     })
   );
 
-  const signature =
-    await hmac(secret, payload);
+  const signature = await hmac(secret, payload);
 
   return `${payload}.${signature}`;
 }
 
-
-async function verifyAccessToken(
-  secret,
-  token
-) {
+async function verifyAccessToken(secret, token) {
   if (
     !secret ||
     !token ||
@@ -122,15 +110,13 @@ async function verifyAccessToken(
     return null;
   }
 
-  const [payload, signature] =
-    token.split(".");
+  const [payload, signature] = token.split(".");
 
   if (!payload || !signature) {
     return null;
   }
 
-  const expected =
-    await hmac(secret, payload);
+  const expected = await hmac(secret, payload);
 
   if (expected !== signature) {
     return null;
@@ -143,26 +129,22 @@ async function verifyAccessToken(
 
     if (
       !data?.exp ||
-      data.exp <
-        Math.floor(Date.now() / 1000)
+      data.exp < Math.floor(Date.now() / 1000)
     ) {
       return null;
     }
 
     return data;
-
   } catch {
     return null;
   }
 }
 
-
 async function hasAccess(request, env) {
-  const token =
-    getCookie(
-      request,
-      ACCESS_COOKIE
-    );
+  const token = getCookie(
+    request,
+    ACCESS_COOKIE
+  );
 
   return verifyAccessToken(
     env.ACCESS_CODE,
@@ -170,16 +152,11 @@ async function hasAccess(request, env) {
   );
 }
 
-
-async function handleAccessLogin(
-  request,
-  env
-) {
+async function handleAccessLogin(request, env) {
   if (request.method !== "POST") {
     return json(
       {
-        error:
-          "Use POST for this endpoint.",
+        error: "Use POST for this endpoint.",
       },
       405
     );
@@ -219,9 +196,7 @@ async function handleAccessLogin(
     );
   }
 
-  const name = String(
-    body?.name || ""
-  )
+  const name = String(body?.name || "")
     .trim()
     .replace(/\s+/g, " ")
     .slice(0, 100);
@@ -233,8 +208,7 @@ async function handleAccessLogin(
   if (name.length < 2) {
     return json(
       {
-        error:
-          "Please enter your name.",
+        error: "Please enter your name.",
       },
       400
     );
@@ -243,8 +217,7 @@ async function handleAccessLogin(
   if (!code) {
     return json(
       {
-        error:
-          "Please enter the access code.",
+        error: "Please enter the access code.",
       },
       400
     );
@@ -253,32 +226,23 @@ async function handleAccessLogin(
   if (code !== env.ACCESS_CODE) {
     return json(
       {
-        error:
-          "The access code is incorrect.",
+        error: "The access code is incorrect.",
       },
       401
     );
   }
 
-  const loginTime =
-    new Date().toISOString();
+  const loginTime = new Date().toISOString();
 
   try {
     await env.DB
       .prepare(
         "INSERT INTO logins (name, login_time) VALUES (?, ?)"
       )
-      .bind(
-        name,
-        loginTime
-      )
+      .bind(name, loginTime)
       .run();
-
   } catch (error) {
-    console.error(
-      "Login logging failed",
-      error
-    );
+    console.error("Login logging failed", error);
 
     return json(
       {
@@ -289,17 +253,15 @@ async function handleAccessLogin(
     );
   }
 
-  const token =
-    await createAccessToken(
-      env.ACCESS_CODE,
-      name
-    );
+  const token = await createAccessToken(
+    env.ACCESS_CODE,
+    name
+  );
 
-  const response =
-    json({
-      ok: true,
-      name,
-    });
+  const response = json({
+    ok: true,
+    name,
+  });
 
   response.headers.set(
     "Set-Cookie",
@@ -309,42 +271,31 @@ async function handleAccessLogin(
   return response;
 }
 
-
-async function handleAccessStatus(
-  request,
-  env
-) {
+async function handleAccessStatus(request, env) {
   if (request.method !== "GET") {
     return json(
       {
-        error:
-          "Use GET for this endpoint.",
+        error: "Use GET for this endpoint.",
       },
       405
     );
   }
 
-  const session =
-    await hasAccess(
-      request,
-      env
-    );
+  const session = await hasAccess(
+    request,
+    env
+  );
 
   return json({
     authenticated: !!session,
-    name:
-      session?.name || "",
+    name: session?.name || "",
   });
 }
 
-
-async function handleAccessLogout(
-  request
-) {
-  const response =
-    json({
-      ok: true,
-    });
+async function handleAccessLogout(request) {
+  const response = json({
+    ok: true,
+  });
 
   response.headers.set(
     "Set-Cookie",
@@ -353,7 +304,6 @@ async function handleAccessLogout(
 
   return response;
 }
-
 
 // ============================================================
 // GENERAL HELPERS
@@ -364,30 +314,21 @@ function json(data, status = 200) {
     JSON.stringify(data),
     {
       status,
-
       headers: {
         "content-type":
           "application/json; charset=utf-8",
-
-        "cache-control":
-          "no-store",
-
-        "x-content-type-options":
-          "nosniff",
+        "cache-control": "no-store",
+        "x-content-type-options": "nosniff",
       },
     }
   );
 }
 
-
 // ============================================================
 // KNOWLEDGE FILE
 // ============================================================
 
-async function loadKnowledge(
-  request,
-  env
-) {
+async function loadKnowledge(request, env) {
   if (cachedKnowledge) {
     return cachedKnowledge;
   }
@@ -398,21 +339,16 @@ async function loadKnowledge(
     );
   }
 
-  const knowledgeUrl =
-    new URL(
-      KNOWLEDGE_PATH,
-      request.url
-    );
+  const knowledgeUrl = new URL(
+    KNOWLEDGE_PATH,
+    request.url
+  );
 
-  const response =
-    await env.ASSETS.fetch(
-      new Request(
-        knowledgeUrl,
-        {
-          method: "GET",
-        }
-      )
-    );
+  const response = await env.ASSETS.fetch(
+    new Request(knowledgeUrl, {
+      method: "GET",
+    })
+  );
 
   if (!response.ok) {
     throw new Error(
@@ -420,8 +356,9 @@ async function loadKnowledge(
     );
   }
 
-  const content =
-    (await response.text()).trim();
+  const content = (
+    await response.text()
+  ).trim();
 
   if (!content) {
     throw new Error(
@@ -429,24 +366,19 @@ async function loadKnowledge(
     );
   }
 
-  cachedKnowledge =
-    content.slice(
-      0,
-      MAX_KNOWLEDGE_CHARACTERS
-    );
+  cachedKnowledge = content.slice(
+    0,
+    MAX_KNOWLEDGE_CHARACTERS
+  );
 
   return cachedKnowledge;
 }
-
 
 // ============================================================
 // PRACTICES DATABASE
 // ============================================================
 
-async function loadPractices(
-  request,
-  env
-) {
+async function loadPractices(request, env) {
   if (cachedPractices) {
     return cachedPractices;
   }
@@ -457,21 +389,16 @@ async function loadPractices(
     );
   }
 
-  const dataUrl =
-    new URL(
-      "/practices.json",
-      request.url
-    );
+  const dataUrl = new URL(
+    "/practices.json",
+    request.url
+  );
 
-  const response =
-    await env.ASSETS.fetch(
-      new Request(
-        dataUrl,
-        {
-          method: "GET",
-        }
-      )
-    );
+  const response = await env.ASSETS.fetch(
+    new Request(dataUrl, {
+      method: "GET",
+    })
+  );
 
   if (!response.ok) {
     throw new Error(
@@ -479,8 +406,7 @@ async function loadPractices(
     );
   }
 
-  const payload =
-    await response.json();
+  const payload = await response.json();
 
   const items =
     Array.isArray(payload)
@@ -501,10 +427,7 @@ async function loadPractices(
   return cachedPractices;
 }
 
-
-function searchablePracticeText(
-  item
-) {
+function searchablePracticeText(item) {
   return [
     item.name,
     item.address1,
@@ -519,16 +442,11 @@ function searchablePracticeText(
     .toLowerCase();
 }
 
-
-async function handleCqc(
-  request,
-  env
-) {
+async function handleCqc(request, env) {
   if (request.method !== "GET") {
     return json(
       {
-        error:
-          "Use GET for this endpoint.",
+        error: "Use GET for this endpoint.",
       },
       405
     );
@@ -556,102 +474,73 @@ async function handleCqc(
       query.replace(/\s+/g, "");
 
     const practices =
-      await loadPractices(
-        request,
-        env
+      await loadPractices(request, env);
+
+    const locations = practices
+      .map((item) => {
+        const text =
+          searchablePracticeText(item);
+
+        const compactText =
+          text.replace(/\s+/g, "");
+
+        let score = 0;
+
+        if (
+          String(item.postcode || "")
+            .toLowerCase()
+            .replace(/\s+/g, "") ===
+          compactQuery
+        ) {
+          score += 100;
+        }
+
+        if (
+          String(
+            item.townCity ||
+            item.town ||
+            item.city ||
+            ""
+          ).toLowerCase() === query
+        ) {
+          score += 70;
+        }
+
+        if (
+          compactText.includes(compactQuery)
+        ) {
+          score += 30;
+        }
+
+        if (text.includes(query)) {
+          score += 20;
+        }
+
+        return {
+          item,
+          score,
+        };
+      })
+      .filter(
+        (result) => result.score > 0
+      )
+      .sort(
+        (a, b) =>
+          b.score - a.score ||
+          String(
+            a.item.name || ""
+          ).localeCompare(
+            String(b.item.name || "")
+          )
+      )
+      .slice(0, 50)
+      .map(
+        (result) => result.item
       );
-
-    const locations =
-      practices
-        .map((item) => {
-          const text =
-            searchablePracticeText(
-              item
-            );
-
-          const compactText =
-            text.replace(
-              /\s+/g,
-              ""
-            );
-
-          let score = 0;
-
-          if (
-            String(
-              item.postcode || ""
-            )
-              .toLowerCase()
-              .replace(
-                /\s+/g,
-                ""
-              ) ===
-            compactQuery
-          ) {
-            score += 100;
-          }
-
-          if (
-            String(
-              item.townCity ||
-              item.town ||
-              item.city ||
-              ""
-            ).toLowerCase() ===
-            query
-          ) {
-            score += 70;
-          }
-
-          if (
-            compactText.includes(
-              compactQuery
-            )
-          ) {
-            score += 30;
-          }
-
-          if (
-            text.includes(query)
-          ) {
-            score += 20;
-          }
-
-          return {
-            item,
-            score,
-          };
-        })
-
-        .filter(
-          (result) =>
-            result.score > 0
-        )
-
-        .sort(
-          (a, b) =>
-            b.score -
-              a.score ||
-            String(
-              a.item.name || ""
-            ).localeCompare(
-              String(
-                b.item.name || ""
-              )
-            )
-        )
-
-        .slice(0, 50)
-
-        .map(
-          (result) =>
-            result.item
-        );
 
     return json({
       locations,
     });
-
   } catch (error) {
     return json(
       {
@@ -664,36 +553,26 @@ async function handleCqc(
   }
 }
 
-
 // ============================================================
 // AI HELPERS
 // ============================================================
 
-function cleanHistory(
-  history,
-  limit = 6
-) {
+function cleanHistory(history, limit = 6) {
   if (!Array.isArray(history)) {
     return [];
   }
 
   return history
     .slice(-limit)
-
     .filter(
       (item) =>
         item &&
-        [
-          "user",
-          "assistant",
-        ].includes(
+        ["user", "assistant"].includes(
           item.role
         )
     )
-
     .map((item) => ({
       role: item.role,
-
       content: String(
         item.content || ""
       ).slice(
@@ -701,33 +580,29 @@ function cleanHistory(
         MAX_MESSAGE_CHARACTERS
       ),
     }))
-
     .filter(
       (item) =>
         item.content.trim()
     );
 }
 
-
 function extractAnswer(result) {
   if (
-    typeof result?.response ===
-    "string"
+    typeof result?.response === "string"
   ) {
     return result.response;
   }
 
   if (
-    typeof result?.result
-      ?.response === "string"
+    typeof result?.result?.response ===
+    "string"
   ) {
     return result.result.response;
   }
 
   if (
     typeof result?.choices?.[0]
-      ?.message?.content ===
-    "string"
+      ?.message?.content === "string"
   ) {
     return result
       .choices[0]
@@ -737,27 +612,22 @@ function extractAnswer(result) {
   return "";
 }
 
-
 function parseJsonFromModel(text) {
-  const raw =
-    String(
-      text || ""
-    ).trim();
+  const raw = String(
+    text || ""
+  ).trim();
 
   if (!raw) {
-    throw new Error(
-      "Empty AI response"
-    );
+    throw new Error("Empty AI response");
   }
 
   try {
     return JSON.parse(raw);
   } catch (_) {}
 
-  const fenced =
-    raw.match(
-      /```(?:json)?\s*([\s\S]*?)```/i
-    );
+  const fenced = raw.match(
+    /```(?:json)?\s*([\s\S]*?)```/i
+  );
 
   if (fenced) {
     try {
@@ -790,15 +660,11 @@ function parseJsonFromModel(text) {
   );
 }
 
-
 // ============================================================
 // NLDC AI ASSISTANT
 // ============================================================
 
-async function handleAssistant(
-  request,
-  env
-) {
+async function handleAssistant(request, env) {
   if (request.method !== "POST") {
     return json(
       {
@@ -822,8 +688,7 @@ async function handleAssistant(
   let body;
 
   try {
-    body =
-      await request.json();
+    body = await request.json();
   } catch {
     return json(
       {
@@ -834,10 +699,9 @@ async function handleAssistant(
     );
   }
 
-  const message =
-    String(
-      body?.message || ""
-    ).trim();
+  const message = String(
+    body?.message || ""
+  ).trim();
 
   if (!message) {
     return json(
@@ -916,12 +780,10 @@ END REFERENCE MATERIAL
       role: "system",
       content: systemPrompt,
     },
-
     ...cleanHistory(
       body?.history,
       6
     ),
-
     {
       role: "user",
       content: message,
@@ -953,7 +815,6 @@ END REFERENCE MATERIAL
     return json({
       answer,
     });
-
   } catch (error) {
     console.error(
       "Workers AI request failed",
@@ -970,15 +831,11 @@ END REFERENCE MATERIAL
   }
 }
 
-
 // ============================================================
 // AI MOCK INTERVIEW
 // ============================================================
 
-async function handleMockInterview(
-  request,
-  env
-) {
+async function handleMockInterview(request, env) {
   if (request.method !== "POST") {
     return json(
       {
@@ -1002,8 +859,7 @@ async function handleMockInterview(
   let body;
 
   try {
-    body =
-      await request.json();
+    body = await request.json();
   } catch {
     return json(
       {
@@ -1014,65 +870,65 @@ async function handleMockInterview(
     );
   }
 
-  const action =
-    String(
-      body?.action || ""
-    )
-      .trim()
-      .toLowerCase();
+  const action = String(
+    body?.action || ""
+  )
+    .trim()
+    .toLowerCase();
 
-  const role =
-    String(
-      body?.role ||
-      "trainee dental nurse"
-    )
-      .trim()
-      .slice(0, 120);
+  const role = String(
+    body?.role ||
+    "trainee dental nurse"
+  )
+    .trim()
+    .slice(0, 120);
 
   const systemPrompt = `
 You are conducting a realistic UK job interview for a ${role} position.
 
-Your job is to behave like a calm, professional interviewer rather than a tutor.
-
-Keep the interview moving naturally.
+Your job is to behave like a calm, professional interviewer.
 
 Interview rules:
 
 - Ask ONE interview question at a time.
-- Questions should suit a trainee dental nurse applicant and can cover motivation, communication, teamwork, professionalism, patient care, confidentiality, safeguarding, infection control, organisation, learning, and realistic workplace scenarios.
+- Questions should suit a trainee dental nurse applicant.
+- Questions can cover motivation, communication, teamwork, professionalism, patient care, confidentiality, safeguarding, infection control, organisation, learning and realistic workplace scenarios.
 - Start with a natural opening question.
-- Vary the questions and avoid repeating the same wording.
-- After each candidate answer, briefly judge the quality of the answer, then ask the next appropriate question.
-- Use the candidate's previous answer to ask a relevant follow-up when that would feel natural in a real interview.
-- Feedback must be short: usually one sentence and no more than about 25 words.
-- Feedback should be constructive and specific, not a long lesson or model answer.
-- Do not expect trainee applicants to already have the knowledge or authority of a qualified dental nurse.
-- Do not give unsafe clinical instructions or invent GDC, CQC, NHS, legal, or practice-policy requirements.
+- Vary the questions.
+- Do not repeat questions already asked.
+- Use previous candidate answers and interview history when useful.
+- After each candidate answer, give brief constructive feedback.
+- Feedback should normally be one sentence and no more than about 25 words.
+- After the feedback, provide the next appropriate interview question.
+- If an answer is very short or unclear, a probing follow-up question is appropriate.
+- Do not expect a trainee applicant to already have the knowledge or authority of a qualified dental nurse.
+- Do not give unsafe clinical instructions.
+- Do not invent GDC, CQC, NHS, legal or practice-policy requirements.
 - Never ask for patient-identifiable information.
-- Keep interviewer questions concise and natural, normally one or two sentences.
-- If the candidate gives a very short or unclear answer, ask a brief probing follow-up instead of immediately moving to a completely unrelated topic.
-- End only when the interview has clearly covered several useful areas or when the remaining time is very short.
+- Keep questions concise and natural.
+- End when the interview has covered several useful areas or when the available interview time has ended.
 
 You MUST return valid JSON only.
-
 Do not use markdown or commentary outside the JSON.
 
-For a start request return exactly this shape:
+For a start request:
 
 {"question":"Your first interview question"}
 
-For an answer request return exactly this shape:
+For an answer request:
 
-{"feedback":"Short feedback on the candidate's last answer","question":"The next interviewer question","end":false}
+{"feedback":"Short feedback about the answer","question":"Next interview question","end":false}
 
-If the interview should finish, use:
+If the interview should end:
 
-{"feedback":"Short final feedback on the last answer","question":"","end":true}
+{"feedback":"Short feedback about the final answer","question":"","end":true}
 `;
 
   try {
 
-    // START INTERVIEW
+    // ========================================================
+    // START
+    // ========================================================
 
     if (action === "start") {
       const durationMinutes =
@@ -1099,14 +955,12 @@ If the interview should finish, use:
                 content:
                   systemPrompt,
               },
-
               {
                 role: "user",
                 content:
                   userPrompt,
               },
             ],
-
             max_tokens: 180,
             temperature: 0.65,
           }
@@ -1114,15 +968,12 @@ If the interview should finish, use:
 
       const parsed =
         parseJsonFromModel(
-          extractAnswer(
-            result
-          )
+          extractAnswer(result)
         );
 
       const question =
         String(
-          parsed?.question ||
-          ""
+          parsed?.question || ""
         ).trim();
 
       if (!question) {
@@ -1136,8 +987,9 @@ If the interview should finish, use:
       });
     }
 
-
-    // ANSWER INTERVIEW QUESTION
+    // ========================================================
+    // ANSWER
+    // ========================================================
 
     if (action === "answer") {
       const answer =
@@ -1181,7 +1033,7 @@ If the interview should finish, use:
       const history =
         cleanHistory(
           body?.history,
-          10
+          20
         );
 
       const minutesRemaining =
@@ -1195,10 +1047,7 @@ If the interview should finish, use:
       const timeText =
         `${minutesRemaining}:${String(
           secondsPart
-        ).padStart(
-          2,
-          "0"
-        )}`;
+        ).padStart(2, "0")}`;
 
       const messages = [
         {
@@ -1211,9 +1060,20 @@ If the interview should finish, use:
 
         {
           role: "user",
-
           content:
-            `The candidate has just answered the current interview question. There is about ${timeText} remaining. Return concise feedback and either the next natural interview question or end the interview if appropriate. Current question for context: ${question}`,
+            `Evaluate the candidate's most recent answer.
+
+Current question:
+${question}
+
+Candidate's answer:
+${answer}
+
+There is approximately ${timeText} remaining.
+
+Return brief feedback about THIS answer first, followed by the next natural interview question.
+
+Return JSON only.`,
         },
       ];
 
@@ -1222,30 +1082,22 @@ If the interview should finish, use:
           AI_MODEL,
           {
             messages,
-
             max_tokens: 260,
-
             temperature: 0.6,
           }
         );
 
       const parsed =
         parseJsonFromModel(
-          extractAnswer(
-            result
-          )
+          extractAnswer(result)
         );
 
       const feedback =
         String(
-          parsed?.feedback ||
-          ""
+          parsed?.feedback || ""
         )
           .trim()
-          .slice(
-            0,
-            320
-          );
+          .slice(0, 320);
 
       const nextQuestion =
         String(
@@ -1254,10 +1106,7 @@ If the interview should finish, use:
           ""
         )
           .trim()
-          .slice(
-            0,
-            600
-          );
+          .slice(0, 600);
 
       const end =
         parsed?.end === true ||
@@ -1286,6 +1135,189 @@ If the interview should finish, use:
       });
     }
 
+    // ========================================================
+    // FINAL ASSESSMENT
+    // ========================================================
+
+    if (
+      action === "finish" ||
+      action === "final-feedback" ||
+      action === "complete"
+    ) {
+      const history =
+        cleanHistory(
+          body?.history,
+          40
+        );
+
+      const answeredCount =
+        Math.max(
+          0,
+          Number(
+            body?.answeredCount
+          ) || 0
+        );
+
+      const targetQuestions =
+        Math.max(
+          1,
+          Number(
+            body?.targetQuestions
+          ) || 10
+        );
+
+      const completion =
+        Math.min(
+          100,
+          Math.round(
+            (
+              answeredCount /
+              targetQuestions
+            ) * 100
+          )
+        );
+
+      if (answeredCount === 0) {
+        return json({
+          completion: 0,
+          communication: 0,
+          answerQuality: 0,
+          relevance: 0,
+          professionalism: 0,
+          feedback:
+            "No interview answers were submitted, so there is not enough information to assess your responses yet.",
+        });
+      }
+
+      const assessmentPrompt = `
+The mock interview has now ended.
+
+The candidate answered ${answeredCount} interview question${answeredCount === 1 ? "" : "s"}.
+
+The interview completion percentage has already been calculated as ${completion}%.
+
+Assess ONLY the answers the candidate actually provided.
+
+Do not treat the completion percentage as interview readiness or candidate ability.
+
+Score these four categories from 0 to 100:
+
+1. Communication
+2. Answer Quality
+3. Relevance
+4. Professionalism
+
+Important scoring rules:
+
+- Base scores only on evidence in the candidate's submitted answers.
+- If only one answer was provided, assess that one answer fairly.
+- Do not lower category scores merely because the interview was stopped early.
+- Do not assume missing answers were poor answers.
+- A trainee applicant should not be expected to have the knowledge or authority of a qualified dental nurse.
+- Keep the written feedback constructive and supportive.
+- Mention useful strengths shown in the answers.
+- Mention one or two practical areas for improvement where appropriate.
+- Do not provide a model answer.
+- Do not describe the completion percentage as readiness.
+
+Return valid JSON only in exactly this structure:
+
+{
+  "communication": 0,
+  "answerQuality": 0,
+  "relevance": 0,
+  "professionalism": 0,
+  "feedback": "A short personalised feedback paragraph."
+}
+`;
+
+      const messages = [
+        {
+          role: "system",
+          content:
+            `You are assessing a completed UK trainee dental nurse mock interview.
+
+Be fair, constructive and evidence-based.
+
+The candidate may have stopped the interview early. Assess only the answers actually given.
+
+Return valid JSON only.`,
+        },
+
+        ...history,
+
+        {
+          role: "user",
+          content:
+            assessmentPrompt,
+        },
+      ];
+
+      const result =
+        await env.AI.run(
+          AI_MODEL,
+          {
+            messages,
+            max_tokens: 450,
+            temperature: 0.25,
+          }
+        );
+
+      const parsed =
+        parseJsonFromModel(
+          extractAnswer(result)
+        );
+
+      function score(value) {
+        const number =
+          Number(value);
+
+        if (
+          !Number.isFinite(number)
+        ) {
+          return 0;
+        }
+
+        return Math.max(
+          0,
+          Math.min(
+            100,
+            Math.round(number)
+          )
+        );
+      }
+
+      const finalFeedback =
+        String(
+          parsed?.feedback || ""
+        )
+          .trim()
+          .slice(0, 1200);
+
+      return json({
+        completion,
+        communication:
+          score(
+            parsed?.communication
+          ),
+        answerQuality:
+          score(
+            parsed?.answerQuality
+          ),
+        relevance:
+          score(
+            parsed?.relevance
+          ),
+        professionalism:
+          score(
+            parsed?.professionalism
+          ),
+        feedback:
+          finalFeedback ||
+          "Your answers have been reviewed. Continue practising clear, relevant and professional responses using specific examples where possible.",
+      });
+    }
+
     return json(
       {
         error:
@@ -1310,21 +1342,14 @@ If the interview should finish, use:
   }
 }
 
-
 // ============================================================
 // ROUTER
 // ============================================================
 
 export default {
-  async fetch(
-    request,
-    env
-  ) {
+  async fetch(request, env) {
     const url =
-      new URL(
-        request.url
-      );
-
+      new URL(request.url);
 
     // ACCESS LOGIN
 
@@ -1338,7 +1363,6 @@ export default {
       );
     }
 
-
     // CHECK LOGIN STATUS
 
     if (
@@ -1351,7 +1375,6 @@ export default {
       );
     }
 
-
     // LOG OUT
 
     if (
@@ -1362,7 +1385,6 @@ export default {
         request
       );
     }
-
 
     // PROTECT ALL OTHER API ROUTES
 
@@ -1388,7 +1410,6 @@ export default {
       }
     }
 
-
     // DENTAL PRACTICE SEARCH
 
     if (
@@ -1400,7 +1421,6 @@ export default {
         env
       );
     }
-
 
     // VIRTUAL ASSISTANT
 
@@ -1414,7 +1434,6 @@ export default {
       );
     }
 
-
     // MOCK INTERVIEW
 
     if (
@@ -1426,7 +1445,6 @@ export default {
         env
       );
     }
-
 
     // STATIC WEBSITE FILES
 
