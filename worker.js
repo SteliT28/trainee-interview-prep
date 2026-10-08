@@ -3,7 +3,6 @@ const KNOWLEDGE_PATH = "/data/assistant-knowledge.txt";
 const MAX_KNOWLEDGE_CHARACTERS = 100000;
 const MAX_MESSAGE_CHARACTERS = 2000;
 
-let cachedKnowledge = null;
 let cachedPractices = null;
 
 const ACCESS_COOKIE = "nldc_access";
@@ -329,9 +328,6 @@ function json(data, status = 200) {
 // ============================================================
 
 async function loadKnowledge(request, env) {
-  if (cachedKnowledge) {
-    return cachedKnowledge;
-  }
 
   if (!env.ASSETS) {
     throw new Error(
@@ -366,12 +362,7 @@ async function loadKnowledge(request, env) {
     );
   }
 
-  cachedKnowledge = content.slice(
-    0,
-    MAX_KNOWLEDGE_CHARACTERS
-  );
-
-  return cachedKnowledge;
+return content.slice(0, MAX_KNOWLEDGE_CHARACTERS);
 }
 
 // ============================================================
