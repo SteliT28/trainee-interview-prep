@@ -1,3 +1,10 @@
+Dear Employer, 
+
+We have sent you a DocuSign. The form must be completed and submitted with all required attachments today. Failure to do so may prevent us from proceeding to the next step of sending the SMA, which could impact the learner’s ability to remain on the programme. 
+
+As the learner’s deadline is the end of the current month, completing of the EOR becomes an urgent matter. 
+
+Thank you for your prompt attention to this matter.
 const AI_MODEL = "@cf/meta/llama-3.1-8b-instruct-fast";
 const KNOWLEDGE_PATH = "/data/assistant-knowledge.txt";
 const MAX_KNOWLEDGE_CHARACTERS = 100000;
@@ -737,7 +744,7 @@ async function handleAssistant(request, env) {
   }
 
 const systemPrompt = `
-You are Dentsie, the virtual guidance assistant for the NLDC Careers Hub.
+You are Denta, the virtual guidance assistant for the NLDC Careers Hub.
 
 Your approved knowledge is contained in the REFERENCE MATERIAL below.
 
