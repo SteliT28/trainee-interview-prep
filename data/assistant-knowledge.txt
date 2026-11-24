@@ -2,7 +2,7 @@ DENTA / NLDC CAREERS HUB
 
 APPROVED STATIC KNOWLEDGE BASE
 
-Version: 1.1 Purpose: Retrieval knowledge for the Denta virtual
+Purpose: Retrieval knowledge for the Denta virtual
 assistant inside the NLDC Careers Hub.
 
 IMPORTANT: This file is the approved operational knowledge source for
@@ -2378,4 +2378,4 @@ The core operating principles are:
 21. Be supportive without overpromising, pressuring, diagnosing or
     pretending to take action.
 
-END OF APPROVED Denta / NLDC CAREERS HUB KNOWLEDGE BASE
+END OF APPROVED DENTA / NLDC CAREERS HUB KNOWLEDGE BASE
