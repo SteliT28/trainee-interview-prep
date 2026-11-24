@@ -881,7 +881,7 @@ nav {
 .icon-resources { background: #EEF4F8; }
 .icon-assistant { background: transparent; }
 
-.dentsie-home-chat {
+.denta-home-chat {
   position: relative;
   width: 100%;
   min-height: 92px;
@@ -889,14 +889,14 @@ nav {
   align-items: center;
   gap: 16px;
 }
-.dentsie-home-chat img {
+.denta-home-chat img {
   width: 88px;
   height: 88px;
   object-fit: contain;
   flex-shrink: 0;
   display: block;
 }
-.dentsie-chat-bubble {
+.denta-chat-bubble {
   position: relative;
   max-width: 205px;
   padding: 10px 13px;
@@ -909,7 +909,7 @@ nav {
   line-height: 1.4;
   box-shadow: 0 3px 10px rgba(34,50,84,.05);
 }
-.dentsie-chat-bubble::before {
+.denta-chat-bubble::before {
   content: '';
   position: absolute;
   left: -7px;
@@ -922,8 +922,8 @@ nav {
   transform: rotate(45deg);
 }
 @media (max-width: 520px) {
-  .dentsie-home-chat img { width: 78px; height: 78px; }
-  .dentsie-chat-bubble { max-width: 190px; }
+  .denta-home-chat img { width: 78px; height: 78px; }
+  .denta-chat-bubble { max-width: 190px; }
 }
 @media (max-width: 520px) {
   .future-pathways-row { grid-template-columns: 1fr; }
@@ -1216,13 +1216,13 @@ nav {
       </div>
 
       <div class="pathway-card" data-route="assistant" role="link" tabindex="0">
-        <div class="dentsie-home-chat">
-        <img src="images/dentsie_simple.png" alt="Dentsie">
-        <div class="dentsie-chat-bubble">Hi, I’m Dentsie, your virtual career assistant.</div>
+        <div class="denta-home-chat">
+        <img src="images/denta_simple.png" alt="Denta">
+        <div class="denta-chat-bubble">Hi, I’m Denta, your virtual career assistant.</div>
       </div>
-        <div class="pathway-title display"> Dentsie Virtual Assistant</div>
+        <div class="pathway-title display"> Denta Virtual Assistant</div>
         <div class="pathway-desc">A guided assistant for common questions and tasks during your career journey.</div>
-        <div class="pathway-cta">Ask Dentsie <span>→</span></div>
+        <div class="pathway-cta">Ask Denta <span>→</span></div>
       </div>
     </div>
 
@@ -1590,19 +1590,19 @@ nav {
   <div class="assistant-page">
     <header class="feature-page-header">
       <button class="back-button" type="button" data-back><span class="back-arrow">←</span> Back</button>
-      <h1 class="display"> Dentsie Virtual Assistant</h1>
-      <p>Ask questions about careers support and procedures. Dentsie is trained by NLDC.</p>
+      <h1 class="display"> Denta Virtual Assistant</h1>
+      <p>Ask questions about careers support and procedures. Denta is trained by NLDC.</p>
     </header>
     <section class="assistant-shell" aria-label="NLDC Virtual Assistant">
       <div class="assistant-bar">
        <div class="assistant-avatar" aria-hidden="true">
-        <img id="assistant-dentsie-image" src="images/dentsie_christmas.png" alt="">
+        <img id="assistant-denta-image" src="images/denta_christmas.png" alt="">
       </div>
-        <div><h2>Dentsie NLDC</h2><div class="assistant-status">Ready to help</div></div>
+        <div><h2>Denta NLDC</h2><div class="assistant-status">Ready to help</div></div>
       </div>
       <div id="assistant-chat" class="assistant-chat" aria-live="polite">
         <div class="assistant-message">
-          <div class="assistant-bubble">Hello, trainee dental nurse! Dentsie here. How can I help you today?</div>
+          <div class="assistant-bubble">Hello, trainee dental nurse! Denta here. How can I help you today?</div>
         </div>
       </div>
       <div class="assistant-suggestions" aria-label="Suggested questions">
@@ -1615,7 +1615,7 @@ nav {
         <textarea id="assistant-input" class="assistant-input" rows="1" maxlength="2000" placeholder="Type your question…" required></textarea>
         <button id="assistant-send" class="assistant-send" type="submit">Send</button>
       </form>
-      <div class="assistant-disclaimer">Dentsie provides general educational guidance, not clinical or emergency advice. Check important information with your Careers Advisor. Do not enter confiedential information.</div>
+      <div class="assistant-disclaimer">Denta provides general educational guidance, not clinical or emergency advice. Check important information with your Careers Advisor. Do not enter confiedential information.</div>
     </section>
   </div>
 </main>
@@ -1626,10 +1626,10 @@ nav {
 
 <script>
 (function () {
-  // Change this filename whenever you want to switch Dentsie's seasonal pictogram.
-  const DENTSIE_ASSISTANT_IMAGE = 'images/dentsie_christmas.png';
-  const assistantDentsieImage = document.getElementById('assistant-dentsie-image');
-  if (assistantDentsieImage) assistantDentsieImage.src = DENTSIE_ASSISTANT_IMAGE;
+  // Change this filename whenever you want to switch Denta's seasonal pictogram.
+  const DENTA_ASSISTANT_IMAGE = 'images/denta_christmas.png';
+  const assistantDentaImage = document.getElementById('assistant-denta-image');
+  if (assistantDentaImage) assistantDentaImage.src = DENTA_ASSISTANT_IMAGE;
 
   // Access gate. The Worker validates the quarterly code and records successful logins in D1.
   const accessGate = document.getElementById('access-gate');
